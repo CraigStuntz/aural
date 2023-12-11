@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "cwd": "${workspaceFolder:aural}",
+            "name": "Debug aural",
+            "program": "${workspaceFolder:aural}/.build/debug/aural",
+            "args": ["update"],
+            "preLaunchTask": "swift: Build Debug aural"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "cwd": "${workspaceFolder:aural}",
+            "name": "Test aural",
+            "program": "/Applications/Xcode.app/Contents/Developer/usr/bin/xctest",
+            "args": [".build/debug/auralTests.xctest"],
+            "preLaunchTask": "swift: Build All"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:aural}",
+            "name": "Release aural",
+            "program": "${workspaceFolder:aural}/.build/release/aural",
+            "preLaunchTask": "swift: Build Release aural"
+        }
+    ]
+}

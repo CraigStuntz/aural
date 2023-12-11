@@ -29,14 +29,28 @@ You need to have the command-line tools installed:
 $ xcode-select --install
 ```
 
-To build and run aural:
+To build using the `Makefile` you will also need to have `swift-format` installed:
+
+```bash
+$ brew install swift-format
+```
+
+To build:
+
+```bash
+$ make
+```
+
+To just run, building if needed:
 
 ```bash
 $ swift run aural [--argument]
 ```
 
+To run tests: 
+
 ```bash
-$ swift test
+$ make test
 ```
 
 If you get an error about 

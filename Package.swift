@@ -25,6 +25,8 @@ let package = Package(
       dependencies: [
         "aural",
         .product(name: "ArgumentParser", package: "swift-argument-parser"),
-      ]),
+      ],
+      resources: [.process("Resources/AudioUnits.plist")]
+    ),
   ]
 )

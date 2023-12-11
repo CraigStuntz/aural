@@ -69,7 +69,7 @@ extension Aural {
 
     mutating func run() {
       print("Updating...")
-      let config = AudioUnitsConfig.parseConfig()
+      let config = AudioUnitConfigs.parseConfig()
       print(config.first!.name)
     }
   }

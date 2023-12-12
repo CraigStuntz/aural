@@ -7,18 +7,14 @@ struct AudioUnitComponents {
       let componentDescription = AudioComponentDescription()
       return AVAudioUnitComponentManager.shared().components(matching: componentDescription)
     }
-    return AVAudioUnitComponentManager.shared().components(passingTest: {
-      if $1.hashValue == 0 {
-        // THis is dumb, but Swift requires you to use all arguments in a predicate.
-        // SO we do a do-nothing comparison on $1.
-      }
+    return AVAudioUnitComponentManager.shared().components(passingTest: { (component, _) in
       switch filter!.filterType {
       case .manufacturer:
-        return $0.manufacturerName == filter!.name
+        return component.manufacturerName == filter!.name
       case .name:
-        return $0.name == filter!.name
+        return component.name == filter!.name
       case .type:
-        return $0.typeName == filter!.name
+        return component.typeName == filter!.name
       }
     })
   }

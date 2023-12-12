@@ -29,7 +29,8 @@ You need to have the command-line tools installed. You don't necessarily need XC
 $ xcode-select --install
 ```
 
-To build using the `Makefile` you will also need to have `swift-format` installed:
+To build using the `Makefile` you will also need to have 
+[`swift-format`](https://github.com/apple/swift-format) installed:
 
 ```bash
 $ brew install swift-format

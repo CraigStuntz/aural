@@ -16,7 +16,7 @@ struct Aural: ParsableCommand {
 
 struct Options: ParsableArguments {
   @Option(
-    name: [ .short, .long ],
+    name: [.short, .long],
     help:
       "Restrict Audio Units processed. Format name:value, allowed names are manufacturer, name, or type."
   )

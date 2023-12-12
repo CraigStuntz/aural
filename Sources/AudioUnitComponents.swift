@@ -9,7 +9,8 @@ struct AudioUnitComponents {
     }
     return AVAudioUnitComponentManager.shared().components(passingTest: {
       if $1.hashValue == 0 {
-        return false
+        // THis is dumb, but Swift requires you to use all arguments in a predicate.
+        // SO we do a do-nothing comparison on $1.
       }
       switch filter!.filterType {
       case .manufacturer:

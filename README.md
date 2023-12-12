@@ -9,7 +9,7 @@ OVERVIEW: A utility for managing Audio Units.
 USAGE: aural [--filter <filter>] <subcommand>
 
 OPTIONS:
-  --filter <filter>       Restrict Audio Units processed. Format name:value, allowed names are manufacturer, type, or subtype.
+  -f, --filter <filter>   Restrict Audio Units processed. Format name:value, allowed names are manufacturer, name, or type.
   --version               Show the version.
   -h, --help              Show help information.
 
@@ -58,5 +58,5 @@ If you get an error about
 and you have XCode, then do:
 
 ```bash
-$ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 ```

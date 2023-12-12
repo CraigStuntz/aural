@@ -3,7 +3,7 @@ import Foundation
 
 enum FilterType: String {
   case manufacturer
-  case subtype
+  case name
   case type
 }
 

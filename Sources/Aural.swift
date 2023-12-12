@@ -17,7 +17,7 @@ struct Aural: ParsableCommand {
 struct Options: ParsableArguments {
   @Option(
     help:
-      "Restrict Audio Units processed. Format name:value, allowed names are manufacturer, type, or subtype."
+      "Restrict Audio Units processed. Format name:value, allowed names are manufacturer, name, or type."
   )
   var filter: Filter?
 }
@@ -51,9 +51,7 @@ extension Aural {
     @OptionGroup var options: Options
 
     mutating func run() {
-      let componentDescription = AudioComponentDescription()
-      let components = AVAudioUnitComponentManager.shared().components(
-        matching: componentDescription)
+      let components = AudioUnitComponents.components(filter: options.filter)
       let manufacturerNameMaxCount = components.map { $0.manufacturerName.count }.max()
       let nameMaxCount = components.map { $0.name.count }.max()
       let typeNameMaxCount = components.map { $0.typeName.count }.max()

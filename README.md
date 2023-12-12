@@ -23,7 +23,7 @@ SUBCOMMANDS:
 
 ## Building
 
-You need to have the command-line tools installed:
+You need to have the command-line tools installed. You don't necessarily need XCode:
 
 ```bash
 $ xcode-select --install
@@ -55,8 +55,7 @@ $ make test
 
 If you get an error about 
 `unable to lookup item ‘PlatformPath’ from command line tools installation`
-
-then do:
+and you have XCode, then do:
 
 ```bash
 $ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer

@@ -54,9 +54,18 @@ extension Aural {
       let componentDescription = AudioComponentDescription()
       let components = AVAudioUnitComponentManager.shared().components(
         matching: componentDescription)
+      let manufacturerNameMaxCount = components.map { $0.manufacturerName.count }.max()
+      let nameMaxCount = components.map { $0.name.count }.max()
+      let typeNameMaxCount = components.map { $0.typeName.count }.max()
       for component in components {
+        let manufacturerName = component.manufacturerName.padding(
+          toLength: manufacturerNameMaxCount!, withPad: " ", startingAt: 0)
+        let name = component.name.padding(
+          toLength: nameMaxCount!, withPad: " ", startingAt: 0)
+        let typeName = component.typeName.padding(
+          toLength: typeNameMaxCount!, withPad: " ", startingAt: 0)
         print(
-          "\(component.manufacturerName) \(component.name) \(component.typeName) \(component.versionString)"
+          "\(manufacturerName)\t\(name)\t\(typeName)\t\(component.versionString)"
         )
       }
     }

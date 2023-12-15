@@ -11,6 +11,20 @@
         <string>Music Device</string>
         <key>versionUrl</key>
         <string></string>
+        <key>versionRegex</key>
+        <string></string>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Arturia</string>
+        <key>name</key>
+        <string>Filter MS-20</string>
+        <key>typeName</key>
+        <string>Music Effect</string>
+        <key>versionUrl</key>
+        <string>https://www.arturia.com/support/downloads&amp;manuals</string>
+        <key>versionRegex</key>
+        <string>Filter_MS\-20__(\d*_\d*_\d*_\d*)\.pkg\\"&gt;Filter MS\-20</string>
     </dict>
 </array>
 </plist>

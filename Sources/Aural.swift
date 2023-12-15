@@ -1,9 +1,8 @@
 import AVFoundation
 import ArgumentParser
-import AudioToolbox
 
 @main
-struct Aural: ParsableCommand {
+struct Aural: AsyncParsableCommand {
   static var configuration = CommandConfiguration(
     abstract: "A utility for managing Audio Units.",
     version: "0.0.1",
@@ -70,15 +69,41 @@ extension Aural {
     }
   }
 
-  struct Update: ParsableCommand {
+  struct Update: AsyncParsableCommand {
     static var configuration = CommandConfiguration(
       commandName: "update",
       abstract: "Queries for available updates for installed Audio Units")
 
-    mutating func run() {
+    @OptionGroup var options: Options
+
+    mutating func run() async {
       print("Updating...")
-      let config = AudioUnitConfigs.parseConfig()
-      print(config.first!.name)
+      let components = AudioUnitComponents.components(filter: options.filter)
+      let configs = AudioUnitConfigs()
+      let updateConfigs = UpdateConfigs(configs: configs, components: components)
+      print("No update configuration found for \(updateConfigs.noConfiguration)")
+      for updateConfig in updateConfigs.toUpdate {
+        guard let versionUrl = updateConfig.config.versionUrl, !versionUrl.isEmpty else {
+          print("There is no update version URL for \(updateConfig.config.manufacturer) \(updateConfig.config.name)")
+          continue
+        }
+        guard let versionRegex = updateConfig.config.versionRegex, !versionRegex.isEmpty else {
+          print("There is no update version Regex for \(updateConfig.config.manufacturer) \(updateConfig.config.name)")
+          continue
+        }
+        do {
+          let currentVersion = try await HTTPVersionRetriever.retrieve(url: versionUrl, versionMatchRegex: versionRegex)
+          if currentVersion != nil {
+            print ("Current version of \(updateConfig.config.name) is \(currentVersion!)")
+            print ("Existing version of \(updateConfig.config.name) is \(updateConfig.existingVersion)")
+            print ("Compatible? \(Versions.compatible(version1: currentVersion, version2: updateConfig.existingVersion))")
+          } else {
+            print("Current version of \(updateConfig.config.name) not found")
+          }
+        } catch {
+          print("Caught error \(error) while checking the current version of \(updateConfig.config.name)")
+        }
+      }
     }
   }
 }

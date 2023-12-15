@@ -3,13 +3,14 @@ import Foundation
 
 struct AudioUnitConfig: Decodable {
   private enum CodingKeys: String, CodingKey {
-    case manufacturer, name, typeName, versionUrl
+    case manufacturer, name, typeName, versionUrl, versionRegex
   }
 
   let manufacturer: String
   let name: String
   let typeName: String
   let versionUrl: String?
+  let versionRegex: String?
 
   static func toDictionaryKey(manufacturer: String, name: String, typeName: String) -> String {
     return "\(manufacturer)\t\(name)\t\(typeName)"

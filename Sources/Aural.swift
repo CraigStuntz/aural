@@ -52,20 +52,8 @@ extension Aural {
 
     mutating func run() {
       let components = AudioUnitComponents.components(filter: options.filter)
-      let manufacturerNameMaxCount = components.map { $0.manufacturerName.count }.max()
-      let nameMaxCount = components.map { $0.name.count }.max()
-      let typeNameMaxCount = components.map { $0.typeName.count }.max()
-      for component in components {
-        let manufacturerName = component.manufacturerName.padding(
-          toLength: manufacturerNameMaxCount!, withPad: " ", startingAt: 0)
-        let name = component.name.padding(
-          toLength: nameMaxCount!, withPad: " ", startingAt: 0)
-        let typeName = component.typeName.padding(
-          toLength: typeNameMaxCount!, withPad: " ", startingAt: 0)
-        print(
-          "\(manufacturerName)\t\(name)\t\(typeName)\t\(component.versionString)"
-        )
-      }
+      let data = components.map { [$0.manufacturerName, $0.name, $0.typeName, $0.versionString] }
+      Table(headers: ["manufacturer", "name", "type", "version"], data: data).printToConsole()
     }
   }
 
@@ -84,24 +72,34 @@ extension Aural {
       print("No update configuration found for \(updateConfigs.noConfiguration)")
       for updateConfig in updateConfigs.toUpdate {
         guard let versionUrl = updateConfig.config.versionUrl, !versionUrl.isEmpty else {
-          print("There is no update version URL for \(updateConfig.config.manufacturer) \(updateConfig.config.name)")
+          print(
+            "There is no update version URL for \(updateConfig.config.manufacturer) \(updateConfig.config.name)"
+          )
           continue
         }
         guard let versionRegex = updateConfig.config.versionRegex, !versionRegex.isEmpty else {
-          print("There is no update version Regex for \(updateConfig.config.manufacturer) \(updateConfig.config.name)")
+          print(
+            "There is no update version Regex for \(updateConfig.config.manufacturer) \(updateConfig.config.name)"
+          )
           continue
         }
         do {
-          let currentVersion = try await HTTPVersionRetriever.retrieve(url: versionUrl, versionMatchRegex: versionRegex)
+          let currentVersion = try await HTTPVersionRetriever.retrieve(
+            url: versionUrl, versionMatchRegex: versionRegex)
           if currentVersion != nil {
-            print ("Current version of \(updateConfig.config.name) is \(currentVersion!)")
-            print ("Existing version of \(updateConfig.config.name) is \(updateConfig.existingVersion)")
-            print ("Compatible? \(Versions.compatible(version1: currentVersion, version2: updateConfig.existingVersion))")
+            print("Current version of \(updateConfig.config.name) is \(currentVersion!)")
+            print(
+              "Existing version of \(updateConfig.config.name) is \(updateConfig.existingVersion)")
+            print(
+              "Compatible? \(Versions.compatible(version1: currentVersion, version2: updateConfig.existingVersion))"
+            )
           } else {
             print("Current version of \(updateConfig.config.name) not found")
           }
         } catch {
-          print("Caught error \(error) while checking the current version of \(updateConfig.config.name)")
+          print(
+            "Caught error \(error) while checking the current version of \(updateConfig.config.name)"
+          )
         }
       }
     }

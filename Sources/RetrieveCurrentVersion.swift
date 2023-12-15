@@ -11,16 +11,16 @@ struct HTTPVersionRetriever {
       return nil
     }
     let body = String(decoding: data, as: UTF8.self)
-    print ("Finished loading...")
-    let regex = try Regex(versionMatchRegex) 
+    print("Finished loading...")
+    let regex = try Regex(versionMatchRegex)
     if let match = body.firstMatch(of: regex) {
       if let captured = match.output[1].substring {
         return cleanupVersion(versionAsRead: String(captured))
       } else {
-        print ("No capture on document body given regex \(versionMatchRegex)")
+        print("No capture on document body given regex \(versionMatchRegex)")
       }
     } else {
-      print ("No match on document body given regex \(versionMatchRegex)")
+      print("No match on document body given regex \(versionMatchRegex)")
     }
     return nil
   }

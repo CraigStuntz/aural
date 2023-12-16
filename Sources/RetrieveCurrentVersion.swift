@@ -5,13 +5,14 @@ import HTTPTypesFoundation
 struct HTTPVersionRetriever {
   static func retrieve(url: String, versionMatchRegex: String) async throws -> String? {
     let request = HTTPRequest(method: .get, url: URL(string: url)!)
+    print("Loading \(url)...")
     let (data, response) = try! await URLSession.shared.data(for: request)
     guard response.status == .ok else {
       print("Failed to download \(url), status \(response.status)")
       return nil
     }
     let body = String(decoding: data, as: UTF8.self)
-    print("Finished loading...")
+    print("Finished!")
     let regex = try Regex(versionMatchRegex)
     if let match = body.firstMatch(of: regex) {
       if let captured = match.output[1].substring {

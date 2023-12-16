@@ -50,9 +50,15 @@ extension Aural {
 
     @OptionGroup var options: Options
 
+    static func isLessThan(_ c1: AVAudioUnitComponent, _ c2: AVAudioUnitComponent) -> Bool {
+      return (c1.manufacturerName < c2.manufacturerName)
+        || (c1.manufacturerName == c2.manufacturerName && c1.name < c2.name) 
+        || (c1.manufacturerName == c2.manufacturerName && c1.name == c2.name && c1.typeName < c2.typeName)
+    }
+
     mutating func run() {
       let components = AudioUnitComponents.components(filter: options.filter)
-      let data = components.map { [$0.manufacturerName, $0.name, $0.typeName, $0.versionString] }
+      let data = components.sorted(by: List.isLessThan).map { [$0.manufacturerName, $0.name, $0.typeName, $0.versionString] }
       Table(headers: ["manufacturer", "name", "type", "version"], data: data).printToConsole()
     }
   }

@@ -71,35 +71,15 @@ extension Aural {
       let updateConfigs = UpdateConfigs(configs: configs, components: components)
       print("No update configuration found for \(updateConfigs.noConfiguration)")
       for updateConfig in updateConfigs.toUpdate {
-        guard let versionUrl = updateConfig.config.versionUrl, !versionUrl.isEmpty else {
+        let result = await updateConfig.requestCurrentVersion()
+        switch result {
+        case .success(let updateStatus):
+          let currentVersion = updateStatus.currentVersion ?? "<unknown>"
           print(
-            "There is no update version URL for \(updateConfig.config.manufacturer) \(updateConfig.config.name)"
+            "Current version: \(currentVersion), existing version \(updateStatus.config.existingVersion), compatible? \(updateStatus.compatible)"
           )
-          continue
-        }
-        guard let versionRegex = updateConfig.config.versionRegex, !versionRegex.isEmpty else {
-          print(
-            "There is no update version Regex for \(updateConfig.config.manufacturer) \(updateConfig.config.name)"
-          )
-          continue
-        }
-        do {
-          let currentVersion = try await HTTPVersionRetriever.retrieve(
-            url: versionUrl, versionMatchRegex: versionRegex)
-          if currentVersion != nil {
-            print("Current version of \(updateConfig.config.name) is \(currentVersion!)")
-            print(
-              "Existing version of \(updateConfig.config.name) is \(updateConfig.existingVersion)")
-            print(
-              "Compatible? \(Versions.compatible(version1: currentVersion, version2: updateConfig.existingVersion))"
-            )
-          } else {
-            print("Current version of \(updateConfig.config.name) not found")
-          }
-        } catch {
-          print(
-            "Caught error \(error) while checking the current version of \(updateConfig.config.name)"
-          )
+        case .failure(let updateError):
+          print("Failed due to \(updateError)")
         }
       }
     }

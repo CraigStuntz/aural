@@ -2,20 +2,22 @@ import AVFoundation
 
 struct UpdateConfig {
   let existingVersion: String
-  let config: AudioUnitConfig
+  let audioUnitConfig: AudioUnitConfig
 
   func requestCurrentVersion() async -> Result<UpdateStatus, UpdateError> {
-    guard let versionUrl = self.config.versionUrl, !versionUrl.isEmpty else {
+    guard let versionUrl = self.audioUnitConfig.versionUrl, !versionUrl.isEmpty else {
       return .failure(
         .noConfiguration(
           description:
-            "There is no update version URL for \(self.config.manufacturer) \(self.config.name)"))
+            "There is no update version URL for \(self.audioUnitConfig.manufacturer) \(self.audioUnitConfig.name)"
+        ))
     }
-    guard let versionRegex = self.config.versionRegex, !versionRegex.isEmpty else {
+    guard let versionRegex = self.audioUnitConfig.versionRegex, !versionRegex.isEmpty else {
       return .failure(
         .noConfiguration(
           description:
-            "There is no update version Regex for \(self.config.manufacturer) \(self.config.name)"))
+            "There is no update version Regex for \(self.audioUnitConfig.manufacturer) \(self.audioUnitConfig.name)"
+        ))
     }
     do {
       let currentVersion = try await HTTPVersionRetriever.retrieve(
@@ -28,13 +30,14 @@ struct UpdateConfig {
       } else {
         return .failure(
           .configurationNotFoundInHttpResult(
-            description: "Current version of \(self.config.name) not found"))
+            description: "Current version of \(self.audioUnitConfig.name) not found"))
       }
     } catch {
       return .failure(
         .genericUpdateError(
           description:
-            "Caught error \(error) while checking the current version of \(self.config.name)"))
+            "Caught error \(error) while checking the current version of \(self.audioUnitConfig.name)"
+        ))
     }
   }
 }
@@ -43,17 +46,17 @@ struct UpdateConfigs {
   let noConfiguration: [String]
   let toUpdate: [UpdateConfig]
 
-  init(configs: AudioUnitConfigs, components: [AVAudioUnitComponent]) {
+  init(audioUnitConfigs: AudioUnitConfigs, components: [AVAudioUnitComponent]) {
     var noConfiguration: [String] = []
     var toUpdate: [UpdateConfig] = []
     let nonSystemComponents = components.filter({ !AudioUnitComponents.isSystemComponent($0) })
     for component in nonSystemComponents {
-      let config = configs[component]
-      if config != nil {
+      let audioUnitConfig = audioUnitConfigs[component]
+      if audioUnitConfig != nil {
         toUpdate.append(
           UpdateConfig(
             existingVersion: component.versionString,
-            config: config!
+            audioUnitConfig: audioUnitConfig!
           ))
       } else {
         noConfiguration.append(

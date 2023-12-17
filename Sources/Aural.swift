@@ -67,8 +67,8 @@ extension Aural {
     mutating func run() async {
       print("Updating...")
       let components = AudioUnitComponents.components(filter: options.filter)
-      let configs = AudioUnitConfigs()
-      let updateConfigs = UpdateConfigs(configs: configs, components: components)
+      let audioUnitConfigs = AudioUnitConfigs()
+      let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
       print("No update configuration found for \(updateConfigs.noConfiguration)")
       for updateConfig in updateConfigs.toUpdate {
         let result = await updateConfig.requestCurrentVersion()
@@ -76,7 +76,7 @@ extension Aural {
         case .success(let updateStatus):
           let currentVersion = updateStatus.currentVersion ?? "<unknown>"
           print(
-            "Current version: \(currentVersion), existing version \(updateStatus.config.existingVersion), compatible? \(updateStatus.compatible)"
+            "\(updateStatus.config.audioUnitConfig.manufacturer) \(updateStatus.config.audioUnitConfig.name), current version: \(currentVersion), existing version \(updateStatus.config.existingVersion), compatible? \(updateStatus.compatible)"
           )
         case .failure(let updateError):
           print("Failed due to \(updateError)")

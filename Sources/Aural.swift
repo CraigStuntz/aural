@@ -23,12 +23,6 @@ struct Options: ParsableArguments {
 }
 
 extension Aural {
-  static func format(_ result: Int, usingHex: Bool) -> String {
-    usingHex
-      ? String(result, radix: 16)
-      : String(result)
-  }
-
   struct Export: ParsableCommand {
     static var configuration =
       CommandConfiguration(
@@ -37,11 +31,6 @@ extension Aural {
         defaultSubcommand: Logic.self)
 
     @OptionGroup var options: Options
-
-    mutating func run() {
-      let result = [].reduce(0, +)
-      print(format(result, usingHex: false))
-    }
   }
 
   struct List: ParsableCommand {

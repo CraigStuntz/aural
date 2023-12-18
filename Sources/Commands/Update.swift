@@ -23,23 +23,26 @@ struct UpdateAudioUnits {
         case .success(let updateStatus):
           let currentVersion = updateStatus.currentVersion ?? "<unknown>"
           data.append([
-            updateStatus.config.audioUnitConfig.manufacturer, 
+            updateStatus.config.audioUnitConfig.manufacturer,
             updateStatus.config.audioUnitConfig.name,
             currentVersion,
             updateStatus.config.existingVersion,
-            updateStatus.compatible ? "Y" : "N"
+            updateStatus.compatible ? "Y" : "N",
           ])
         case .failure(let updateError):
           failures.append([
             updateConfig.audioUnitConfig.manufacturer,
             updateConfig.audioUnitConfig.name,
-            updateError.description
+            updateError.description,
           ])
         }
       }
       print()
       if !data.isEmpty {
-        Table(headers: ["manufacturer", "name", "latest version", "local version", "up to date?"], data: data).printToConsole()
+        Table(
+          headers: ["manufacturer", "name", "latest version", "local version", "up to date?"],
+          data: data
+        ).printToConsole()
       }
       if !failures.isEmpty {
         print("Errors encountered during update:")

@@ -51,9 +51,7 @@ extension Aural {
     @OptionGroup var options: Options
 
     mutating func run() {
-      let components = AudioUnitComponents.components(filter: options.filter)
-      let data = components.map { [$0.manufacturerName, $0.name, $0.typeName, $0.versionString] }
-      Table(headers: ["manufacturer", "name", "type", "version"], data: data).printToConsole()
+      ListAudioUnits.run(options: options)
     }
   }
 
@@ -65,23 +63,7 @@ extension Aural {
     @OptionGroup var options: Options
 
     mutating func run() async {
-      print("Updating...")
-      let components = AudioUnitComponents.components(filter: options.filter)
-      let audioUnitConfigs = AudioUnitConfigs()
-      let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
-      print("No update configuration found for \(updateConfigs.noConfiguration)")
-      for updateConfig in updateConfigs.toUpdate {
-        let result = await updateConfig.requestCurrentVersion()
-        switch result {
-        case .success(let updateStatus):
-          let currentVersion = updateStatus.currentVersion ?? "<unknown>"
-          print(
-            "\(updateStatus.config.audioUnitConfig.manufacturer) \(updateStatus.config.audioUnitConfig.name), current version: \(currentVersion), existing version \(updateStatus.config.existingVersion), compatible? \(updateStatus.compatible)"
-          )
-        case .failure(let updateError):
-          print("Failed due to \(updateError)")
-        }
-      }
+      await UpdateAudioUnits.run(options: options)
     }
   }
 }

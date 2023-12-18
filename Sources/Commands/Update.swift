@@ -1,5 +1,26 @@
 import AVFoundation
 
+struct UpdateAudioUnits {
+  static func run(options: Options) async {
+    let components = AudioUnitComponents.components(filter: options.filter)
+    let audioUnitConfigs = AudioUnitConfigs()
+    let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
+    print("No update configuration found for \(updateConfigs.noConfiguration)")
+    for updateConfig in updateConfigs.toUpdate {
+      let result = await updateConfig.requestCurrentVersion()
+      switch result {
+      case .success(let updateStatus):
+        let currentVersion = updateStatus.currentVersion ?? "<unknown>"
+        print(
+          "\(updateStatus.config.audioUnitConfig.manufacturer) \(updateStatus.config.audioUnitConfig.name), current version: \(currentVersion), existing version \(updateStatus.config.existingVersion), compatible? \(updateStatus.compatible)"
+        )
+      case .failure(let updateError):
+        print("Failed due to \(updateError)")
+      }
+    }
+  }
+}
+
 struct UpdateConfig {
   let existingVersion: String
   let audioUnitConfig: AudioUnitConfig
@@ -20,10 +41,10 @@ struct UpdateConfig {
         ))
     }
     do {
-      let currentVersion = try await HTTPVersionRetriever.retrieve(
+      let currentVersion = try await Version.httpGet(
         url: versionUrl, versionMatchRegex: versionRegex)
       if currentVersion != nil {
-        let compatible = Versions.compatible(
+        let compatible = Version.compatible(
           version1: currentVersion, version2: self.existingVersion)
         return .success(
           UpdateStatus(config: self, currentVersion: currentVersion, compatible: compatible))

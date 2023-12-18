@@ -1,3 +1,4 @@
+/// A simple table component to display data in a CLI
 struct Table {
   let maxesByColumn: [Int]
   let data: [[String]]
@@ -9,6 +10,7 @@ struct Table {
     self.maxesByColumn = Table.maxes(headers, data)
   }
 
+  /// finds the maximum data/header width of each column
   static func maxes(_ headers: [String], _ data: [[String]]) -> [Int] {
     if data.isEmpty {
       return []
@@ -24,7 +26,7 @@ struct Table {
     return result
   }
 
-  // returns a Table instance with all headers and data padded ti column widths
+  /// returns Table data with all headers (and separators) and data padded to column widths
   func toPadded() -> [[String]] {
     var result: [[String]] = []
     if !headers.isEmpty {

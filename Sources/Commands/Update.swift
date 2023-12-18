@@ -5,17 +5,45 @@ struct UpdateAudioUnits {
     let components = AudioUnitComponents.components(filter: options.filter)
     let audioUnitConfigs = AudioUnitConfigs()
     let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
-    print("No update configuration found for \(updateConfigs.noConfiguration)")
-    for updateConfig in updateConfigs.toUpdate {
-      let result = await updateConfig.requestCurrentVersion()
-      switch result {
-      case .success(let updateStatus):
-        let currentVersion = updateStatus.currentVersion ?? "<unknown>"
-        print(
-          "\(updateStatus.config.audioUnitConfig.manufacturer) \(updateStatus.config.audioUnitConfig.name), current version: \(currentVersion), existing version \(updateStatus.config.existingVersion), compatible? \(updateStatus.compatible)"
-        )
-      case .failure(let updateError):
-        print("Failed due to \(updateError)")
+    if !updateConfigs.noConfiguration.isEmpty {
+      let noConfigsData = updateConfigs.noConfiguration.map { [$0] }
+      Table(headers: ["No update configurations found for:"], data: noConfigsData).printToConsole()
+      print()
+    }
+    if updateConfigs.toUpdate.isEmpty {
+      print("No Audio Units configured for update.")
+    } else {
+      print(".", terminator: "")
+      var data: [[String]] = []
+      var failures: [[String]] = []
+      for updateConfig in updateConfigs.toUpdate {
+        let result = await updateConfig.requestCurrentVersion()
+        print(".", terminator: "")
+        switch result {
+        case .success(let updateStatus):
+          let currentVersion = updateStatus.currentVersion ?? "<unknown>"
+          data.append([
+            updateStatus.config.audioUnitConfig.manufacturer, 
+            updateStatus.config.audioUnitConfig.name,
+            currentVersion,
+            updateStatus.config.existingVersion,
+            updateStatus.compatible ? "Y" : "N"
+          ])
+        case .failure(let updateError):
+          failures.append([
+            updateConfig.audioUnitConfig.manufacturer,
+            updateConfig.audioUnitConfig.name,
+            updateError.description
+          ])
+        }
+      }
+      print()
+      if !data.isEmpty {
+        Table(headers: ["manufacturer", "name", "latest version", "local version", "up to date?"], data: data).printToConsole()
+      }
+      if !failures.isEmpty {
+        print("Errors encountered during update:")
+        Table(headers: ["manufacturer", "name", "error"], data: failures).printToConsole()
       }
     }
   }

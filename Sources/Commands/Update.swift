@@ -16,27 +16,30 @@ struct UpdateAudioUnits {
       print(".", terminator: "")
       var data: [[String]] = []
       var failures: [[String]] = []
-      for updateConfig in updateConfigs.toUpdate {
-        let result = await updateConfig.requestCurrentVersion()
-        print(".", terminator: "")
-        switch result {
-        case .success(let updateStatus):
-          let currentVersion = updateStatus.currentVersion ?? "<unknown>"
-          data.append([
-            updateStatus.config.audioUnitConfig.manufacturer,
-            updateStatus.config.audioUnitConfig.name,
-            currentVersion,
-            updateStatus.config.existingVersion,
-            updateStatus.compatible ? "Y" : "N",
-          ])
-        case .failure(let updateError):
-          failures.append([
-            updateConfig.audioUnitConfig.manufacturer,
-            updateConfig.audioUnitConfig.name,
-            updateError.description,
-          ])
+      await withTaskGroup(of: Result<UpdateStatus, UpdateError>.self) { group in
+        for updateConfig in updateConfigs.toUpdate {
+          group.addTask { await updateConfig.requestCurrentVersion() }
+        }
+        for await result in group {
+          print(".", terminator: "")
+          switch result {
+          case .success(let updateStatus):
+            let currentVersion = updateStatus.currentVersion ?? "<unknown>"
+            data.append([
+              updateStatus.config.audioUnitConfig.manufacturer,
+              updateStatus.config.audioUnitConfig.name,
+              currentVersion,
+              updateStatus.config.existingVersion,
+              updateStatus.compatible ? "Y" : "N",
+            ])
+          case .failure(let updateError):
+            failures.append([
+              updateError.description
+            ])
+          }
         }
       }
+
       print()
       if !data.isEmpty {
         Table(
@@ -46,7 +49,7 @@ struct UpdateAudioUnits {
       }
       if !failures.isEmpty {
         print("Errors encountered during update:")
-        Table(headers: ["manufacturer", "name", "error"], data: failures).printToConsole()
+        Table(headers: [], data: failures).printToConsole()
       }
     }
   }

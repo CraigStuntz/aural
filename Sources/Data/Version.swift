@@ -1,6 +1,7 @@
 import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
+import JMESPath
 
 struct Version {
   static func compatible(version1: String?, version2: String?) -> Bool {
@@ -22,6 +23,20 @@ struct Version {
       return nil
     }
     let body = String(decoding: data, as: UTF8.self)
+    return try parseWithRegex(body, versionMatchRegex)
+  }
+
+  static func cleanUp(versionAsRead: String) -> String {
+    return versionAsRead.replacingOccurrences(of: "_", with: ".")
+  }
+
+  static func parseWithJMESPath(_ body: String, _ versionMatchJmesPath: String) throws -> String? {
+    let expression = try JMESExpression.compile(versionMatchJmesPath)
+    let result = try expression.search(json: body, as: String.self)
+    return result
+  }
+
+  static func parseWithRegex(_ body: String, _ versionMatchRegex: String) throws -> String? {
     let regex = try Regex(versionMatchRegex)
     if let match = body.firstMatch(of: regex) {
       if let captured = match.output[1].substring {
@@ -29,13 +44,7 @@ struct Version {
       } else {
         print("No capture on document body given regex \(versionMatchRegex)")
       }
-    } else {
-      print("No match on document body given regex \(versionMatchRegex)")
     }
     return nil
-  }
-
-  static func cleanUp(versionAsRead: String) -> String {
-    return versionAsRead.replacingOccurrences(of: "_", with: ".")
   }
 }

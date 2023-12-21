@@ -19,14 +19,16 @@ struct Version {
   static func fromInt(_ intVersion: Int) -> String {
     var result: [String] = []
     var remaining = intVersion
-    var exp = 3
-    repeat {
-      exp -= 1
+    for exp in [2, 1, 0] {
+      // In any other PL, this would be
+      // let modulus = 2**(8 * exp)
+      // but Swift (5) has no exponentiation operator nor any means of doing an
+      // exponentiation on an Int...
       let modulus = Int(pow(2, Double(8 * exp)))
       let remainder = remaining / modulus
       remaining -= (remainder * modulus)
       result.append(String(remainder))
-    } while remaining > 0
+    }
     return result.joined(separator: ".")
   }
 
@@ -38,10 +40,16 @@ struct Version {
     guard let body = try await httpGet(url: audioUnitConfig.versionUrl!) else {
       return nil
     }
-    guard let regex = audioUnitConfig.versionRegex else {
-      return nil
+    if let jmesPath = audioUnitConfig.versionJMESPathInt {
+      guard let value: Int = try parseWithJMESPath(body, jmesPath) else {
+        return nil
+      }
+      return fromInt(value)
     }
-    return try parseWithRegex(body, regex)
+    if let regex = audioUnitConfig.versionRegex {
+      return try parseWithRegex(body, regex)
+    }
+    return nil
   }
 
   static func httpGet(url: String) async throws -> String? {
@@ -58,10 +66,11 @@ struct Version {
     return versionAsRead.replacingOccurrences(of: "_", with: ".")
   }
 
-  static func parseWithJMESPath(_ body: String, _ versionMatchJmesPath: String) throws -> String? {
+  static func parseWithJMESPath<Value>(
+    _ body: String, _ versionMatchJmesPath: String
+  ) throws -> Value? {
     let expression = try JMESExpression.compile(versionMatchJmesPath)
-    let result = try expression.search(json: body, as: String.self)
-    return result
+    return try expression.search(json: body, as: Value.self)
   }
 
   static func parseWithRegex(_ body: String, _ versionMatchRegex: String) throws -> String? {

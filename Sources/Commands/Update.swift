@@ -67,13 +67,6 @@ struct UpdateConfig {
             "There is no update version URL for \(self.audioUnitConfig.manufacturer) \(self.audioUnitConfig.name)"
         ))
     }
-    guard let versionRegex = self.audioUnitConfig.versionRegex, !versionRegex.isEmpty else {
-      return .failure(
-        .noConfiguration(
-          description:
-            "There is no update version Regex for \(self.audioUnitConfig.manufacturer) \(self.audioUnitConfig.name)"
-        ))
-    }
     do {
       let currentVersion = try await Version.getAndParse(audioUnitConfig: self.audioUnitConfig)
       if currentVersion != nil {

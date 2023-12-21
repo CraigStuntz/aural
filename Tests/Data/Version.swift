@@ -23,14 +23,18 @@ class VersionsTests: XCTestCase {
     let body = #"{"a": {"b": "1.2.3.4"}}"#
     let jmesPath = "a.b"
 
-    XCTAssertEqual("1.2.3.4", try Version.parseWithJMESPath(body, jmesPath))
+    let actual: String? = try Version.parseWithJMESPath(body, jmesPath)
+    
+    XCTAssertEqual("1.2.3.4", actual)
   }
 
   func test_parseWithJMESPath_invalid_body_should_return_nil() throws {
     let body = #"{"a": "foobar"}"#
     let jmesPath = "a.b"
 
-    XCTAssertNil(try Version.parseWithJMESPath(body, jmesPath))
+    let actual: String? = try Version.parseWithJMESPath(body, jmesPath)
+
+    XCTAssertNil(actual)
   }
 
   func test_parseWithRegex() throws {

@@ -24,7 +24,7 @@ class VersionsTests: XCTestCase {
     let jmesPath = "a.b"
 
     let actual: String? = try Version.parseWithJMESPath(body, jmesPath)
-    
+
     XCTAssertEqual("1.2.3.4", actual)
   }
 

@@ -96,18 +96,21 @@ struct UpdateConfigs {
   init(audioUnitConfigs: AudioUnitConfigs, components: [AVAudioUnitComponent]) {
     var noConfiguration: [String] = []
     var toUpdate: [UpdateConfig] = []
-    let nonSystemComponents = components.filter({ !AudioUnitComponents.isSystemComponent($0) })
-    for component in nonSystemComponents {
-      let audioUnitConfig = audioUnitConfigs[component]
-      if audioUnitConfig != nil {
+    for component in components {
+      guard let audioUnitConfig = audioUnitConfigs[component] else {
+        noConfiguration.append(
+          "\(component.manufacturerName) \(component.name) (\(component.versionString))")
+        continue
+      }
+      if audioUnitConfig.system != true
+        && audioUnitConfig.versionUrl != nil
+        && audioUnitConfig.versionUrl != ""
+      {
         toUpdate.append(
           UpdateConfig(
             existingVersion: component.versionString,
-            audioUnitConfig: audioUnitConfig!
+            audioUnitConfig: audioUnitConfig
           ))
-      } else {
-        noConfiguration.append(
-          "\(component.manufacturerName) \(component.name) (\(component.versionString))")
       }
     }
     self.noConfiguration = noConfiguration

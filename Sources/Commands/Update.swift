@@ -14,8 +14,9 @@ struct UpdateAudioUnits {
       print("No Audio Units configured for update.")
     } else {
       print(".", terminator: "")
-      var data: [[String]] = []
+      var current: [[String]] = []
       var failures: [[String]] = []
+      var outOfDate: [[String]] = []
       await withTaskGroup(of: Result<UpdateStatus, UpdateError>.self) { group in
         for updateConfig in updateConfigs.toUpdate {
           group.addTask { await updateConfig.requestCurrentVersion() }
@@ -25,13 +26,22 @@ struct UpdateAudioUnits {
           switch result {
           case .success(let updateStatus):
             let currentVersion = updateStatus.currentVersion ?? "<unknown>"
-            data.append([
-              updateStatus.config.audioUnitConfig.manufacturer,
-              updateStatus.config.audioUnitConfig.name,
-              currentVersion,
-              updateStatus.config.existingVersion,
-              updateStatus.compatible ? "Y" : "N",
-            ])
+            if updateStatus.compatible {
+              current.append([
+                updateStatus.config.audioUnitConfig.manufacturer,
+                updateStatus.config.audioUnitConfig.name,
+                currentVersion,
+                updateStatus.config.existingVersion
+              ])
+            } else {
+              outOfDate.append([
+                updateStatus.config.audioUnitConfig.manufacturer,
+                updateStatus.config.audioUnitConfig.name,
+                currentVersion,
+                updateStatus.config.existingVersion,
+                updateStatus.config.audioUnitConfig.update ?? ""
+              ])
+            }
           case .failure(let updateError):
             failures.append([
               updateError.description
@@ -41,11 +51,22 @@ struct UpdateAudioUnits {
       }
 
       print()
-      if !data.isEmpty {
+      if !current.isEmpty {
+        print("Up to date Audio Units:")
         Table(
-          headers: ["manufacturer", "name", "latest version", "local version", "up to date?"],
-          data: data
+          headers: ["manufacturer", "name", "latest version", "local version"],
+          data: current
         ).printToConsole()
+      }
+      if !outOfDate.isEmpty {
+        print("Audio Units which need to be updated:")
+        Table(
+          headers: ["manufacturer", "name", "latest version", "local version", "update instructions"],
+          data: outOfDate
+        ).printToConsole()
+      }
+      if !outOfDate.isEmpty && !outOfDate.isEmpty {
+        print()
       }
       if !failures.isEmpty {
         print("Errors encountered during update:")

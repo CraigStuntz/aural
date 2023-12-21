@@ -15,15 +15,43 @@ struct Version {
     }
   }
 
-  static func httpGet(url: String, versionMatchRegex: String) async throws -> String? {
+  /// This is how Phase Plant stores their versions in their web site JSON file.
+  static func fromInt(_ intVersion: Int) -> String {
+    var result: [String] = []
+    var remaining = intVersion
+    var exp = 3
+    repeat {
+      exp -= 1
+      let modulus = Int(pow(2, Double(8 * exp)))
+      let remainder = remaining / modulus
+      remaining -= (remainder * modulus)
+      result.append(String(remainder))
+    } while remaining > 0
+    return result.joined(separator: ".")
+  }
+
+  static func getAndParse(audioUnitConfig: AudioUnitConfig) async throws -> String? {
+    if audioUnitConfig.versionUrl == nil {
+      fatalError(
+        "audioUnitConfig.versionUrl must be non-nil before calling this function. Check it!")
+    }
+    guard let body = try await httpGet(url: audioUnitConfig.versionUrl!) else {
+      return nil
+    }
+    guard let regex = audioUnitConfig.versionRegex else {
+      return nil
+    }
+    return try parseWithRegex(body, regex)
+  }
+
+  static func httpGet(url: String) async throws -> String? {
     let request = HTTPRequest(method: .get, url: URL(string: url)!)
     let (data, response) = try! await URLSession.shared.data(for: request)
     guard response.status == .ok else {
       print("Failed to download \(url), status \(response.status)")
       return nil
     }
-    let body = String(decoding: data, as: UTF8.self)
-    return try parseWithRegex(body, versionMatchRegex)
+    return String(decoding: data, as: UTF8.self)
   }
 
   static func cleanUp(versionAsRead: String) -> String {

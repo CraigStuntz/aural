@@ -75,8 +75,7 @@ struct UpdateConfig {
         ))
     }
     do {
-      let currentVersion = try await Version.httpGet(
-        url: versionUrl, versionMatchRegex: versionRegex)
+      let currentVersion = try await Version.getAndParse(audioUnitConfig: self.audioUnitConfig)
       if currentVersion != nil {
         let compatible = Version.compatible(
           version1: currentVersion, version2: self.existingVersion)

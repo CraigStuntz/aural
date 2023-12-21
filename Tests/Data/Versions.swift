@@ -11,6 +11,10 @@ class VersionsTests: XCTestCase {
     XCTAssertTrue(Version.compatible(version1: "10", version2: "1"))
   }
 
+  func test_fromInt() {
+    XCTAssertEqual("2.1.4", Version.fromInt(131332))
+  }
+
   func test_cleanupVersion() {
     XCTAssertEqual("1.1.0", Version.cleanUp(versionAsRead: "1_1_0"))
   }

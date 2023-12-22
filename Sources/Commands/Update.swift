@@ -13,7 +13,8 @@ struct UpdateAudioUnits {
     if updateConfigs.toUpdate.isEmpty {
       print("No Audio Units configured for update.")
     } else {
-      print(".", terminator: "")
+      print("Requesting current versions from manufacturer's sites...", terminator: "")
+      fflush(stdout) // otherwise Swift won't flush the handle -- screen won't be updated until newline
       var current: [[String]] = []
       var failures: [[String]] = []
       var outOfDate: [[String]] = []
@@ -23,23 +24,25 @@ struct UpdateAudioUnits {
         }
         for await result in group {
           print(".", terminator: "")
+          fflush(stdout) // otherwise Swift won't flush the handle -- screen won't be updated until newline
           switch result {
           case .success(let updateStatus):
             let currentVersion = updateStatus.currentVersion ?? "<unknown>"
+            let audioUnitConfig = updateStatus.updateConfig.audioUnitConfig
             if updateStatus.compatible {
               current.append([
-                updateStatus.config.audioUnitConfig.manufacturer,
-                updateStatus.config.audioUnitConfig.name,
+                audioUnitConfig.manufacturer,
+                audioUnitConfig.name,
                 currentVersion,
-                updateStatus.config.existingVersion
+                updateStatus.updateConfig.existingVersion,
               ])
             } else {
               outOfDate.append([
-                updateStatus.config.audioUnitConfig.manufacturer,
-                updateStatus.config.audioUnitConfig.name,
+                audioUnitConfig.manufacturer,
+                audioUnitConfig.name,
                 currentVersion,
-                updateStatus.config.existingVersion,
-                updateStatus.config.audioUnitConfig.update ?? ""
+                updateStatus.updateConfig.existingVersion,
+                audioUnitConfig.update ?? "",
               ])
             }
           case .failure(let updateError):
@@ -50,7 +53,8 @@ struct UpdateAudioUnits {
         }
       }
 
-      print()
+      print() // Terminate "Requesting current versions..." line
+      print() // insert blank line
       if !current.isEmpty {
         print("Up to date Audio Units:")
         Table(
@@ -61,7 +65,9 @@ struct UpdateAudioUnits {
       if !outOfDate.isEmpty {
         print("Audio Units which need to be updated:")
         Table(
-          headers: ["manufacturer", "name", "latest version", "local version", "update instructions"],
+          headers: [
+            "manufacturer", "name", "latest version", "local version", "update instructions",
+          ],
           data: outOfDate
         ).printToConsole()
       }
@@ -94,7 +100,7 @@ struct UpdateConfig {
         let compatible = Version.compatible(
           version1: currentVersion, version2: self.existingVersion)
         return .success(
-          UpdateStatus(config: self, currentVersion: currentVersion, compatible: compatible))
+          UpdateStatus(updateConfig: self, currentVersion: currentVersion, compatible: compatible))
       } else {
         return .failure(
           .configurationNotFoundInHttpResult(
@@ -156,7 +162,7 @@ enum UpdateError: Error, CustomStringConvertible {
 }
 
 struct UpdateStatus {
-  let config: UpdateConfig
+  let updateConfig: UpdateConfig
   let currentVersion: String?
   let compatible: Bool
 }

@@ -618,6 +618,26 @@
 	</dict>
     <dict>
         <key>manufacturer</key>
+        <string>Cherry Audio</string>
+        <key>name</key>
+        <string>Synthesizer Expander Module</string>
+        <key>typeName</key>
+        <string>Music Device</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/synthesizer-expander-module/version-history</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)&lt;/strong&gt;</string>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Cherry Audio</string>
+        <key>name</key>
+        <string>Synthesizer Expander Module View</string>
+        <key>typeName</key>
+        <string>Unknown</string>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
         <string>Eloquence</string>
         <key>name</key>
         <string>KonaSynthesizer</string>
@@ -925,6 +945,14 @@
         <string>Unknown</string>
         <key>system</key>
         <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Toybox</string>
+        <key>name</key>
+        <string>Thump One</string>
+        <key>typeName</key>
+        <string>Music Device</string>
     </dict>
 </array>
 </plist>

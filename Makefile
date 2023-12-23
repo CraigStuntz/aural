@@ -7,7 +7,7 @@ test: lint
 	swift test
 
 format:
-	swift-format -i -r $(SWIFT_FORMAT_PATHS)
+	swift-format --configuration Swift-format.json -i -r $(SWIFT_FORMAT_PATHS)
 
 lint:
-	swift-format lint -r $(SWIFT_FORMAT_PATHS)
+	swift-format lint --configuration Swift-format.json -r -s $(SWIFT_FORMAT_PATHS)

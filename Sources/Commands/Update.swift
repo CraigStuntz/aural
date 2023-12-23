@@ -14,7 +14,9 @@ struct UpdateAudioUnits {
       print("No Audio Units configured for update.")
     } else {
       print("Requesting current versions from manufacturer's sites...", terminator: "")
-      fflush(stdout) // otherwise Swift won't flush the handle -- screen won't be updated until newline
+      // otherwise Swift won't flush the handle -- screen won't be updated
+      // until newline
+      fflush(stdout)
       var current: [[String]] = []
       var failures: [[String]] = []
       var outOfDate: [[String]] = []
@@ -24,7 +26,9 @@ struct UpdateAudioUnits {
         }
         for await result in group {
           print(".", terminator: "")
-          fflush(stdout) // otherwise Swift won't flush the handle -- screen won't be updated until newline
+          // otherwise Swift won't flush the handle -- screen won't be updated
+          // until newline
+          fflush(stdout)
           switch result {
           case .success(let updateStatus):
             let currentVersion = updateStatus.currentVersion ?? "<unknown>"
@@ -53,8 +57,8 @@ struct UpdateAudioUnits {
         }
       }
 
-      print() // Terminate "Requesting current versions..." line
-      print() // insert blank line
+      print()  // Terminate "Requesting current versions..." line
+      print()  // insert blank line
       if !current.isEmpty {
         print("Up to date Audio Units:")
         Table(
@@ -160,7 +164,6 @@ enum UpdateError: Error, CustomStringConvertible {
     }
   }
 }
-
 struct UpdateStatus {
   let updateConfig: UpdateConfig
   let currentVersion: String?

@@ -2,96 +2,96 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUAudioFilePlayer</string>
-		<key>typeName</key>
-		<string>Generator</string>
-		<key>system</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUAudioIO</string>
-		<key>typeName</key>
-		<string>Output</string>
-		<key>system</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUAudioTapIO</string>
-		<key>typeName</key>
-		<string>Output</string>
-		<key>system</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUBandpass</string>
-		<key>typeName</key>
-		<string>Effect</string>
-		<key>system</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUConverter</string>
-		<key>typeName</key>
-		<string>Format Converter</string>
-		<key>system</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUDeferredRenderer</string>
-		<key>typeName</key>
-		<string>Format Converter</string>
-		<key>system</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUDelay</string>
-		<key>typeName</key>
-		<string>Effect</string>
-		<key>system</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AudioDeviceOutput</string>
-		<key>typeName</key>
-		<string>Output</string>
-		<key>system</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUDistortion</string>
-		<key>typeName</key>
-		<string>Effect</string>
-		<key>system</key>
-		<true/>
-	</dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUAudioFilePlayer</string>
+        <key>typeName</key>
+        <string>Generator</string>
+        <key>system</key>
+        <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUAudioIO</string>
+        <key>typeName</key>
+        <string>Output</string>
+        <key>system</key>
+        <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUAudioTapIO</string>
+        <key>typeName</key>
+        <string>Output</string>
+        <key>system</key>
+        <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUBandpass</string>
+        <key>typeName</key>
+        <string>Effect</string>
+        <key>system</key>
+        <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUConverter</string>
+        <key>typeName</key>
+        <string>Format Converter</string>
+        <key>system</key>
+        <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUDeferredRenderer</string>
+        <key>typeName</key>
+        <string>Format Converter</string>
+        <key>system</key>
+        <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUDelay</string>
+        <key>typeName</key>
+        <string>Effect</string>
+        <key>system</key>
+        <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AudioDeviceOutput</string>
+        <key>typeName</key>
+        <string>Output</string>
+        <key>system</key>
+        <true/>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUDistortion</string>
+        <key>typeName</key>
+        <string>Effect</string>
+        <key>system</key>
+        <true/>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Apple</string>
@@ -192,16 +192,16 @@
         <key>system</key>
         <true/>
     </dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Apple</string>
-		<key>name</key>
-		<string>AUMIDISynth</string>
-		<key>typeName</key>
-		<string>Music Device</string>
-		<key>system</key>
-		<true/>
-	</dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Apple</string>
+        <key>name</key>
+        <string>AUMIDISynth</string>
+        <key>typeName</key>
+        <string>Music Device</string>
+        <key>system</key>
+        <true/>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Apple</string>
@@ -602,20 +602,20 @@
         <key>system</key>
         <true/>
     </dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Arturia</string>
-		<key>name</key>
-		<string>Filter MS-20</string>
-		<key>typeName</key>
-		<string>Music Effect</string>
-		<key>versionUrl</key>
-		<string>https://www.arturia.com/support/downloads&amp;manuals</string>
-		<key>versionRegex</key>
-		<string>Filter_MS\-20__(\d*_\d*_\d*_\d*)\.pkg\\&quot;&gt;Filter MS\-20</string>
-		<key>update</key>
-		<string>open &apos;/Applications/Arturia/Arturia Software Center.app&apos;</string>
-	</dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Arturia</string>
+        <key>name</key>
+        <string>Filter MS-20</string>
+        <key>typeName</key>
+        <string>Music Effect</string>
+        <key>versionUrl</key>
+        <string>https://www.arturia.com/support/downloads&amp;manuals</string>
+        <key>versionRegex</key>
+        <string>Filter_MS\-20__(\d*_\d*_\d*_\d*)\.pkg\\&quot;&gt;Filter MS\-20</string>
+        <key>update</key>
+        <string>open &apos;/Applications/Arturia/Arturia Software Center.app&apos;</string>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Cherry Audio</string>
@@ -623,10 +623,10 @@
         <string>Synthesizer Expander Module</string>
         <key>typeName</key>
         <string>Music Device</string>
-		<key>versionUrl</key>
-		<string>https://cherryaudio.com/products/synthesizer-expander-module/version-history</string>
-		<key>versionRegex</key>
-		<string>&lt;strong&gt;(\d\.\d\.\d)&lt;/strong&gt;</string>
+        <key>versionUrl</key>
+        <string>https://cherryaudio.com/products/synthesizer-expander-module/version-history</string>
+        <key>versionRegex</key>
+        <string>&lt;strong&gt;(\d\.\d\.\d)&lt;/strong&gt;</string>
     </dict>
     <dict>
         <key>manufacturer</key>
@@ -646,20 +646,20 @@
         <key>system</key>
         <true/>
     </dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>Kilohearts</string>
-		<key>name</key>
-		<string>Phase Plant</string>
-		<key>typeName</key>
-		<string>Music Device</string>
-		<key>versionUrl</key>
-		<string>https://kilohearts.com/files/releases/index.json</string>
-		<key>versionJMESPathInt</key>
-		<string>releases[0].version</string>
-		<key>update</key>
-		<string>Run plugin in host, click version number in upper left</string>
-	</dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Kilohearts</string>
+        <key>name</key>
+        <string>Phase Plant</string>
+        <key>typeName</key>
+        <string>Music Device</string>
+        <key>versionUrl</key>
+        <string>https://kilohearts.com/files/releases/index.json</string>
+        <key>versionJMESPathInt</key>
+        <string>releases[0].version</string>
+        <key>update</key>
+        <string>Run plugin in host, click version number in upper left</string>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -667,7 +667,7 @@
         <string>kHs 3-Band EQ</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -675,7 +675,7 @@
         <string>kHs Bitcrush</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -683,7 +683,7 @@
         <string>kHs Channel Mixer</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -691,7 +691,7 @@
         <string>kHs Chorus</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -699,7 +699,7 @@
         <string>kHs Comb Filter</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -707,7 +707,7 @@
         <string>kHs Compressor</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -715,7 +715,7 @@
         <string>kHs Delay</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -723,7 +723,7 @@
         <string>kHs Distortion</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -731,7 +731,7 @@
         <string>kHs Dual Delay</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -739,7 +739,7 @@
         <string>kHs Dynamics</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -747,7 +747,7 @@
         <string>kHs Ensemble</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -755,7 +755,7 @@
         <string>kHs Filter</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -763,7 +763,7 @@
         <string>kHs Flanger</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -771,7 +771,7 @@
         <string>kHs Formant Filter</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -779,7 +779,7 @@
         <string>kHs Frequency Shifter</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -787,7 +787,7 @@
         <string>kHs Gain</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -795,7 +795,7 @@
         <string>kHs Gate</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -803,7 +803,7 @@
         <string>kHs Haas</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -811,7 +811,7 @@
         <string>kHs Ladder Filter</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -819,7 +819,7 @@
         <string>kHs Limiter</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -827,7 +827,7 @@
         <string>kHs Nonlinear Filter</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -835,7 +835,7 @@
         <string>kHs Phase Distortion</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -843,7 +843,7 @@
         <string>kHs Phaser</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -851,7 +851,7 @@
         <string>kHs Pitch Shifter</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -859,7 +859,7 @@
         <string>kHs Resonator</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -867,7 +867,7 @@
         <string>kHs Reverb</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -875,7 +875,7 @@
         <string>kHs Reverser</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -883,7 +883,7 @@
         <string>kHs Ring Mod</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -891,7 +891,7 @@
         <string>kHs Stereo</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -899,7 +899,7 @@
         <string>kHs Tape Stop</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -907,7 +907,7 @@
         <string>kHs Trance Gate</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Kilohearts</string>
@@ -915,7 +915,7 @@
         <string>kHs Transient Shaper</string>
         <key>typeName</key>
         <string>Effect</string>
-	</dict>
+    </dict>
     <dict>
         <key>manufacturer</key>
         <string>Legacy</string>

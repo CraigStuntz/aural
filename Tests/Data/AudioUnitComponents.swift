@@ -5,7 +5,7 @@ import XCTest
 
 class AudioUnitComponentsTests: XCTestCase {
   func testComponents_at_least_some_exist_on_system() {
-    let components = AudioUnitComponents.components(filter: nil)
+    let components = AudioUnitComponents.components(maybeFilter: nil)
 
     XCTAssertGreaterThan(
       components.count, 0,
@@ -14,14 +14,14 @@ class AudioUnitComponentsTests: XCTestCase {
 
   func testComponents_filter_manufacturer() {
     let components = AudioUnitComponents.components(
-      filter: Filter(filterType: .manufacturer, name: "Apple"))
+      maybeFilter: Filter(filterType: .manufacturer, name: "Apple"))
 
     XCTAssertGreaterThan(components.count, 0, "There should be lots of Apple AUs")
   }
 
   func testComponents_filter_name() {
     let components = AudioUnitComponents.components(
-      filter: Filter(filterType: .name, name: "AUConverter"))
+      maybeFilter: Filter(filterType: .name, name: "AUConverter"))
 
     XCTAssertEqual(1, components.count, "There should only be one component named AUConverter")
     XCTAssertEqual(
@@ -30,7 +30,7 @@ class AudioUnitComponentsTests: XCTestCase {
 
   func testComponents_filter_type() {
     let components = AudioUnitComponents.components(
-      filter: Filter(filterType: .type, name: "Music Device"))
+      maybeFilter: Filter(filterType: .type, name: "Music Device"))
 
     XCTAssertGreaterThan(components.count, 0, "Music Device AUs should exist.")
   }

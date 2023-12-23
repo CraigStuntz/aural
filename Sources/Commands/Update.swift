@@ -2,7 +2,7 @@ import AVFoundation
 
 struct UpdateAudioUnits {
   static func run(options: Options) async {
-    let components = AudioUnitComponents.components(filter: options.filter)
+    let components = AudioUnitComponents.components(maybeFilter: options.filter)
     let audioUnitConfigs = AudioUnitConfigs()
     let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
     if !updateConfigs.noConfiguration.isEmpty {

@@ -24,7 +24,7 @@ class AudioUnitConfigsTests: XCTestCase {
   func testSubscript() {
     let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(
-      filter: Filter(filterType: .name, name: "AUMIDISynth"))
+      maybeFilter: Filter(filterType: .name, name: "AUMIDISynth"))
 
     XCTAssertEqual(1, components.count)
     let component = components.first!

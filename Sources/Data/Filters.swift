@@ -27,12 +27,14 @@ struct Filter: ExpressibleByArgument {
 
   static func parseArgument(_ filter: String) -> (FilterType, String)? {
     let parts = filter.split(whereSeparator: { $0 == ":" }).map(String.init)
-    if parts.count == 2 {
-      let filterType = FilterType.init(rawValue: parts.first!)
-      if filterType != nil {
-        return (filterType!, parts.last!.trimmingCharacters(in: CharacterSet.whitespaces))
-      }
+    guard parts.count == 2 else {
+      return nil
     }
-    return nil
+    let type = parts[0]
+    let value = parts[1]
+    guard let filterType = FilterType.init(rawValue: type) else {
+      return nil
+    }
+    return (filterType, value.trimmingCharacters(in: CharacterSet.whitespaces))
   }
 }

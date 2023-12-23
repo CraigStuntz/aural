@@ -33,11 +33,14 @@ struct Version {
   }
 
   static func getAndParse(audioUnitConfig: AudioUnitConfig) async throws -> String? {
-    if audioUnitConfig.versionUrl == nil {
+    guard let versionUrl = audioUnitConfig.versionUrl,
+      let url = URL(string: versionUrl)
+    else {
       fatalError(
-        "audioUnitConfig.versionUrl must be non-nil before calling this function. Check it!")
+        "audioUnitConfig.versionUrl must be non-nil and a valid URL before calling this function. Check it!"
+      )
     }
-    guard let body = try await httpGet(url: audioUnitConfig.versionUrl!) else {
+    guard let body = try await httpGet(url: url) else {
       return nil
     }
     if let jmesPath = audioUnitConfig.versionJMESPathInt {
@@ -52,8 +55,8 @@ struct Version {
     return nil
   }
 
-  static func httpGet(url: String) async throws -> String? {
-    let request = HTTPRequest(method: .get, url: URL(string: url)!)
+  static func httpGet(url: URL) async throws -> String? {
+    let request = HTTPRequest(method: .get, url: url)
     let (data, response) = try! await URLSession.shared.data(for: request)
     guard response.status == .ok else {
       print("Failed to download \(url), status \(response.status)")

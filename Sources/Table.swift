@@ -12,16 +12,23 @@ struct Table {
 
   /// finds the maximum data/header width of each column
   static func maxes(_ headers: [String], _ data: [[String]]) -> [Int] {
-    if data.isEmpty {
+    if headers.isEmpty && data.isEmpty {
       return []
     }
     var result: [Int] = []
     for column in 0..<data[0].count {
-      var maxWidth = data.map { $0[column].count }.max()!
+      var maxWidth = data.map { $0[column].count }.max()
       if headers.count > column {
-        maxWidth = max(maxWidth, headers[column].count)
+        maxWidth = max(maxWidth ?? 0, headers[column].count)
       }
-      result.append(maxWidth)
+      guard let max = maxWidth else {
+        fatalError(
+          """
+          Could not find a max width of data or header. 
+          This should never happen due to a check at the top of the method.
+          """)
+      }
+      result.append(max)
     }
     return result
   }

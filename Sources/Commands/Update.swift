@@ -99,17 +99,17 @@ struct UpdateConfig {
         ))
     }
     do {
-      let currentVersion = try await Version.getAndParse(audioUnitConfig: self.audioUnitConfig)
-      if currentVersion != nil {
-        let compatible = Version.compatible(
-          version1: currentVersion, version2: self.existingVersion)
-        return .success(
-          UpdateSuccess(updateConfig: self, currentVersion: currentVersion, compatible: compatible))
-      } else {
+      guard
+        let currentVersion = try await Version.getAndParse(audioUnitConfig: self.audioUnitConfig)
+      else {
         return .failure(
           .configurationNotFoundInHttpResult(
             description: "Current version of \(self.audioUnitConfig.name) not found"))
       }
+      let compatible = Version.compatible(
+        version1: currentVersion, version2: self.existingVersion)
+      return .success(
+        UpdateSuccess(updateConfig: self, currentVersion: currentVersion, compatible: compatible))
     } catch {
       return .failure(
         .genericUpdateError(

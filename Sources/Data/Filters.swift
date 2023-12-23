@@ -17,12 +17,10 @@ struct Filter: ExpressibleByArgument {
   }
 
   init?(argument: String) {
-    let parsed = Filter.parseArgument(argument)
-    if let (filterType, name) = parsed {
-      self.init(filterType: filterType, name: name)
-    } else {
+    guard let (filterType, name) = Filter.parseArgument(argument) else {
       return nil
     }
+    self.init(filterType: filterType, name: name)
   }
 
   static func parseArgument(_ filter: String) -> (FilterType, String)? {

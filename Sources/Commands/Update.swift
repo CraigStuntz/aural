@@ -164,6 +164,7 @@ enum UpdateError: Error, CustomStringConvertible {
     }
   }
 }
+
 struct UpdateSuccess {
   let updateConfig: UpdateConfig
   let currentVersion: String?

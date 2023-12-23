@@ -20,7 +20,7 @@ struct UpdateAudioUnits {
       var current: [[String]] = []
       var failures: [[String]] = []
       var outOfDate: [[String]] = []
-      await withTaskGroup(of: Result<UpdateStatus, UpdateError>.self) { group in
+      await withTaskGroup(of: Result<UpdateSuccess, UpdateError>.self) { group in
         for updateConfig in updateConfigs.toUpdate {
           group.addTask { await updateConfig.requestCurrentVersion() }
         }
@@ -30,22 +30,22 @@ struct UpdateAudioUnits {
           // until newline
           fflush(stdout)
           switch result {
-          case .success(let updateStatus):
-            let currentVersion = updateStatus.currentVersion ?? "<unknown>"
-            let audioUnitConfig = updateStatus.updateConfig.audioUnitConfig
-            if updateStatus.compatible {
+          case .success(let updateSuccess):
+            let currentVersion = updateSuccess.currentVersion ?? "<unknown>"
+            let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
+            if updateSuccess.compatible {
               current.append([
                 audioUnitConfig.manufacturer,
                 audioUnitConfig.name,
                 currentVersion,
-                updateStatus.updateConfig.existingVersion,
+                updateSuccess.updateConfig.existingVersion,
               ])
             } else {
               outOfDate.append([
                 audioUnitConfig.manufacturer,
                 audioUnitConfig.name,
                 currentVersion,
-                updateStatus.updateConfig.existingVersion,
+                updateSuccess.updateConfig.existingVersion,
                 audioUnitConfig.update ?? "",
               ])
             }
@@ -90,7 +90,7 @@ struct UpdateConfig {
   let existingVersion: String
   let audioUnitConfig: AudioUnitConfig
 
-  func requestCurrentVersion() async -> Result<UpdateStatus, UpdateError> {
+  func requestCurrentVersion() async -> Result<UpdateSuccess, UpdateError> {
     guard let versionUrl = self.audioUnitConfig.versionUrl, !versionUrl.isEmpty else {
       return .failure(
         .noConfiguration(
@@ -104,7 +104,7 @@ struct UpdateConfig {
         let compatible = Version.compatible(
           version1: currentVersion, version2: self.existingVersion)
         return .success(
-          UpdateStatus(updateConfig: self, currentVersion: currentVersion, compatible: compatible))
+          UpdateSuccess(updateConfig: self, currentVersion: currentVersion, compatible: compatible))
       } else {
         return .failure(
           .configurationNotFoundInHttpResult(
@@ -164,7 +164,7 @@ enum UpdateError: Error, CustomStringConvertible {
     }
   }
 }
-struct UpdateStatus {
+struct UpdateSuccess {
   let updateConfig: UpdateConfig
   let currentVersion: String?
   let compatible: Bool

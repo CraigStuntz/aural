@@ -33,10 +33,14 @@ struct AudioUnitConfigs {
     if let url = Bundle.module.url(
       forResource: resourceFilename, withExtension: resourceWithExtension)
     {
-      let data = try! Data(contentsOf: url)
-      let decoder = PropertyListDecoder()
-      let config = try! decoder.decode([AudioUnitConfig].self, from: data)
-      return config
+      do {
+        let data = try Data(contentsOf: url)
+        let decoder = PropertyListDecoder()
+        let config = try decoder.decode([AudioUnitConfig].self, from: data)
+        return config
+      } catch {
+        fatalError("Could not read AudioUnits.plist due to \(error)")
+      }
     }
     fatalError("Cannot find \(resourceFilename).\(resourceWithExtension)")
   }

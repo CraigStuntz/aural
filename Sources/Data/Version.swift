@@ -57,7 +57,7 @@ struct Version {
 
   static func httpGet(url: URL) async throws -> String? {
     let request = HTTPRequest(method: .get, url: url)
-    let (data, response) = try! await URLSession.shared.data(for: request)
+    let (data, response) = try await URLSession.shared.data(for: request)
     guard response.status == .ok else {
       print("Failed to download \(url), status \(response.status)")
       return nil

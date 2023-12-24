@@ -3,8 +3,9 @@ import AVFoundation
 struct ExportAudioUnits {
   static func logic(options: Options) async {
     print("Export!")
+    let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
-    for component in components where !skipForExport(component: component) {
+    for component in components where !skipForExport(component: component, configs: configs) {
       print("\(component.manufacturerName) \(component.name):")
       do {
         let auAudioUnit = try await AUAudioUnit.instantiate(
@@ -31,7 +32,12 @@ struct ExportAudioUnits {
     }
   }
 
-  static func skipForExport(component: AVAudioUnitComponent) -> Bool {
+  static func skipForExport(component: AVAudioUnitComponent, configs: AudioUnitConfigs) -> Bool {
+    if let config = configs[component] {
+      if config.system == true {
+        return true
+      }
+    }
     return component.typeName == "Unknown"
   }
 }

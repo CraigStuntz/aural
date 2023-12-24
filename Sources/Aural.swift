@@ -58,14 +58,16 @@ extension Aural {
 }
 
 extension Aural.Export {
-  struct Logic: ParsableCommand {
+  struct Logic: AsyncParsableCommand {
     static var configuration = CommandConfiguration(
       abstract:
         "Exports Audio Unit and preset names to Logic Pro libraries. (unimplemented, for now)"
     )
 
-    mutating func run() {
-      print("Export!")
+    @OptionGroup var options: Options
+
+    mutating func run() async {
+      await ExportAudioUnits.logic(options: options)
     }
   }
 }

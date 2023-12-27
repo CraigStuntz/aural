@@ -6,7 +6,7 @@ struct Aural: AsyncParsableCommand {
   static var configuration = CommandConfiguration(
     abstract: "A utility for managing Audio Units.",
     version: "0.0.1",
-    subcommands: [Export.self, List.self, Update.self],
+    subcommands: [Export.self, List.self, Update.self, Validate.self],
     defaultSubcommand: List.self
   )
 
@@ -28,7 +28,8 @@ extension Aural {
       CommandConfiguration(
         abstract: "Exports the installed Audio Units and their presets. (unimplemented, for now)",
         subcommands: [Logic.self],
-        defaultSubcommand: Logic.self)
+        defaultSubcommand: Logic.self
+      )
 
     @OptionGroup var options: Options
   }
@@ -53,6 +54,19 @@ extension Aural {
 
     mutating func run() async {
       await UpdateAudioUnits.run(options: options)
+    }
+  }
+
+  struct Validate: AsyncParsableCommand {
+    static var configuration =
+      CommandConfiguration(
+        abstract: "Validates (checks for common errors) the installed Audio Units."
+      )
+
+    @OptionGroup var options: Options
+
+    mutating func run() async throws {
+      await ValidateAudioUnits.run(options: options)
     }
   }
 }

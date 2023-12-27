@@ -32,12 +32,16 @@ struct ExportAudioUnits {
     }
   }
 
+  static let auvw = "auvw".toFourCharCode()
+
   static func skipForExport(component: AVAudioUnitComponent, configs: AudioUnitConfigs) -> Bool {
     if let config = configs[component] {
       if config.system == true {
         return true
       }
     }
-    return component.typeName == "Unknown"
+    // Cherry Audio uses 'auvw' on "Synthesizer Expander Module View"
+    // This can't be loaded and isn't an actual
+    return component.audioComponentDescription.componentType == auvw
   }
 }

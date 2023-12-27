@@ -28,14 +28,4 @@ struct AudioUnitComponents {
         && c1.name.caseInsensitiveCompare(c2.name) == .orderedSame
         && c1.typeName.caseInsensitiveCompare(c2.typeName) == .orderedAscending)
   }
-
-  static func isSystemComponent(_ component: AVAudioUnitComponent) -> Bool {
-    if ["Apple", "Legacy", "MacinTalk"].contains(component.manufacturerName) {
-      return true
-    }
-    if component.manufacturerName == "Eloquence" && component.name == "KonaSynthesizer" {
-      return true
-    }
-    return false
-  }
 }

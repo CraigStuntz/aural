@@ -14,9 +14,10 @@ OPTIONS:
   -h, --help              Show help information.
 
 SUBCOMMANDS:
-  export                  Exports the installed Audio Units and their presets
+  export                  Exports the installed Audio Units and their presets. (unimplemented, for now)
   list (default)          Outputs installed Audio Units
   update                  Queries for available updates for installed Audio Units
+  validate                Validates (checks for common errors) the installed Audio Units.
 
   See 'aural help <subcommand>' for detailed help.
 ```

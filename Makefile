@@ -11,3 +11,10 @@ format:
 
 lint:
 	swift-format lint -r -s $(SWIFT_FORMAT_PATHS)
+
+run-all: build
+	swift run aural --help
+	swift run aural
+	swift run aural export
+	swift run aural update
+	swift run aural validate

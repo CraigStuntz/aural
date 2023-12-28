@@ -23,13 +23,15 @@ class Rule {
     return result
   }
 
+  static let auvw = "auvw".toFourCharCode()
+
   static func shouldLoadAudioUnit(component: AVAudioUnitComponent) -> Bool {
     // loading Cherry Audio Synthesizer Expander Module View (Unknown) fails with
     // "Error Domain=NSOSStatusErrorDomain Code=-50
     // "paramErr: error in user parameter list" (auval also fails similarly)
     // and that's fine. I don't think there's a meaningful test I can do on such
     // an Audio Unit?
-    return component.typeName != "Unknown"
+    return component.audioComponentDescription.componentType != auvw
   }
 
   func shouldTest(component: AVAudioUnitComponent, config: AudioUnitConfig?) -> Bool {

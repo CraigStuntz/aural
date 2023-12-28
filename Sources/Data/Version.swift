@@ -35,7 +35,7 @@ struct Version {
   /// This is how Phase Plant stores their versions in their web site JSON file.
   static func fromInt(_ intVersion: Int) -> String {
     let digits = [2, 1, 0].map { byte in
-      (intVersion >> (byte * 8)) & 0xF
+      (intVersion >> (byte * 8)) & 0xFF
     }
     return digits.map { String($0) }.joined(separator: ".")
   }

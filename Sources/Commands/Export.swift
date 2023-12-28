@@ -6,29 +6,33 @@ struct ExportAudioUnits {
     let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     for component in components where !skipForExport(component: component, configs: configs) {
-      print("\(component.manufacturerName) \(component.name):")
-      do {
-        let auAudioUnit = try await AUAudioUnit.instantiate(
-          with: component.audioComponentDescription)
-        if let factoryPresets = auAudioUnit.factoryPresets {
-          if !factoryPresets.isEmpty {
-            print("  factory presets:")
-            for preset in factoryPresets {
-              print("    \(preset.number) \(preset.name)")
-            }
-          }
-        }
-        if !auAudioUnit.userPresets.isEmpty {
-          print("  user presets:")
-          for preset in auAudioUnit.userPresets {
+      await logicExportComponent(component: component)
+    }
+  }
+
+  static func logicExportComponent(component: AVAudioUnitComponent) async {
+    print("\(component.manufacturerName) \(component.name):")
+    do {
+      let auAudioUnit = try await AUAudioUnit.instantiate(
+        with: component.audioComponentDescription)
+      if let factoryPresets = auAudioUnit.factoryPresets {
+        if !factoryPresets.isEmpty {
+          print("  factory presets:")
+          for preset in factoryPresets {
             print("    \(preset.number) \(preset.name)")
           }
         }
-      } catch {
-        fatalError(
-          "Failed to load Audio Unit \(component.manufacturerName) \(component.name) because of error \(error)"
-        )
       }
+      if !auAudioUnit.userPresets.isEmpty {
+        print("  user presets:")
+        for preset in auAudioUnit.userPresets {
+          print("    \(preset.number) \(preset.name)")
+        }
+      }
+    } catch {
+      fatalError(
+        "Failed to load Audio Unit \(component.manufacturerName) \(component.name) because of error \(error)"
+      )
     }
   }
 

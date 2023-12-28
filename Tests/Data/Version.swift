@@ -4,10 +4,14 @@ import XCTest
 
 class VersionsTests: XCTestCase {
   func test_compatible() {
-    XCTAssertTrue(Version.compatible(version1: "1", version2: "1.0"))
-    XCTAssertTrue(Version.compatible(version1: "10", version2: "1"))
-    XCTAssertTrue(Version.compatible(version1: "1.0", version2: "1"))
-    XCTAssertTrue(Version.compatible(version1: "1", version2: "10"))
+    XCTAssertFalse(Version.compatible(latestVersion: "", existingVersion: "1"))
+    XCTAssertFalse(Version.compatible(latestVersion: "1", existingVersion: ""))
+    XCTAssertFalse(Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0"))
+    XCTAssertFalse(Version.compatible(latestVersion: "10", existingVersion: "1"))
+
+    XCTAssertTrue(Version.compatible(latestVersion: "1.0", existingVersion: "1.0"))
+    XCTAssertTrue(Version.compatible(latestVersion: "1.0.1.1234", existingVersion: "1.0.1"))
+    XCTAssertTrue(Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0.1.1234"))
   }
 
   func test_fromInt() {

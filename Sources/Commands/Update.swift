@@ -22,7 +22,7 @@ struct UpdateAudioUnits {
       var outOfDate: [[String]] = []
       await withTaskGroup(of: Result<UpdateSuccess, UpdateError>.self) { group in
         for updateConfig in updateConfigs.toUpdate {
-          group.addTask { await updateConfig.requestCurrentVersion() }
+          group.addTask { await updateConfig.requestLatestVersion() }
         }
         for await result in group {
           print(".", terminator: "")
@@ -31,20 +31,20 @@ struct UpdateAudioUnits {
           fflush(stdout)
           switch result {
           case .success(let updateSuccess):
-            let currentVersion = updateSuccess.currentVersion ?? "<unknown>"
+            let latestVersion = updateSuccess.latestVersion ?? "<unknown>"
             let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
             if updateSuccess.compatible {
               current.append([
                 audioUnitConfig.manufacturer,
                 audioUnitConfig.name,
-                currentVersion,
+                latestVersion,
                 updateSuccess.updateConfig.existingVersion,
               ])
             } else {
               outOfDate.append([
                 audioUnitConfig.manufacturer,
                 audioUnitConfig.name,
-                currentVersion,
+                latestVersion,
                 updateSuccess.updateConfig.existingVersion,
                 audioUnitConfig.update ?? "",
               ])
@@ -90,7 +90,7 @@ struct UpdateConfig {
   let existingVersion: String
   let audioUnitConfig: AudioUnitConfig
 
-  func requestCurrentVersion() async -> Result<UpdateSuccess, UpdateError> {
+  func requestLatestVersion() async -> Result<UpdateSuccess, UpdateError> {
     guard let versionUrl = self.audioUnitConfig.versionUrl, !versionUrl.isEmpty else {
       return .failure(
         .noConfiguration(
@@ -100,16 +100,16 @@ struct UpdateConfig {
     }
     do {
       guard
-        let currentVersion = try await Version.getAndParse(audioUnitConfig: self.audioUnitConfig)
+        let latestVersion = try await Version.getAndParse(audioUnitConfig: self.audioUnitConfig)
       else {
         return .failure(
           .configurationNotFoundInHttpResult(
             description: "Current version of \(self.audioUnitConfig.name) not found"))
       }
       let compatible = Version.compatible(
-        version1: currentVersion, version2: self.existingVersion)
+        latestVersion: latestVersion, existingVersion: self.existingVersion)
       return .success(
-        UpdateSuccess(updateConfig: self, currentVersion: currentVersion, compatible: compatible))
+        UpdateSuccess(updateConfig: self, latestVersion: latestVersion, compatible: compatible))
     } catch {
       return .failure(
         .genericUpdateError(
@@ -167,6 +167,6 @@ enum UpdateError: Error, CustomStringConvertible {
 
 struct UpdateSuccess {
   let updateConfig: UpdateConfig
-  let currentVersion: String?
+  let latestVersion: String?
   let compatible: Bool
 }

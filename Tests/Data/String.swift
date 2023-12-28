@@ -25,6 +25,7 @@ class StringTests: XCTestCase {
         ]
       }.joined())
 
+    XCTAssertFalse(componentCodes.isEmpty)
     for fourCharCode in componentCodes {
       let s = fourCharCode.toString()
       let c = s.toFourCharCode()

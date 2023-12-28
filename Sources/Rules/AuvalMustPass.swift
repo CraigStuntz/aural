@@ -16,7 +16,11 @@ class AuvalMustPass: Rule {
       componentManufacturer,
       "-strict",
     ]
+    // We capture stdout because otherwise auval will fill the screen with non-
+    // error output
     let out = Pipe()
+    // We capture stderr in case auval writes something there, which it won't.
+    // But if it did we would display it to the user
     let error = Pipe()
     process.standardOutput = out
     process.standardError = error

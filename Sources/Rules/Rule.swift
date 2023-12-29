@@ -1,12 +1,32 @@
 import AVFoundation
 
 class Rule {
+  var ruleName: String {
+    return String(describing: type(of: self))
+  }
+
+  static func isTypeThatShouldContainFactoryPresets(
+    component: AVAudioUnitComponent, config: AudioUnitConfig?
+  ) -> Bool {
+    let isTypeThatShouldContainPresets = [
+      kAudioUnitType_Effect,
+      kAudioUnitType_MusicDevice,
+      kAudioUnitType_MusicEffect,
+    ].contains(component.audioComponentDescription.componentType)
+    // Apple's "System" AUs have no factory presets nor any aility to save
+    // user presets. So just ignore them.
+    // There may be a more precise tests I could use, but every commercial
+    // AU I've tried has factory presets, so this is OK for now.
+    let isSystem = config?.system == true
+    return isTypeThatShouldContainPresets && !isSystem
+  }
+
   final func ruleError(_ message: String) -> RuleError {
-    return .error(description: "ERROR: \(message)")
+    return .error(description: "ERROR (\(ruleName)): \(message)")
   }
 
   final func ruleWarning(_ message: String) -> RuleError {
-    return .warning(description: "WARNING: \(message)")
+    return .warning(description: "WARNING (\(ruleName)): \(message)")
   }
 
   final func run(component: AVAudioUnitComponent, audioUnit: AUAudioUnit?, config: AudioUnitConfig?)

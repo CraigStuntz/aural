@@ -4,6 +4,7 @@ let allRules: [Rule] = [
   AuvalMustPass(),
   ComponentRequiredProperties(),
   FactoryPresetsMustExist(),
+  PresetStateMustWork(),
 ]
 
 struct ValidateAudioUnits {

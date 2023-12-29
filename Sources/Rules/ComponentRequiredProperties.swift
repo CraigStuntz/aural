@@ -5,16 +5,20 @@ class ComponentRequiredProperties: Rule {
     -> [RuleError]
   {
     var result: [RuleError] = []
-    if component.manufacturerName == "" {
+    if component.localizedTypeName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
+      result.append(
+        ruleError("The AVAudioUnitComponent.localizedTypeName property must be a non-empty string"))
+    }
+    if component.manufacturerName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
       // looking at you, iZotope
       result.append(
         ruleError("The AVAudioUnitComponent.manufacturerName property must be a non-empty string"))
     }
-    if component.name == "" {
+    if component.name.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
       result.append(
         ruleError("The AVAudioUnitComponent.name property must be a non-empty string"))
     }
-    if component.typeName == "" {
+    if component.typeName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
       // looking at you, iZotope
       result.append(
         ruleError("The AVAudioUnitComponent.typeName property must be a non-empty string")

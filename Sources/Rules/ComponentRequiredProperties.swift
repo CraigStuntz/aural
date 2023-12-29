@@ -20,6 +20,11 @@ class ComponentRequiredProperties: Rule {
         ruleError("The AVAudioUnitComponent.typeName property must be a non-empty string")
       )
     }
+    if component.allTagNames.isEmpty {
+      result.append(
+        ruleWarning("The AVAudioUnitComponent.allTagNames property should not be empty")
+      )
+    }
     return result
   }
 }

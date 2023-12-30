@@ -1,19 +1,37 @@
 import AVFoundation
-
-let allRules: [Rule] = [
-  AuvalMustPass(),
-  ComponentRequiredProperties(),
-  FactoryPresetsMustExist(),
-  PresetStateMustWork(),
-]
+import ArgumentParser
 
 struct ValidateAudioUnits {
-  static func run(options: Options) async {
+  static let allRules: [Rule] = [
+    AuvalMustPass(),
+    ComponentRequiredProperties(),
+    FactoryPresetsMustExist(),
+    PresetStateMustWork(),
+  ]
+
+  static let allRuleNames: [String] = allRules.map { $0.ruleName }
+
+  static func rules(_ rule: String?) -> [Rule] {
+    guard let name = rule else {
+      return allRules
+    }
+    return allRules.filter {
+      $0.ruleName.caseInsensitiveCompare(name) == ComparisonResult.orderedSame
+    }
+  }
+
+  static func run(options: Options, rule: String?) async throws {
     let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
-    print("Validating \(components.count) components...")
+    let rules = rules(rule)
+    guard rules.count > 0 else {
+      print("Unknown rule '\(rule ?? "")'")
+      throw ExitCode.failure
+    }
+    let ruleDescription = rule == nil ? "using all rules" : "rule = \(rule ?? "")"
+    print("Validating \(components.count) components, \(ruleDescription)...")
     for component in components {
-      let ruleErrors = await runValidationFor(component: component, config: configs[component])
+      let ruleErrors = await runValidationFor(component, configs[component], rules)
       if ruleErrors.isEmpty {
         print(" (no errors)")
       } else {
@@ -25,9 +43,11 @@ struct ValidateAudioUnits {
     }
   }
 
-  static func runValidationFor(component: AVAudioUnitComponent, config: AudioUnitConfig?) async
-    -> [RuleError]
-  {
+  private static func runValidationFor(
+    _ component: AVAudioUnitComponent,
+    _ config: AudioUnitConfig?,
+    _ rules: [Rule]
+  ) async -> [RuleError] {
     var ruleErrors: [RuleError] = []
     print(
       "\(component.manufacturerName) \(component.name) (\(component.typeName)):", terminator: "")
@@ -40,7 +60,7 @@ struct ValidateAudioUnits {
         auAudioUnit = try await AUAudioUnit.instantiate(
           with: component.audioComponentDescription)
       }
-      for rule in allRules {
+      for rule in rules {
         ruleErrors.append(
           contentsOf: rule.run(
             component: component, audioUnit: auAudioUnit, config: config))

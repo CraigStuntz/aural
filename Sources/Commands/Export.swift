@@ -46,7 +46,8 @@ struct ExportAudioUnits {
         print("No state")
         return
       }
-      print(state)
+      print(
+        state.isEmpty ? "    State is empty" : "    First key of state: \(state.keys.first ?? "")")
     } catch {
       fatalError(
         "Failed to load Audio Unit \(component.manufacturerName) \(component.name) because of error \(error)"

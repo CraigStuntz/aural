@@ -4,7 +4,7 @@ import AudioToolbox
 class PresetStateMustWork: Rule {
   override func testAudioUnit(audioUnit: AUAudioUnit, config: AudioUnitConfig?) -> [RuleError] {
     guard let factoryPresets = audioUnit.factoryPresets, factoryPresets.count > 0 else {
-      return [ruleError("No factory presets found for testing")]
+      return [ruleWarning("No factory presets found for testing")]
     }
     let preset = factoryPresets[0]
     do {

@@ -65,8 +65,14 @@ extension Aural {
 
     @OptionGroup var options: Options
 
+    @Option(
+      help: "Run only one validation, e.g. --rule AuvalMustPass",
+      completion: .list(ValidateAudioUnits.allRuleNames)
+    )
+    var rule: String?
+
     mutating func run() async throws {
-      await ValidateAudioUnits.run(options: options)
+      try await ValidateAudioUnits.run(options: options, rule: rule)
     }
   }
 }

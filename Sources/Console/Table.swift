@@ -58,7 +58,7 @@ struct Table {
   func printToConsole() {
     let padded = self.toPadded()
     for line in padded {
-      print(line.joined(separator: "\t"))
+      Console.force(line.joined(separator: "\t"))
     }
   }
 }

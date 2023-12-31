@@ -25,20 +25,23 @@ struct ValidateAudioUnits {
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     let rules = rules(rule)
     guard rules.count > 0 else {
-      print("Unknown rule '\(rule ?? "")'")
+      Console.error("Unknown rule '\(rule ?? "")'")
       throw ExitCode.failure
     }
     let ruleDescription = rule == nil ? "using all rules" : "rule = \(rule ?? "")"
-    print("Validating \(components.count) components, \(ruleDescription)...")
+    Console.standard("Validating \(components.count) components, \(ruleDescription)...")
     for component in components {
       let ruleErrors = await runValidationFor(component, configs[component], rules)
       if ruleErrors.isEmpty {
-        print(" (no errors)")
+        Console.standard(" (no errors)")
       } else {
-        print()
+        Console.standard()
       }
       for ruleError in ruleErrors {
-        print("  \(ruleError.description)")
+        switch ruleError {
+        case .warning(let description): Console.warning("  \(description)")
+        case .error(let description): Console.error("  \(description)")
+        }
       }
     }
   }
@@ -49,7 +52,7 @@ struct ValidateAudioUnits {
     _ rules: [Rule]
   ) async -> [RuleError] {
     var ruleErrors: [RuleError] = []
-    print(
+    Console.standard(
       "\(component.manufacturerName) \(component.name) (\(component.typeName)):", terminator: "")
     // otherwise Swift won't flush the handle -- screen won't be updated
     // until newline

@@ -68,7 +68,7 @@ struct Version {
     let request = HTTPRequest(method: .get, url: url)
     let (data, response) = try await URLSession.shared.data(for: request)
     guard response.status == .ok else {
-      print("Failed to download \(url), status \(response.status)")
+      Console.warning("Failed to download \(url), status \(response.status)")
       return nil
     }
     return String(decoding: data, as: UTF8.self)
@@ -93,7 +93,7 @@ struct Version {
       if let captured = match.output[1].substring {
         return cleanUp(versionAsRead: String(captured))
       } else {
-        print("No capture on document body given regex \(versionMatchRegex)")
+        Console.error("No capture on document body given regex \(versionMatchRegex)")
       }
     }
     return nil

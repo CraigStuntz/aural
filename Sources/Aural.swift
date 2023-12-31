@@ -4,7 +4,7 @@ import ArgumentParser
 @main
 struct Aural: AsyncParsableCommand {
   static var configuration = CommandConfiguration(
-    abstract: "A utility for managing Audio Units.",
+    abstract: "A utility for managing Audio Units",
     version: "0.0.1",
     subcommands: [Export.self, List.self, Update.self, Validate.self],
     defaultSubcommand: List.self
@@ -17,9 +17,32 @@ struct Options: ParsableArguments {
   @Option(
     name: [.short, .long],
     help:
-      "Restrict Audio Units processed. Format name:value, allowed names are manufacturer, name, or type."
+      "Restrict Audio Units processed. Format name:value, allowed names are manufacturer, name, or type"
   )
   var filter: Filter?
+
+  @Flag(
+    name: [.short, .long],
+    help: "Decrease verbosity to only include specifically requested/error output"
+  )
+  var quiet = false
+
+  @Flag(
+    name: [.short, .long],
+    help: "Increase verbosity to include informational output"
+  )
+  var verbose = false
+
+  func assignVerbosity() -> Options {
+    // In principle we could do this with a didSet on the quiet and verbose
+    // properties. In practice Swift ignores a didSet when setting from an argument.
+    if verbose {
+      verbosity = .verbose
+    } else if quiet {
+      verbosity = .quiet
+    }
+    return self
+  }
 }
 
 extension Aural {
@@ -41,7 +64,7 @@ extension Aural {
     @OptionGroup var options: Options
 
     mutating func run() {
-      ListAudioUnits.run(options: options)
+      ListAudioUnits.run(options: options.assignVerbosity())
     }
   }
 
@@ -53,14 +76,14 @@ extension Aural {
     @OptionGroup var options: Options
 
     mutating func run() async {
-      await UpdateAudioUnits.run(options: options)
+      await UpdateAudioUnits.run(options: options.assignVerbosity())
     }
   }
 
   struct Validate: AsyncParsableCommand {
     static var configuration =
       CommandConfiguration(
-        abstract: "Validates (checks for common errors) the installed Audio Units."
+        abstract: "Validates (checks for common errors) the installed Audio Units"
       )
 
     @OptionGroup var options: Options
@@ -72,7 +95,7 @@ extension Aural {
     var rule: String?
 
     mutating func run() async throws {
-      try await ValidateAudioUnits.run(options: options, rule: rule)
+      try await ValidateAudioUnits.run(options: options.assignVerbosity(), rule: rule)
     }
   }
 }
@@ -87,7 +110,7 @@ extension Aural.Export {
     @OptionGroup var options: Options
 
     mutating func run() async {
-      await ExportAudioUnits.logic(options: options)
+      await ExportAudioUnits.logic(options: options.assignVerbosity())
     }
   }
 }

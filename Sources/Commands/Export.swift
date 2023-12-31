@@ -7,7 +7,7 @@ struct ExportAudioUnits {
   static func logic(options: Options) async {
     let exportURL: URL = .musicDirectory.appending(
       path: "Audio Music Apps/Patches/Instrument/_Instruments")
-    print("Exporting to \(exportURL.path())")
+    Console.standard("Exporting to \(exportURL.path())")
     let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     for component in components where !skipForExport(component: component, configs: configs) {
@@ -16,7 +16,7 @@ struct ExportAudioUnits {
   }
 
   static func logicExportComponent(component: AVAudioUnitComponent, exportURL: URL) async {
-    print("\(component.manufacturerName) \(component.name):")
+    Console.standard("\(component.manufacturerName) \(component.name):")
     let location = NSString.path(withComponents: [component.manufacturerName, component.name])
     let url = exportURL.appending(path: location)
     do {
@@ -30,23 +30,23 @@ struct ExportAudioUnits {
         with: component.audioComponentDescription)
       if let factoryPresets = auAudioUnit.factoryPresets {
         if !factoryPresets.isEmpty {
-          print("  factory presets:")
+          Console.verbose("  factory presets:")
           for preset in factoryPresets {
-            print("    \(preset.number) \(preset.name)")
+            Console.verbose("    \(preset.number) \(preset.name)")
           }
         }
       }
       if !auAudioUnit.userPresets.isEmpty {
-        print("  user presets:")
+        Console.verbose("  user presets:")
         for preset in auAudioUnit.userPresets {
-          print("    \(preset.number) \(preset.name)")
+          Console.verbose("    \(preset.number) \(preset.name)")
         }
       }
       guard let state = auAudioUnit.fullState else {
-        print("No state")
+        Console.verbose("No state")
         return
       }
-      print(
+      Console.verbose(
         state.isEmpty ? "    State is empty" : "    First key of state: \(state.keys.first ?? "")")
     } catch {
       fatalError(

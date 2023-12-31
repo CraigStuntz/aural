@@ -7,16 +7,16 @@ struct UpdateAudioUnits {
     let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
     if !updateConfigs.noConfiguration.isEmpty {
       let noConfigsData = updateConfigs.noConfiguration.map { [$0] }
-      Table(headers: ["No update configurations found for:"], data: noConfigsData).printToConsole()
-      print()
+      if verbosity != .quiet {
+        Table(headers: ["No update configurations found for:"], data: noConfigsData)
+          .printToConsole()
+        Console.standard()
+      }
     }
     if updateConfigs.toUpdate.isEmpty {
-      print("No Audio Units configured for update.")
+      Console.standard("No Audio Units configured for update.")
     } else {
-      print("Requesting current versions from manufacturer's sites...", terminator: "")
-      // otherwise Swift won't flush the handle -- screen won't be updated
-      // until newline
-      fflush(stdout)
+      Console.standard("Requesting current versions from manufacturer's sites...", terminator: "")
       var current: [[String]] = []
       var failures: [[String]] = []
       var outOfDate: [[String]] = []
@@ -25,10 +25,7 @@ struct UpdateAudioUnits {
           group.addTask { await updateConfig.requestLatestVersion() }
         }
         for await result in group {
-          print(".", terminator: "")
-          // otherwise Swift won't flush the handle -- screen won't be updated
-          // until newline
-          fflush(stdout)
+          Console.standard(".", terminator: "")
           switch result {
           case .success(let updateSuccess):
             let latestVersion = updateSuccess.latestVersion ?? "<unknown>"
@@ -57,17 +54,17 @@ struct UpdateAudioUnits {
         }
       }
 
-      print()  // Terminate "Requesting current versions..." line
-      print()  // insert blank line
-      if !current.isEmpty {
-        print("Up to date Audio Units:")
+      Console.standard()  // Terminate "Requesting current versions..." line
+      Console.standard()  // insert blank line
+      if !current.isEmpty && verbosity != .quiet {
+        Console.standard("Up to date Audio Units:")
         Table(
           headers: ["manufacturer", "name", "latest version", "local version"],
           data: current
         ).printToConsole()
       }
       if !outOfDate.isEmpty {
-        print("Audio Units which need to be updated:")
+        Console.standard("Audio Units which need to be updated:")
         Table(
           headers: [
             "manufacturer", "name", "latest version", "local version", "update instructions",
@@ -75,11 +72,11 @@ struct UpdateAudioUnits {
           data: outOfDate
         ).printToConsole()
       }
-      if !outOfDate.isEmpty && !outOfDate.isEmpty {
-        print()
+      if !outOfDate.isEmpty && !failures.isEmpty {
+        Console.force()
       }
       if !failures.isEmpty {
-        print("Errors encountered during update:")
+        Console.error("Errors encountered during update:")
         Table(headers: [], data: failures).printToConsole()
       }
     }

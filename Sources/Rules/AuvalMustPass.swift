@@ -19,10 +19,14 @@ class AuvalMustPass: Rule {
     // We capture stdout because otherwise auval will fill the screen with non-
     // error output
     let out = Pipe()
+    // but if the user has specifically requested verbose output, let 'em have it'
+    let captureStdOut = verbosity != .verbose
+    if captureStdOut {
+      process.standardOutput = out
+    }
     // We capture stderr in case auval writes something there, which it won't.
     // But if it did we would display it to the user
     let error = Pipe()
-    process.standardOutput = out
     process.standardError = error
     var processError = ""
     process.terminationHandler = { process in
@@ -34,8 +38,10 @@ class AuvalMustPass: Rule {
     } catch {
       return [ruleError("auval failed with error \(error)")]
     }
-    // Must do, otherwise Process can hang on .waitUntilExit() for large output
-    out.fileHandleForReading.readDataToEndOfFile()
+    if captureStdOut {
+      // Must do, otherwise Process can hang on .waitUntilExit() for large output
+      out.fileHandleForReading.readDataToEndOfFile()
+    }
     process.waitUntilExit()
     guard process.terminationStatus == 0 else {
       return [

@@ -63,6 +63,9 @@ struct UpdateAudioUnits {
           data: current
         ).printToConsole()
       }
+      if !(current.isEmpty && outOfDate.isEmpty) {
+        Console.standard()
+      }
       if !outOfDate.isEmpty {
         Console.standard("Audio Units which need to be updated:")
         Table(
@@ -149,6 +152,7 @@ struct UpdateConfigs {
 enum UpdateError: Error, CustomStringConvertible {
   case configurationNotFoundInHttpResult(description: String)
   case noConfiguration(description: String)
+  case noRegexMatch(regex: String)
   case webRequestFailed(description: String)
   case genericUpdateError(description: String)
 
@@ -156,6 +160,7 @@ enum UpdateError: Error, CustomStringConvertible {
     switch self {
     case .configurationNotFoundInHttpResult(let description): return description
     case .noConfiguration(let description): return description
+    case .noRegexMatch(let regex): return "No match for regex \(regex)"
     case .webRequestFailed(let description): return description
     case .genericUpdateError(let description): return description
     }

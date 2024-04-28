@@ -16,6 +16,10 @@ extension FileHandle: TextOutputStream {
 }
 
 struct Console {
+  let colors =
+    isatty(STDOUT_FILENO) != 0
+    && (ProcessInfo.processInfo.environment["TERM"] ?? "").lowercased() != "dumb"
+
   private static func eprint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     var stderrHandle = FileHandle.standardError
     print(items, separator: separator, terminator: terminator, to: &stderrHandle)

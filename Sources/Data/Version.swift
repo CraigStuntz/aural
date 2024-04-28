@@ -50,10 +50,19 @@ struct Version {
       )
     }
     guard let body = try await httpGet(url: url) else {
+      Console.error("Fetching \(url) failed.")
       return nil
+    }
+    if let jmesPath = audioUnitConfig.versionJMESPath {
+      guard let value: String = try parseWithJMESPath(body, jmesPath) else {
+        Console.error("Parsing document \(url) with JMESPath failed.")
+        return nil
+      }
+      return value
     }
     if let jmesPath = audioUnitConfig.versionJMESPathInt {
       guard let value: Int = try parseWithJMESPath(body, jmesPath) else {
+        Console.error("Parsing document \(url) with JMESPath failed.")
         return nil
       }
       return fromInt(value)
@@ -61,6 +70,7 @@ struct Version {
     if let regex = audioUnitConfig.versionRegex {
       return try parseWithRegex(body, regex)
     }
+    Console.error("No means of parsing \(url) is configured")
     return nil
   }
 
@@ -96,6 +106,6 @@ struct Version {
         Console.error("No capture on document body given regex \(versionMatchRegex)")
       }
     }
-    return nil
+    throw UpdateError.noRegexMatch(regex: versionMatchRegex)
   }
 }

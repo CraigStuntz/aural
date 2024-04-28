@@ -610,9 +610,9 @@
         <key>typeName</key>
         <string>Music Effect</string>
         <key>versionUrl</key>
-        <string>https://www.arturia.com/support/downloads&amp;manuals</string>
-        <key>versionRegex</key>
-        <string>Filter_MS\-20__(\d*_\d*_\d*_\d*)\.pkg\\&quot;&gt;Filter MS\-20</string>
+        <string>https://www.arturia.com/api/resources?slugs=filter-ms-20&amp;types</string>
+        <key>versionJMESPath</key>
+        <string>[?type == 'soft'].version | [0]</string>
         <key>update</key>
         <string>open &apos;/Applications/Arturia/Arturia Software Center.app&apos;</string>
     </dict>

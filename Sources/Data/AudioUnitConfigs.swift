@@ -3,7 +3,8 @@ import Foundation
 
 struct AudioUnitConfig: Decodable {
   private enum CodingKeys: String, CodingKey {
-    case manufacturer, name, system, typeName, update, versionJMESPath, versionJMESPathInt, versionRegex, versionUrl
+    case manufacturer, name, system, typeName, update, versionJMESPath, versionJMESPathInt,
+      versionRegex, versionUrl
   }
 
   let manufacturer: String

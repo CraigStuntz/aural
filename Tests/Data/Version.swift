@@ -60,4 +60,12 @@ class VersionsTests: XCTestCase {
       """
     XCTAssertNil(try Version.parseWithRegex(body, versionMatchRegex))
   }
+
+  func test_interleaveDots() {
+    let versionAsRead = "147"
+
+    let actual = Version.interleaveDots(versionAsRead: versionAsRead)
+
+    XCTAssertEqual("1.4.7", actual)
+  }
 }

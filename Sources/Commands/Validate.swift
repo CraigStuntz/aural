@@ -60,10 +60,14 @@ struct ValidateAudioUnits {
     var auAudioUnit: AUAudioUnit? = nil
     do {
       if Rule.shouldLoadAudioUnit(component: component) {
+        Console.standard("Loading...")
+        Console.standard(component.audioComponentDescription)
         auAudioUnit = try await AUAudioUnit.instantiate(
           with: component.audioComponentDescription)
+        Console.standard("Loaded.")
       }
       for rule in rules {
+        Console.standard(rule.ruleName)
         ruleErrors.append(
           contentsOf: rule.run(
             component: component, audioUnit: auAudioUnit, config: config))

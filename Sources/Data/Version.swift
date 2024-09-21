@@ -87,7 +87,22 @@ struct Version {
   /// Resources represent version numvers differently. This function attempts to
   /// massage them into a standard `major.minor.release.build` format
   static func cleanUp(versionAsRead: String) -> String {
-    return versionAsRead.replacingOccurrences(of: "_", with: ".")
+    let result = versionAsRead.replacingOccurrences(of: "_", with: ".")
+    if result.contains(".") {
+      return result
+    }
+    // U-he Diva returns the version number without dots; 147 == 1.4.7
+    return interleaveDots(versionAsRead: result)
+  }
+
+  static func interleaveDots(versionAsRead: String) -> String {
+    guard versionAsRead.count > 2 else {
+      return versionAsRead
+    }
+    let chars = Array(versionAsRead).compactMap { String($0) }
+    let dots = Array.init(repeating: ".", count: chars.count)
+    let zipped = zip(chars, dots).flatMap({ [$0, $1] })
+    return zipped.prefix(chars.count + dots.count - 1).joined()
   }
 
   static func parseWithJMESPath<Value>(

@@ -948,11 +948,39 @@
     </dict>
     <dict>
         <key>manufacturer</key>
+        <string>Moog</string>
+        <key>name</key>
+        <string>Mariana</string>
+        <key>typeName</key>
+        <string>Music Device</string>
+        <key>versionUrl</key>
+        <string>https://software.moogmusic.com/update</string>
+        <key>versionJMESPath</key>
+        <string>"Software Updates".SoftwareProducts[?Name == 'mariana'].CurrentVersion | [0]</string>
+        <key>update</key>
+        <string>Run host, open plugin</string>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
         <string>Toybox</string>
         <key>name</key>
         <string>Thump One</string>
         <key>typeName</key>
         <string>Music Device</string>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>u-he</string>
+        <key>name</key>
+        <string>Diva</string>
+        <key>typeName</key>
+        <string>Music Device</string>
+        <key>versionUrl</key>
+        <string>https://uhe-dl.b-cdn.net/releases/</string>
+        <key>versionRegex</key>
+        <string>Diva_(\d*)_(\d*)_Mac</string>
+        <key>update</key>
+        <string>Download update from https://u-he.com/products/diva/</string>
     </dict>
 </array>
 </plist>

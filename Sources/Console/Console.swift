@@ -6,12 +6,9 @@ enum Verbosity {
 
 var verbosity = Verbosity.standard
 
-extension FileHandle: TextOutputStream {
-  /// `FileHandle` must support the `TextOutputStream` protocol in order for
-  /// the Log.error function, below, to work
-  public func write(_ string: String) {
-    let data = Data(string.utf8)
-    self.write(data)
+struct StderrOutputStream: TextOutputStream {
+  mutating func write(_ string: String) {
+    fputs(string, stderr)
   }
 }
 
@@ -21,8 +18,8 @@ struct Console {
     && (ProcessInfo.processInfo.environment["TERM"] ?? "").lowercased() != "dumb"
 
   private static func eprint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-    var stderrHandle = FileHandle.standardError
-    print(items, separator: separator, terminator: terminator, to: &stderrHandle)
+    var standardError = StderrOutputStream()
+    print(items, separator: separator, terminator: terminator, to: &standardError)
     if terminator == "" {
       // otherwise Swift won't flush the handle -- screen won't be updated
       // until newline

@@ -1,13 +1,12 @@
-import XCTest
+import Testing
+@Testable import aural
 
-@testable import aural
-
-class FourCharCodeTests: XCTestCase {
-  func testToString() {
+struct FourCharCodeTests {
+  @Test func testToString() {
     let appl: FourCharCode = 1_634_758_764
-    XCTAssertEqual("appl", appl.toString())
+    #expect("appl" == appl.toString())
 
     let sys: FourCharCode = 1_937_339_168
-    XCTAssertEqual("sys ", sys.toString())
+    #expect("sys " == sys.toString())
   }
 }

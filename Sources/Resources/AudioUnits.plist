@@ -606,6 +606,34 @@
         <key>manufacturer</key>
         <string>Arturia</string>
         <key>name</key>
+        <string>Acid V</string>
+        <key>typeName</key>
+        <string>Music Device</string>
+        <key>versionUrl</key>
+        <string>https://www.arturia.com/api/resources?slugs=acid-v&amp;types</string>
+        <key>versionJMESPath</key>
+        <string>[?type == 'soft'].version | [0]</string>
+        <key>update</key>
+        <string>open &apos;/Applications/Arturia/Arturia Software Center.app&apos;</string>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Arturia</string>
+        <key>name</key>
+        <string>Analog Lab V</string>
+        <key>typeName</key>
+        <string>Music Device</string>
+        <key>versionUrl</key>
+        <string>https://www.arturia.com/api/resources?slugs=analoglab-v&amp;types</string>
+        <key>versionJMESPath</key>
+        <string>[?type == 'soft'].version | [0]</string>
+        <key>update</key>
+        <string>open &apos;/Applications/Arturia/Arturia Software Center.app&apos;</string>
+    </dict>
+    <dict>
+        <key>manufacturer</key>
+        <string>Arturia</string>
+        <key>name</key>
         <string>Filter MS-20</string>
         <key>typeName</key>
         <string>Music Effect</string>

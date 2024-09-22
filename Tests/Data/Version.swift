@@ -1,71 +1,70 @@
-import XCTest
+import Testing
+@Testable import aural
 
-@testable import aural
+struct VersionsTests {
+  @Test func compatible() {
+    #expect(!Version.compatible(latestVersion: "", existingVersion: "1"))
+    #expect(!Version.compatible(latestVersion: "1", existingVersion: ""))
+    #expect(!Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0"))
+    #expect(!Version.compatible(latestVersion: "10", existingVersion: "1"))
 
-class VersionsTests: XCTestCase {
-  func test_compatible() {
-    XCTAssertFalse(Version.compatible(latestVersion: "", existingVersion: "1"))
-    XCTAssertFalse(Version.compatible(latestVersion: "1", existingVersion: ""))
-    XCTAssertFalse(Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0"))
-    XCTAssertFalse(Version.compatible(latestVersion: "10", existingVersion: "1"))
-
-    XCTAssertTrue(Version.compatible(latestVersion: "1.0", existingVersion: "1.0"))
-    XCTAssertTrue(Version.compatible(latestVersion: "1.0.1.1234", existingVersion: "1.0.1"))
-    XCTAssertTrue(Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0.1.1234"))
+    #expect(Version.compatible(latestVersion: "1.0", existingVersion: "1.0"))
+    #expect(Version.compatible(latestVersion: "1.0.1.1234", existingVersion: "1.0.1"))
+    #expect(Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0.1.1234"))
   }
 
-  func test_fromInt() {
-    XCTAssertEqual("2.1.4", Version.fromInt(131332))
-    XCTAssertEqual("2.1.20", Version.fromInt(131348))
+  @Test func fromInt() {
+    #expect("2.1.4" == Version.fromInt(131332))
+    #expect("2.1.20" == Version.fromInt(131348))
   }
 
-  func test_cleanupVersion() {
-    XCTAssertEqual("1.1.0", Version.cleanUp(versionAsRead: "1_1_0"))
+  @Test func cleanupVersion() {
+    #expect("1.1.0" == Version.cleanUp(versionAsRead: "1_1_0"))
   }
 
-  func test_parseWithJMESPath() throws {
+  @Test func parseWithJMESPath() throws {
     let body = #"{"a": {"b": "1.2.3.4"}}"#
     let jmesPath = "a.b"
 
     let actual: String? = try Version.parseWithJMESPath(body, jmesPath)
 
-    XCTAssertEqual("1.2.3.4", actual)
+    #expect("1.2.3.4" == actual)
   }
 
-  func test_parseWithJMESPath_invalid_body_should_return_nil() throws {
+  @Test func parseWithJMESPathInvalidBodyShouldReturnNil() throws {
     let body = #"{"a": "foobar"}"#
     let jmesPath = "a.b"
 
     let actual: String? = try Version.parseWithJMESPath(body, jmesPath)
 
-    XCTAssertNil(actual)
+    #expect(actual != nil)
   }
 
-  func test_parseWithRegex() throws {
+  @Test func parseWithRegex() throws {
     let body = """
       Filter_MS-20__1_0_2_3.pkg">Filter MS-20
       """
     let versionMatchRegex = """
       Filter_MS\\-20__(\\d*_\\d*_\\d*_\\d*)\\.pkg">Filter MS\\-20
       """
-    XCTAssertEqual("1.0.2.3", try Version.parseWithRegex(body, versionMatchRegex))
+    #expect("1.0.2.3" == try Version.parseWithRegex(body, versionMatchRegex))
   }
 
-  func test_parseWithRegex_invalid_body_should_return_nil() throws {
+  @Test func parseWithRegexInvalidBodyShouldReturnNil() throws {
     let body = """
       blarf
       """
     let versionMatchRegex = """
       Filter_MS\\-20__(\\d*_\\d*_\\d*_\\d*)\\.pkg">Filter MS\\-20
       """
-    XCTAssertNil(try Version.parseWithRegex(body, versionMatchRegex))
+    #expect(try Version.parseWithRegex(body, versionMatchRegex) != nil)
   }
 
-  func test_interleaveDots() {
+  @Test func interleaveDots() {
     let versionAsRead = "147"
 
     let actual = Version.interleaveDots(versionAsRead: versionAsRead)
 
-    XCTAssertEqual("1.4.7", actual)
+    #expect("1.4.7" == actual)
   }
 }

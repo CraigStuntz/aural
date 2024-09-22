@@ -1,37 +1,37 @@
 import AVFoundation
-import XCTest
+import Testing
+@Testable import aural
 
-@testable import aural
-
-class AudioUnitComponentsTests: XCTestCase {
-  func testComponents_at_least_some_exist_on_system() {
+struct AudioUnitComponentsTests {
+  @Test func testComponentsAtLeastSomeExistOnSystem() {
     let components = AudioUnitComponents.components(maybeFilter: nil)
 
-    XCTAssertGreaterThan(
-      components.count, 0,
+    #expect(
+      components.count > 0,
       "Other tests will fail if there are no Audio Units installed on the system")
   }
 
-  func testComponents_filter_manufacturer() {
+  @Test func testComponentsFilterManufacturer() {
     let components = AudioUnitComponents.components(
       maybeFilter: Filter(filterType: .manufacturer, name: "Apple"))
 
-    XCTAssertGreaterThan(components.count, 0, "There should be lots of Apple AUs")
+    #expect(components.count > 0, "There should be lots of Apple AUs")
   }
 
-  func testComponents_filter_name() {
+  @Test func testComponentsFilterName() {
     let components = AudioUnitComponents.components(
       maybeFilter: Filter(filterType: .name, name: "AUConverter"))
 
-    XCTAssertEqual(1, components.count, "There should only be one component named AUConverter")
-    XCTAssertEqual(
-      "AUConverter", components.first!.name, "The component should be named 'AUConverter'")
+    #expect(1 == components.count, "There should only be one component named AUConverter")
+    let firstComponent = try #require(components.first)
+    #expect(
+      "AUConverter" == firstComponent.name, "The component should be named 'AUConverter'")
   }
 
-  func testComponents_filter_type() {
+  @Test func testComponentsFilterType() {
     let components = AudioUnitComponents.components(
       maybeFilter: Filter(filterType: .type, name: "Music Device"))
 
-    XCTAssertGreaterThan(components.count, 0, "Music Device AUs should exist.")
+    #expect(components.count > 0, "Music Device AUs should exist.")
   }
 }

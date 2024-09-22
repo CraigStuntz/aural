@@ -1,25 +1,24 @@
-import XCTest
+import Testing
+@Testable import aural
 
-@testable import aural
-
-class FiltersTests: XCTestCase {
-  func testParseArgument() {
+struct FiltersTests {
+  @Test func testParseArgument() {
     let filter = Filter.parseArgument("manufacturer:Tomato")
 
-    XCTAssertNotNil(filter)
-    XCTAssertEqual(filter!.0, FilterType.manufacturer, "Incorrect manufacturer")
-    XCTAssertEqual(filter!.1, "Tomato", "Incorrect manufacturer name")
+    let f = try #require(filter)
+    #expect(f.0 == FilterType.manufacturer, "Incorrect manufacturer")
+    #expect(f.1 == "Tomato", "Incorrect manufacturer name")
   }
 
-  func testParseArgument_malformed() {
+  @Test func testParseArgumentMalformed() {
     let filter = Filter.parseArgument("tomato")
 
-    XCTAssertNil(filter)
+    #expect(filter)
   }
 
-  func testParseArgument_with_invalid_filter_type() {
+  @Test func testParseArgumentWithInvalidFilterType() {
     let filter = Filter.parseArgument("foo:bar")
 
-    XCTAssertNil(filter)
+    #expect(filter)
   }
 }

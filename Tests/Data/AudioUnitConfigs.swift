@@ -1,10 +1,9 @@
 import AVFoundation
-import XCTest
+import Testing
+@Testable import aural
 
-@testable import aural
-
-class AudioUnitConfigTests: XCTestCase {
-  func testToDictionaryKey_static() {
+struct AudioUnitConfigTests {
+  @Test func testToDictionaryKeyStatic() {
     let manufacturer = "Orange"
     let name = "My Cool Instrument"
     let typeName = "Music Device"
@@ -16,21 +15,21 @@ class AudioUnitConfigTests: XCTestCase {
       typeName: typeName
     )
 
-    XCTAssertEqual(expected, actual, "Incorrect dictionary key for static method")
+    #expect(expected == actual, "Incorrect dictionary key for static method")
   }
 }
 
-class AudioUnitConfigsTests: XCTestCase {
-  func testSubscript() {
+struct AudioUnitConfigsTests {
+  @Test func testSubscript() {
     let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(
       maybeFilter: Filter(filterType: .name, name: "AUMIDISynth"))
 
     XCTAssertEqual(1, components.count)
-    let component = components.first!
+    let component = try #require(components.first)
 
-    let auMidiSynth = configs[component]
+    let auMidiSynth = try #require(configs[component])
 
-    XCTAssertNotNil(auMidiSynth)
+    #expect(auMidiSynth)
   }
 }

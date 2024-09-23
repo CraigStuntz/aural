@@ -1,5 +1,5 @@
 import Testing
-@Testable import aural
+@testable import aural
 
 struct TableTests {
   let headers = ["header1", "h2"]

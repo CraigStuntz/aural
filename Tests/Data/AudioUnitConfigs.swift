@@ -1,6 +1,6 @@
 import AVFoundation
 import Testing
-@Testable import aural
+@testable import aural
 
 struct AudioUnitConfigTests {
   @Test func testToDictionaryKeyStatic() {
@@ -20,16 +20,14 @@ struct AudioUnitConfigTests {
 }
 
 struct AudioUnitConfigsTests {
-  @Test func testSubscript() {
+  @Test func testSubscript() throws {
     let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(
       maybeFilter: Filter(filterType: .name, name: "AUMIDISynth"))
 
-    XCTAssertEqual(1, components.count)
+    #expect(1 == components.count)
     let component = try #require(components.first)
 
-    let auMidiSynth = try #require(configs[component])
-
-    #expect(auMidiSynth)
+    #expect(configs[component] != nil)
   }
 }

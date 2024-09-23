@@ -1,5 +1,7 @@
+import Foundation
 import Testing
-@Testable import aural
+
+@testable import aural
 
 struct StringTests {
   @Test func toFourCharCode() {

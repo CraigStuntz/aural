@@ -1,8 +1,8 @@
 import Testing
-@Testable import aural
+@testable import aural
 
 struct FiltersTests {
-  @Test func testParseArgument() {
+  @Test func testParseArgument() throws {
     let filter = Filter.parseArgument("manufacturer:Tomato")
 
     let f = try #require(filter)
@@ -10,15 +10,15 @@ struct FiltersTests {
     #expect(f.1 == "Tomato", "Incorrect manufacturer name")
   }
 
-  @Test func testParseArgumentMalformed() {
+  @Test func testParseArgumentMalformed() throws {
     let filter = Filter.parseArgument("tomato")
 
-    #expect(filter)
+    #expect(filter == nil)
   }
 
-  @Test func testParseArgumentWithInvalidFilterType() {
+  @Test func testParseArgumentWithInvalidFilterType() throws {
     let filter = Filter.parseArgument("foo:bar")
 
-    #expect(filter)
+    #expect(filter == nil)
   }
 }

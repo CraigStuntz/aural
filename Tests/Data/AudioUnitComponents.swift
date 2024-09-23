@@ -1,6 +1,6 @@
 import AVFoundation
 import Testing
-@Testable import aural
+@testable import aural
 
 struct AudioUnitComponentsTests {
   @Test func testComponentsAtLeastSomeExistOnSystem() {
@@ -18,7 +18,7 @@ struct AudioUnitComponentsTests {
     #expect(components.count > 0, "There should be lots of Apple AUs")
   }
 
-  @Test func testComponentsFilterName() {
+  @Test func testComponentsFilterName() throws {
     let components = AudioUnitComponents.components(
       maybeFilter: Filter(filterType: .name, name: "AUConverter"))
 

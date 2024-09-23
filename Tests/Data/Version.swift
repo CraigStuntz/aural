@@ -1,5 +1,6 @@
 import Testing
-@Testable import aural
+
+@testable import aural
 
 struct VersionsTests {
   @Test func compatible() {
@@ -26,7 +27,7 @@ struct VersionsTests {
     let body = #"{"a": {"b": "1.2.3.4"}}"#
     let jmesPath = "a.b"
 
-    let actual: String? = try Version.parseWithJMESPath(body, jmesPath)
+    let actual: String = try #require(try Version.parseWithJMESPath(body, jmesPath))
 
     #expect("1.2.3.4" == actual)
   }
@@ -37,7 +38,7 @@ struct VersionsTests {
 
     let actual: String? = try Version.parseWithJMESPath(body, jmesPath)
 
-    #expect(actual != nil)
+    #expect(actual == nil)
   }
 
   @Test func parseWithRegex() throws {
@@ -47,17 +48,19 @@ struct VersionsTests {
     let versionMatchRegex = """
       Filter_MS\\-20__(\\d*_\\d*_\\d*_\\d*)\\.pkg">Filter MS\\-20
       """
-    #expect("1.0.2.3" == try Version.parseWithRegex(body, versionMatchRegex))
+    let actual = try Version.parseWithRegex(body, versionMatchRegex)
+    #expect("1.0.2.3" == actual)
   }
 
-  @Test func parseWithRegexInvalidBodyShouldReturnNil() throws {
+  @Test func parseWithRegexInvalidBodyShouldThrow() throws {
     let body = """
       blarf
       """
     let versionMatchRegex = """
       Filter_MS\\-20__(\\d*_\\d*_\\d*_\\d*)\\.pkg">Filter MS\\-20
       """
-    #expect(try Version.parseWithRegex(body, versionMatchRegex) != nil)
+    
+    #expect(throws: UpdateError.self) { try Version.parseWithRegex(body, versionMatchRegex) }
   }
 
   @Test func interleaveDots() {

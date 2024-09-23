@@ -1,5 +1,6 @@
 import AVFoundation
 import Testing
+
 @testable import aural
 
 struct AudioUnitConfigTests {

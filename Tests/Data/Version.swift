@@ -59,7 +59,7 @@ struct VersionsTests {
     let versionMatchRegex = """
       Filter_MS\\-20__(\\d*_\\d*_\\d*_\\d*)\\.pkg">Filter MS\\-20
       """
-    
+
     #expect(throws: UpdateError.self) { try Version.parseWithRegex(body, versionMatchRegex) }
   }
 

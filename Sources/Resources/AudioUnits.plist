@@ -594,7 +594,7 @@
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>appl</string>
+        <string>sys </string>
         <key>name</key>
         <string>out </string>
         <key>typeName</key>

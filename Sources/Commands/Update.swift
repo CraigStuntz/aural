@@ -6,9 +6,12 @@ struct UpdateAudioUnits {
     let audioUnitConfigs = AudioUnitConfigs()
     let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
     if !updateConfigs.noConfiguration.isEmpty {
-      let noConfigsData = updateConfigs.noConfiguration.map { [$0] }
       if verbosity != .quiet {
-        Table(headers: ["No update configurations found for:"], data: noConfigsData)
+        let headers = verbosity == .verbose 
+          ? [ "No update configurations found for:", "manufacturer", "subtype", "type" ] 
+          : ["No update configurations found for:"]
+        Table(headers: headers, 
+          data: updateConfigs.noConfiguration.map { component in describe(component) } )
           .printToConsole()
         Console.standard()
       }
@@ -84,6 +87,18 @@ struct UpdateAudioUnits {
       }
     }
   }
+
+  static func describe(_ component: AVAudioUnitComponent) -> [String] {
+    var result = [ "\(component.manufacturerName) \(component.name) (\(component.versionString))" ]
+    if verbosity == .verbose {
+      result.append(contentsOf: [ 
+        component.audioComponentDescription.componentManufacturer.toString(),
+        component.audioComponentDescription.componentSubType.toString(),
+        component.audioComponentDescription.componentType.toString()
+      ])
+    }
+    return result
+  }
 }
 
 struct UpdateConfig {
@@ -121,16 +136,15 @@ struct UpdateConfig {
 }
 
 struct UpdateConfigs {
-  let noConfiguration: [String]
+  let noConfiguration: [AVAudioUnitComponent]
   let toUpdate: [UpdateConfig]
 
   init(audioUnitConfigs: AudioUnitConfigs, components: [AVAudioUnitComponent]) {
-    var noConfiguration: [String] = []
+    var noConfiguration: [AVAudioUnitComponent] = []
     var toUpdate: [UpdateConfig] = []
     for component in components {
       guard let audioUnitConfig = audioUnitConfigs[component] else {
-        noConfiguration.append(
-          "\(component.manufacturerName) \(component.name) (\(component.versionString))")
+        noConfiguration.append(component)
         continue
       }
       if audioUnitConfig.system != true

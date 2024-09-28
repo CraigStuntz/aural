@@ -32,17 +32,17 @@ struct UpdateAudioUnits {
             let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
             if updateSuccess.compatible {
               current.append([
-                audioUnitConfig.manufacturer,
-                audioUnitConfig.name,
+                updateSuccess.component.manufacturerName,
+                updateSuccess.component.name,
                 latestVersion,
-                updateSuccess.updateConfig.existingVersion,
+                updateSuccess.updateConfig.component.versionString,
               ])
             } else {
               outOfDate.append([
-                audioUnitConfig.manufacturer,
-                audioUnitConfig.name,
+                updateSuccess.component.manufacturerName,
+                updateSuccess.component.name,
                 latestVersion,
-                updateSuccess.updateConfig.existingVersion,
+                updateSuccess.updateConfig.component.versionString,
                 audioUnitConfig.update ?? "",
               ])
             }
@@ -87,7 +87,7 @@ struct UpdateAudioUnits {
 }
 
 struct UpdateConfig {
-  let existingVersion: String
+  let component: AVAudioUnitComponent
   let audioUnitConfig: AudioUnitConfig
 
   func requestLatestVersion() async -> Result<UpdateSuccess, UpdateError> {
@@ -107,9 +107,9 @@ struct UpdateConfig {
             description: "Current version of \(self.audioUnitConfig.name) not found"))
       }
       let compatible = Version.compatible(
-        latestVersion: latestVersion, existingVersion: self.existingVersion)
+        latestVersion: latestVersion, existingVersion: self.component.versionString)
       return .success(
-        UpdateSuccess(updateConfig: self, latestVersion: latestVersion, compatible: compatible))
+        UpdateSuccess(component: component, updateConfig: self, latestVersion: latestVersion, compatible: compatible))
     } catch {
       return .failure(
         .genericUpdateError(
@@ -139,7 +139,7 @@ struct UpdateConfigs {
       {
         toUpdate.append(
           UpdateConfig(
-            existingVersion: component.versionString,
+            component: component,
             audioUnitConfig: audioUnitConfig
           ))
       }
@@ -168,6 +168,7 @@ enum UpdateError: Error, CustomStringConvertible {
 }
 
 struct UpdateSuccess {
+  let component: AVAudioUnitComponent
   let updateConfig: UpdateConfig
   let latestVersion: String?
   let compatible: Bool

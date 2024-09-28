@@ -46,7 +46,7 @@ struct Version {
       let url = URL(string: versionUrl)
     else {
       fatalError(
-        "audioUnitConfig.versionUrl must be non-nil and a valid URL before calling this function. Check it!"
+        "audioUnitConfig.versionUrl \(audioUnitConfig.versionUrl as Optional) must be non-nil and a valid URL before calling this function. Check it!"
       )
     }
     guard let body = try await httpGet(url: url) else {

@@ -58,9 +58,9 @@ struct AudioUnitConfigs {
   subscript(component: AVAudioUnitComponent) -> AudioUnitConfig? {
     return self.dictionary[
       AudioUnitConfig.toDictionaryKey(
-        manufacturer: component.manufacturerName,
-        name: component.name,
-        typeName: component.typeName
+        manufacturer: component.audioComponentDescription.componentManufacturer.toString(),
+        name: component.audioComponentDescription.componentSubType.toString(),
+        typeName: component.audioComponentDescription.componentType.toString()
       )]
   }
 }

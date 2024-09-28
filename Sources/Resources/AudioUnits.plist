@@ -4,611 +4,611 @@
 <array>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUAudioFilePlayer</string>
+        <string>afpl</string>
         <key>typeName</key>
-        <string>Generator</string>
+        <string>augn</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUAudioIO</string>
+        <string>rioc</string>
         <key>typeName</key>
-        <string>Output</string>
+        <string>auou</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUAudioTapIO</string>
+        <string>atap</string>
         <key>typeName</key>
-        <string>Output</string>
+        <string>auou</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUBandpass</string>
+        <string>bpas</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUConverter</string>
+        <string>conv</string>
         <key>typeName</key>
-        <string>Format Converter</string>
+        <string>aufc</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUDeferredRenderer</string>
+        <string>defr</string>
         <key>typeName</key>
-        <string>Format Converter</string>
+        <string>aufc</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUDelay</string>
+        <string>dely</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AudioDeviceOutput</string>
+        <string>ahal</string>
         <key>typeName</key>
-        <string>Output</string>
+        <string>auou</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUDistortion</string>
+        <string>dist</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUDynamicsProcessor</string>
+        <string>dcmp</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUFilter</string>
+        <string>filt</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUGraphicEQ</string>
+        <string>greq</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUHighShelfFilter</string>
+        <string>hshf</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUHipass</string>
+        <string>hpas</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AULowpass</string>
+        <string>lpas</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AULowShelfFilter</string>
+        <string>lshf</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMatrixMixer</string>
+        <string>mxmx</string>
         <key>typeName</key>
-        <string>Mixer</string>
+        <string>aumx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMatrixReverb</string>
+        <string>mrev</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMerger</string>
+        <string>merg</string>
         <key>typeName</key>
-        <string>Format Converter</string>
+        <string>aufc</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMIDISynth</string>
+        <string>msyn</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMixer</string>
+        <string>smxr</string>
         <key>typeName</key>
-        <string>Mixer</string>
+        <string>aumx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMixer3D</string>
+        <string>3dmx</string>
         <key>typeName</key>
-        <string>Mixer</string>
+        <string>aumx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMultibandCompressor</string>
+        <string>mcmp</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMultiChannelMixer</string>
+        <string>mcmx</string>
         <key>typeName</key>
-        <string>Mixer</string>
+        <string>aumx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUMultiSplitter</string>
+        <string>mspl</string>
         <key>typeName</key>
-        <string>Mixer</string>
+        <string>aumx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUNBandEQ</string>
+        <string>nbeq</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUNetReceive</string>
+        <string>nrcv</string>
         <key>typeName</key>
-        <string>Generator</string>
+        <string>augn</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUNetSend</string>
+        <string>nsnd</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUNewPitch</string>
+        <string>nutp</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUNewTimePitch</string>
+        <string>nutp</string>
         <key>typeName</key>
-        <string>Format Converter</string>
+        <string>aufc</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUNotQuiteSoSimpleTime</string>
+        <string>ipto</string>
         <key>typeName</key>
-        <string>Format Converter</string>
+        <string>aufc</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUParametricEQ</string>
+        <string>pmeq</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUPeakLimiter</string>
+        <string>lmtr</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUPitch</string>
+        <string>tmpt</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUReverb2</string>
+        <string>rvb2</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AURogerBeep</string>
+        <string>rogr</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AURoundTripAAC</string>
+        <string>raac</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUSampleDelay</string>
+        <string>sdly</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUSampler</string>
+        <string>samp</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUScheduledSoundPlayer</string>
+        <string>sspl</string>
         <key>typeName</key>
-        <string>Generator</string>
+        <string>augn</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUSoundFieldPanner</string>
+        <string>ambi</string>
         <key>typeName</key>
-        <string>Panner</string>
+        <string>aupn</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUSoundIsolation</string>
+        <string>vois</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUSpatialMixer</string>
+        <string>3dem</string>
         <key>typeName</key>
-        <string>Mixer</string>
+        <string>aumx</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUSpeechSynthesis</string>
+        <string>ttsp</string>
         <key>typeName</key>
-        <string>Generator</string>
+        <string>augn</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUSphericalHeadPanner</string>
+        <string>sphr</string>
         <key>typeName</key>
-        <string>Panner</string>
+        <string>aupn</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUSplitter</string>
+        <string>splt</string>
         <key>typeName</key>
-        <string>Format Converter</string>
+        <string>aufc</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUTimePitch</string>
+        <string>tmpt</string>
         <key>typeName</key>
-        <string>Format Converter</string>
+        <string>aufc</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUTimePitch</string>
+        <string>tmpt</string>
         <key>typeName</key>
-        <string>Offline Effect</string>
+        <string>auol</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUVarispeed</string>
+        <string>vari</string>
         <key>typeName</key>
-        <string>Format Converter</string>
+        <string>aufc</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUVarispeed</string>
+        <string>vari</string>
         <key>typeName</key>
-        <string>Offline Effect</string>
+        <string>auol</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUVectorPanner</string>
+        <string>vbas</string>
         <key>typeName</key>
-        <string>Panner</string>
+        <string>aupn</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>AUVoiceProcessor</string>
+        <string>vpio</string>
         <key>typeName</key>
-        <string>Output</string>
+        <string>auou</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>DefaultOutputUnit</string>
+        <string>def </string>
         <key>typeName</key>
-        <string>Output</string>
+        <string>auou</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>DLSMusicDevice</string>
+        <string>dls </string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>GenericOutput</string>
+        <string>genr</string>
         <key>typeName</key>
-        <string>Output</string>
+        <string>auou</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>HRTFPanner</string>
+        <string>hrtf</string>
         <key>typeName</key>
-        <string>Panner</string>
+        <string>aupn</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>MauiAUSP</string>
+        <string>crnc</string>
         <key>typeName</key>
-        <string>Unknown</string>
+        <string>ausp</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>SiriAUSP</string>
+        <string>axsr</string>
         <key>typeName</key>
-        <string>Unknown</string>
+        <string>ausp</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>SystemOutputUnit</string>
+        <string>sys </string>
         <key>typeName</key>
-        <string>Output</string>
+        <string>auou</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Apple</string>
+        <string>appl</string>
         <key>name</key>
-        <string>SystemOutputUnit</string>
+        <string>out </string>
         <key>typeName</key>
-        <string>Unknown</string>
+        <string>aunt</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Arturia</string>
+        <string>Artu</string>
         <key>name</key>
-        <string>Acid V</string>
+        <string>T303</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>versionUrl</key>
         <string>https://www.arturia.com/api/resources?slugs=acid-v&amp;types</string>
         <key>versionJMESPath</key>
@@ -618,11 +618,11 @@
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Arturia</string>
+        <string>Artu</string>
         <key>name</key>
-        <string>Analog Lab V</string>
+        <string>Alav</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>versionUrl</key>
         <string>https://www.arturia.com/api/resources?slugs=analoglab-v&amp;types</string>
         <key>versionJMESPath</key>
@@ -632,11 +632,11 @@
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Arturia</string>
+        <string>Artu</string>
         <key>name</key>
-        <string>Filter MS-20</string>
+        <string>FiMs</string>
         <key>typeName</key>
-        <string>Music Effect</string>
+        <string>aumf</string>
         <key>versionUrl</key>
         <string>https://www.arturia.com/api/resources?slugs=filter-ms-20&amp;types</string>
         <key>versionJMESPath</key>
@@ -646,11 +646,11 @@
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Cherry Audio</string>
+        <string>Chry</string>
         <key>name</key>
-        <string>Synthesizer Expander Module</string>
+        <string>SEMo</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>versionUrl</key>
         <string>https://cherryaudio.com/products/synthesizer-expander-module/version-history</string>
         <key>versionRegex</key>
@@ -658,29 +658,29 @@
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Cherry Audio</string>
+        <string>Chry</string>
         <key>name</key>
-        <string>Synthesizer Expander Module View</string>
+        <string>SEMo</string>
         <key>typeName</key>
-        <string>Unknown</string>
+        <string>auvw</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Eloquence</string>
+        <string>appl</string>
         <key>name</key>
-        <string>KonaSynthesizer</string>
+        <string>kona</string>
         <key>typeName</key>
-        <string>Unknown</string>
+        <string>ausp</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>Phase Plant</string>
+        <string>kphp</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>versionUrl</key>
         <string>https://kilohearts.com/files/releases/index.json</string>
         <key>versionJMESPathInt</key>
@@ -690,287 +690,287 @@
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs 3-Band EQ</string>
+        <string>ksqe</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Bitcrush</string>
+        <string>ksbc</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Channel Mixer</string>
+        <string>kscm</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Chorus</string>
+        <string>ksch</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Comb Filter</string>
+        <string>kscf</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Compressor</string>
+        <string>kscp</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Delay</string>
+        <string>ksdl</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Distortion</string>
+        <string>ksdt</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Dual Delay</string>
+        <string>ksdd</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Dynamics</string>
+        <string>ksot</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Ensemble</string>
+        <string>ksun</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Filter</string>
+        <string>ksfi</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Flanger</string>
+        <string>ksfl</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Formant Filter</string>
+        <string>ksvf</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Frequency Shifter</string>
+        <string>ksfs</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Gain</string>
+        <string>ksgn</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Gate</string>
+        <string>ksgt</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Haas</string>
+        <string>ksha</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Ladder Filter</string>
+        <string>ksla</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Limiter</string>
+        <string>kslt</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Nonlinear Filter</string>
+        <string>ksdf</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Phase Distortion</string>
+        <string>kspd</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Phaser</string>
+        <string>ksph</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Pitch Shifter</string>
+        <string>ksps</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Resonator</string>
+        <string>ksre</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Reverb</string>
+        <string>ksrv</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Reverser</string>
+        <string>ksrr</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Ring Mod</string>
+        <string>ksrm</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Stereo</string>
+        <string>ksst</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Tape Stop</string>
+        <string>ksts</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Trance Gate</string>
+        <string>kstg</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Kilohearts</string>
+        <string> kHs</string>
         <key>name</key>
-        <string>kHs Transient Shaper</string>
+        <string>kstr</string>
         <key>typeName</key>
-        <string>Effect</string>
+        <string>aufx</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Legacy</string>
+        <string>appl</string>
         <key>name</key>
-        <string>WardaSynthesizer_x86_64</string>
+        <string>wari</string>
         <key>typeName</key>
-        <string>Unknown</string>
+        <string>ausp</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Legacy</string>
+        <string>appl</string>
         <key>name</key>
-        <string>WardaSynthesizerArm</string>
+        <string>wara</string>
         <key>typeName</key>
-        <string>Unknown</string>
+        <string>ausp</string>
         <key>system</key>
         <true/>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>MacinTalk</string>
+        <string>appl</string>
         <key>name</key>
-        <string>MacinTalkAUSP</string>
+        <string>mctk</string>
         <key>typeName</key>
-        <string>Unknown</string>
+        <string>ausp</string>
         <key>system</key>
         <true/>
     </dict>
@@ -978,9 +978,9 @@
         <key>manufacturer</key>
         <string>Moog</string>
         <key>name</key>
-        <string>Mariana</string>
+        <string>Mari</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>versionUrl</key>
         <string>https://software.moogmusic.com/update</string>
         <key>versionJMESPath</key>
@@ -990,19 +990,19 @@
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>Toybox</string>
+        <string>Manu</string>
         <key>name</key>
-        <string>Thump One</string>
+        <string>C25p</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
     </dict>
     <dict>
         <key>manufacturer</key>
-        <string>u-he</string>
+        <string>UHfX</string>
         <key>name</key>
-        <string>Diva</string>
+        <string>DiVa</string>
         <key>typeName</key>
-        <string>Music Device</string>
+        <string>aumu</string>
         <key>versionUrl</key>
         <string>https://uhe-dl.b-cdn.net/releases/</string>
         <key>versionRegex</key>

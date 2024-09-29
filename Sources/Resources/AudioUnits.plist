@@ -274,6 +274,154 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>NiK7</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>NiKK</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>NiMa</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>NiR6</string>
+		<key>typeName</key>
+		<string>aumf</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>NiR6</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>NiR6</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Apog</string>
+		<key>name</key>
+		<string>SLMT</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Apog</string>
+		<key>name</key>
+		<string>SLMT</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>ABrs</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=augmented-brass&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>AGPn</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=augmented-grand-piano&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>ARP3</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=arp2600v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>AStr</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=augmented-strings&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>AVcs</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=augmented-voices&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>AWdw</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=augmented-woodwinds&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>Artu</string>
 		<key>name</key>
 		<string>Alav</string>
@@ -285,6 +433,132 @@
 		<string>[?type == 'soft'].version | [0]</string>
 		<key>versionUrl</key>
 		<string>https://www.arturia.com/api/resources?slugs=analoglab-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>BuEa</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=buchla-easel-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>CMIv</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=cmi-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>CP70</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=cp-70-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>CSV4</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=cs-80v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Clav</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=clavinet-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>CsCz</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=cz-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Dx71</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=dx7-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Emu1</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=emulator-ii-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Farf</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=farfisa-v&amp;types</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -304,6 +578,280 @@
 		<key>manufacturer</key>
 		<string>Artu</string>
 		<key>name</key>
+		<string>JUP4</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=jup-8-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Jun1</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=jun-6-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>KMSV</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=korg-ms-20-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>MIN3</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>MIN4</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=mini-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>MLTN</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=mellotron-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>MOD3</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=modular-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Mat2</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=matrix-12-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>MnFV</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=minifreak-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>OBS2</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=sem-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>OBXa</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=op-xa-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>PRO5</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=prophet-5-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>PRVS</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=prophet-vs-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Pia3</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=piano-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>RFRT</string>
+		<key>typeName</key>
+		<string>aumf</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=efx-refract&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>SNTH</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=synthi-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>SQ80</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=sq80-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Sol2</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=solina-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Stg2</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=stage-73-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Sycl</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=synclavier-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
 		<string>T303</string>
 		<key>typeName</key>
 		<string>aumu</string>
@@ -313,6 +861,230 @@
 		<string>[?type == 'soft'].version | [0]</string>
 		<key>versionUrl</key>
 		<string>https://www.arturia.com/api/resources?slugs=acid-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>TnW2</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=b-3-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Voco</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=vocoder-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>Vox2</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=vox-continental-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>WUR2</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>WUR3</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=wurli-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>B4by</string>
+		<key>name</key>
+		<string>Cmb4</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Brwx</string>
+		<key>name</key>
+		<string>Knif</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Brwx</string>
+		<key>name</key>
+		<string>bxOS</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Brwx</string>
+		<key>name</key>
+		<string>bxmb</string>
+		<key>typeName</key>
+		<string>aumf</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Brwx</string>
+		<key>name</key>
+		<string>bxrp</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Brwx</string>
+		<key>name</key>
+		<string>bxs2</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Brwx</string>
+		<key>name</key>
+		<string>bxsf</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Brwx</string>
+		<key>name</key>
+		<string>bxsl</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CADr</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CADr</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CAMG</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CAMG</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CAQM</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CAQM</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CAQu</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CAQu</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CCP4</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>CCP4</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>LowD</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>LowD</string>
+		<key>typeName</key>
+		<string>auvw</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -336,9 +1108,185 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>StDt</string>
+		<key>typeName</key>
+		<string>aumf</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>StDt</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Elys</string>
+		<key>name</key>
+		<string>nvft</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>FCUS</string>
+		<key>name</key>
+		<string>fBal</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>Manu</string>
 		<key>name</key>
 		<string>C25p</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cpbt</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cpch</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cpch</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cpdp</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cpdp</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cpml</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cpml</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cppl</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>cppl</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>mkse</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>plar</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>plar</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>plbs</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>plbs</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>plch</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>plch</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>plml</string>
+		<key>typeName</key>
+		<string>aumi</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Miik</string>
+		<key>name</key>
+		<string>plml</string>
 		<key>typeName</key>
 		<string>aumu</string>
 	</dict>
@@ -358,6 +1306,30 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>SHOE</string>
+		<key>name</key>
+		<string>DMSP</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>SPL1</string>
+		<key>name</key>
+		<string>SPFE</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>SpFi</string>
+		<key>name</key>
+		<string>SfLb</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>UHfX</string>
 		<key>name</key>
 		<string>DiVa</string>
@@ -369,6 +1341,14 @@
 		<string>Diva_(\d*)_(\d*)_Mac</string>
 		<key>versionUrl</key>
 		<string>https://uhe-dl.b-cdn.net/releases/</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>WAWA</string>
+		<key>name</key>
+		<string>ODIN</string>
+		<key>typeName</key>
+		<string>aumu</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1002,6 +1982,94 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>iZtp</string>
+		<key>name</key>
+		<string>ZnE9</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>iZtp</string>
+		<key>name</key>
+		<string>ZnE9</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>k331</string>
+		<key>name</key>
+		<string>Sm2f</string>
+		<key>typeName</key>
+		<string>aumf</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>k331</string>
+		<key>name</key>
+		<string>Sm2i</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>k331</string>
+		<key>name</key>
+		<string>Smpi</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>oDin</string>
+		<key>name</key>
+		<string>FqEh</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>oDin</string>
+		<key>name</key>
+		<string>FqEh</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>oDin</string>
+		<key>name</key>
+		<string>SpMd</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>oDin</string>
+		<key>name</key>
+		<string>SpMd</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>oDin</string>
+		<key>name</key>
+		<string>sMas</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>oDin</string>
+		<key>name</key>
+		<string>sMas</string>
+		<key>typeName</key>
+		<string>auvw</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>sys </string>
 		<key>name</key>
 		<string>out </string>
@@ -1009,6 +2077,14 @@
 		<true/>
 		<key>typeName</key>
 		<string>aunt</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>xlnA</string>
+		<key>name</key>
+		<string>xaAK</string>
+		<key>typeName</key>
+		<string>aumu</string>
 	</dict>
 </array>
 </plist>

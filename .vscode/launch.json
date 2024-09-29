@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "type": "lldb",
+            "type": "swift-lldb",
             "request": "launch",
             "sourceLanguages": [
                 "swift"
@@ -9,7 +9,10 @@
             "cwd": "${workspaceFolder:aural}",
             "name": "Debug aural",
             "program": "${workspaceFolder:aural}/.build/debug/aural",
-            "args": [ "update", "--write-config-file" ],
+            "args": [
+                "update",
+                "--write-config-file"
+            ],
             "preLaunchTask": "swift: Build Debug aural"
         },
         {
@@ -21,11 +24,13 @@
             "cwd": "${workspaceFolder:aural}",
             "name": "Test aural",
             "program": "/Applications/Xcode.app/Contents/Developer/usr/bin/xctest",
-            "args": [".build/debug/auralTests.xctest"],
+            "args": [
+                ".build/debug/auralTests.xctest"
+            ],
             "preLaunchTask": "swift: Build All"
         },
         {
-            "type": "lldb",
+            "type": "swift-lldb",
             "request": "launch",
             "sourceLanguages": [
                 "swift"

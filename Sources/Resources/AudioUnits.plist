@@ -10,7 +10,7 @@
 		<key>typeName</key>
 		<string>aumu</string>
 		<key>update</key>
-		<string>Run plugin in host, click version number in upper left</string>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
 		<key>versionJMESPathInt</key>
 		<string>releases[0].version</string>
 		<key>versionUrl</key>
@@ -221,6 +221,14 @@
 		<string> kHs</string>
 		<key>name</key>
 		<string>ksrv</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string> kHs</string>
+		<key>name</key>
+		<string>kssr</string>
 		<key>typeName</key>
 		<string>aufx</string>
 	</dict>

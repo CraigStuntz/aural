@@ -122,7 +122,7 @@ struct UpdateConfig {
       else {
         return .failure(
           .configurationNotFoundInHttpResult(
-            description: "Current version of \(self.audioUnitConfig.name) not found"))
+            description: "Current version of \(self.component.name) not found"))
       }
       let compatible = Version.compatible(
         latestVersion: latestVersion, existingVersion: self.component.versionString)
@@ -132,7 +132,7 @@ struct UpdateConfig {
       return .failure(
         .genericUpdateError(
           description:
-            "Caught error \(error) while checking the current version of \(self.audioUnitConfig.name)"
+            "Caught error \(error) while checking the current version of \(self.component.name)"
         ))
     }
   }

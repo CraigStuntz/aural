@@ -9,7 +9,7 @@
             "cwd": "${workspaceFolder:aural}",
             "name": "Debug aural",
             "program": "${workspaceFolder:aural}/.build/debug/aural",
-            "args": [ "update" ],
+            "args": [ "update", "--write-config-file" ],
             "preLaunchTask": "swift: Build Debug aural"
         },
         {

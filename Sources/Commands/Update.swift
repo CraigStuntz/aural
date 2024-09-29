@@ -1,7 +1,7 @@
 import AVFoundation
 
 struct UpdateAudioUnits {
-  static func run(options: Options) async {
+  static func run(options: Options, writeConfigFile: Bool) async {
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     let audioUnitConfigs = AudioUnitConfigs()
     let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
@@ -15,6 +15,9 @@ struct UpdateAudioUnits {
           .printToConsole()
         Console.standard()
       }
+    }
+    if writeConfigFile {
+      audioUnitConfigs.writeConfig(components, "AudioUnits.plist")
     }
     if updateConfigs.toUpdate.isEmpty {
       Console.standard("No Audio Units configured for update.")

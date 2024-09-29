@@ -31,4 +31,12 @@ struct AudioUnitConfigsTests {
 
     #expect(configs[component] != nil)
   }
+
+  @Test func testEncodeAsPlist() throws {
+    let configs = AudioUnitConfigs()
+    let components = AudioUnitComponents.components(
+      maybeFilter: Filter(filterType: .name, name: "AUMIDISynth"))
+    let actual = try configs.toPlist(components)
+    #expect(actual.count > 0)
+  }
 }

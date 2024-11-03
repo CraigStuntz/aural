@@ -155,15 +155,18 @@ struct UpdateConfigs {
         noConfiguration.append(component)
         continue
       }
-      if audioUnitConfig.system != true
-        && audioUnitConfig.versionUrl != nil
-        && audioUnitConfig.versionUrl != ""
-      {
-        toUpdate.append(
-          UpdateConfig(
-            component: component,
-            audioUnitConfig: audioUnitConfig
-          ))
+      if audioUnitConfig.system != true {
+        if audioUnitConfig.versionUrl != nil
+          && audioUnitConfig.versionUrl != ""
+        {
+          toUpdate.append(
+            UpdateConfig(
+              component: component,
+              audioUnitConfig: audioUnitConfig
+            ))
+        } else if verbosity == .verbose {
+            noConfiguration.append(component)
+        }
       }
     }
     self.noConfiguration = noConfiguration

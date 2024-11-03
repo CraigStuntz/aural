@@ -23,6 +23,12 @@
 		<string>ksbc</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -31,6 +37,12 @@
 		<string>kscf</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -39,6 +51,12 @@
 		<string>ksch</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -47,6 +65,12 @@
 		<string>kscm</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -55,6 +79,12 @@
 		<string>kscp</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -63,6 +93,12 @@
 		<string>ksdd</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -71,6 +107,12 @@
 		<string>ksdf</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -79,6 +121,12 @@
 		<string>ksdl</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -87,6 +135,12 @@
 		<string>ksdt</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -95,6 +149,12 @@
 		<string>ksfi</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -103,6 +163,12 @@
 		<string>ksfl</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -111,6 +177,12 @@
 		<string>ksfs</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -119,6 +191,12 @@
 		<string>ksgn</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -127,6 +205,12 @@
 		<string>ksgt</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -135,6 +219,12 @@
 		<string>ksha</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -143,6 +233,12 @@
 		<string>ksla</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -151,6 +247,12 @@
 		<string>kslt</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -159,6 +261,12 @@
 		<string>ksot</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -167,6 +275,12 @@
 		<string>kspd</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -175,6 +289,12 @@
 		<string>ksph</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -183,6 +303,12 @@
 		<string>ksps</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -191,6 +317,12 @@
 		<string>ksqe</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -199,6 +331,12 @@
 		<string>ksre</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -207,6 +345,12 @@
 		<string>ksrm</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -215,6 +359,12 @@
 		<string>ksrr</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -223,6 +373,12 @@
 		<string>ksrv</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -231,6 +387,12 @@
 		<string>kssr</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -239,6 +401,12 @@
 		<string>ksst</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -247,6 +415,12 @@
 		<string>kstg</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -255,6 +429,12 @@
 		<string>kstr</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -263,6 +443,12 @@
 		<string>ksts</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -271,6 +457,12 @@
 		<string>ksun</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -279,6 +471,12 @@
 		<string>ksvf</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

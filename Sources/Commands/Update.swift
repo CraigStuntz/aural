@@ -7,12 +7,15 @@ struct UpdateAudioUnits {
     let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
     if !updateConfigs.noConfiguration.isEmpty {
       if verbosity != .quiet {
-        let headers = verbosity == .verbose 
-          ? [ "No update configurations found for:", "manufacturer", "subtype", "type" ] 
+        let headers =
+          verbosity == .verbose
+          ? ["No update configurations found for:", "manufacturer", "subtype", "type"]
           : ["No update configurations found for:"]
-        Table(headers: headers, 
-          data: updateConfigs.noConfiguration.map { component in describe(component) } )
-          .printToConsole()
+        Table(
+          headers: headers,
+          data: updateConfigs.noConfiguration.map { component in describe(component) }
+        )
+        .printToConsole()
         Console.standard()
       }
     }
@@ -92,12 +95,12 @@ struct UpdateAudioUnits {
   }
 
   static func describe(_ component: AVAudioUnitComponent) -> [String] {
-    var result = [ "\(component.manufacturerName) \(component.name) (\(component.versionString))" ]
+    var result = ["\(component.manufacturerName) \(component.name) (\(component.versionString))"]
     if verbosity == .verbose {
-      result.append(contentsOf: [ 
+      result.append(contentsOf: [
         component.audioComponentDescription.componentManufacturer.toString(),
         component.audioComponentDescription.componentSubType.toString(),
-        component.audioComponentDescription.componentType.toString()
+        component.audioComponentDescription.componentType.toString(),
       ])
     }
     return result
@@ -127,7 +130,9 @@ struct UpdateConfig {
       let compatible = Version.compatible(
         latestVersion: latestVersion, existingVersion: self.component.versionString)
       return .success(
-        UpdateSuccess(component: component, updateConfig: self, latestVersion: latestVersion, compatible: compatible))
+        UpdateSuccess(
+          component: component, updateConfig: self, latestVersion: latestVersion,
+          compatible: compatible))
     } catch {
       return .failure(
         .genericUpdateError(

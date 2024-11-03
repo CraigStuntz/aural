@@ -76,13 +76,14 @@ extension Aural {
     @OptionGroup var options: Options
 
     @Flag(
-      name: [ .customLong("write-config-file")],
+      name: [.customLong("write-config-file")],
       help: "Write configuration to plist file"
     )
     var writeConfigFile: Bool = false
 
     mutating func run() async {
-      await UpdateAudioUnits.run(options: options.assignVerbosity(), writeConfigFile: writeConfigFile)
+      await UpdateAudioUnits.run(
+        options: options.assignVerbosity(), writeConfigFile: writeConfigFile)
     }
   }
 

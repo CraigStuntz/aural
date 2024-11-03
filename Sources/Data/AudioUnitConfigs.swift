@@ -23,7 +23,7 @@ struct AudioUnitConfig: Codable {
     return AudioUnitConfig(
       manufacturer: manufacturer,
       name: component.audioComponentDescription.componentSubType.toString(),
-      system: system, 
+      system: system,
       typeName: component.audioComponentDescription.componentType.toString(),
       update: nil,
       versionJMESPath: nil,
@@ -71,10 +71,10 @@ struct AudioUnitConfigs {
   }
 
   func noMatch(config: AudioUnitConfig, components: [AVAudioUnitComponent]) -> Bool {
-    let contains: Bool = components.contains { component in 
-        component.audioComponentDescription.componentManufacturer.toString() == config.manufacturer
-        && component.audioComponentDescription.componentSubType.toString() == config.name 
-        && component.audioComponentDescription.componentType.toString() == config.typeName 
+    let contains: Bool = components.contains { component in
+      component.audioComponentDescription.componentManufacturer.toString() == config.manufacturer
+        && component.audioComponentDescription.componentSubType.toString() == config.name
+        && component.audioComponentDescription.componentType.toString() == config.typeName
     }
     return !contains
   }
@@ -87,9 +87,9 @@ struct AudioUnitConfigs {
 
   func toConfigs(_ components: [AVAudioUnitComponent]) -> [AudioUnitConfig] {
     var componentConfigs = components.map { component in toConfig(component) }
-    let noMatchingComponentConfigs: [AudioUnitConfig] = self.configs.filter { config in 
-        noMatch(config: config, components: components)
-      }
+    let noMatchingComponentConfigs: [AudioUnitConfig] = self.configs.filter { config in
+      noMatch(config: config, components: components)
+    }
     componentConfigs.append(contentsOf: noMatchingComponentConfigs)
     componentConfigs.sort { a, b in compareConfig(a, b) }
     return componentConfigs

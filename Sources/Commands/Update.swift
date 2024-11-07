@@ -29,36 +29,43 @@ struct UpdateAudioUnits {
       var current: [[String]] = []
       var failures: [[String]] = []
       var outOfDate: [[String]] = []
-      await withTaskGroup(of: Result<UpdateSuccess, UpdateError>.self) { group in
-        for updateConfig in updateConfigs.toUpdate {
-          group.addTask { await updateConfig.requestLatestVersion() }
+      await withTaskGroup(of: [Result<UpdateSuccess, UpdateError>].self) { group in
+        let byUrl = Dictionary(
+          grouping: updateConfigs.toUpdate,
+          by: { updateConfig in updateConfig.audioUnitConfig.versionUrl })
+        for updateUrl in byUrl.keys {
+          group.addTask {
+            await fetchResponseAndCheckVersions(url: updateUrl, updateConfigs: byUrl[updateUrl])
+          }
         }
-        for await result in group {
+        for await results in group {
           Console.standard(".", terminator: "")
-          switch result {
-          case .success(let updateSuccess):
-            let latestVersion = updateSuccess.latestVersion ?? "<unknown>"
-            let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
-            if updateSuccess.compatible {
-              current.append([
-                updateSuccess.component.manufacturerName,
-                updateSuccess.component.name,
-                latestVersion,
-                updateSuccess.updateConfig.component.versionString,
-              ])
-            } else {
-              outOfDate.append([
-                updateSuccess.component.manufacturerName,
-                updateSuccess.component.name,
-                latestVersion,
-                updateSuccess.updateConfig.component.versionString,
-                audioUnitConfig.update ?? "",
+          for result in results {
+            switch result {
+            case .success(let updateSuccess):
+              let latestVersion = updateSuccess.latestVersion ?? "<unknown>"
+              let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
+              if updateSuccess.compatible {
+                current.append([
+                  updateSuccess.component.manufacturerName,
+                  updateSuccess.component.name,
+                  latestVersion,
+                  updateSuccess.updateConfig.component.versionString,
+                ])
+              } else {
+                outOfDate.append([
+                  updateSuccess.component.manufacturerName,
+                  updateSuccess.component.name,
+                  latestVersion,
+                  updateSuccess.updateConfig.component.versionString,
+                  audioUnitConfig.update ?? "",
+                ])
+              }
+            case .failure(let updateError):
+              failures.append([
+                updateError.description
               ])
             }
-          case .failure(let updateError):
-            failures.append([
-              updateError.description
-            ])
           }
         }
       }
@@ -105,23 +112,41 @@ struct UpdateAudioUnits {
     }
     return result
   }
+
+  static func fetchResponseAndCheckVersions(url: String?, updateConfigs: [UpdateConfig]?) async
+    -> [Result<UpdateSuccess, UpdateError>]
+  {
+    guard let urlString = url else {
+      fatalError("Version URL is not assigned.")
+    }
+    guard let configs = updateConfigs else {
+      fatalError("[UpdateConfig] array was not passed in.")
+    }
+    guard let versionUrl = URL(string: urlString) else {
+      Console.error("\(urlString) is not a valid URL.")
+      return []
+    }
+    do {
+      let body = try await Http.get(url: versionUrl)
+      return configs.map { updateConfig in
+        updateConfig.checkCompatibility(responseBody: body)
+      }
+    } catch {
+      Console.error("Fetching \(urlString) failed because of \(error).")
+      return []
+    }
+  }
 }
 
 struct UpdateConfig {
   let component: AVAudioUnitComponent
   let audioUnitConfig: AudioUnitConfig
 
-  func requestLatestVersion() async -> Result<UpdateSuccess, UpdateError> {
-    guard let versionUrl = self.audioUnitConfig.versionUrl, !versionUrl.isEmpty else {
-      return .failure(
-        .noConfiguration(
-          description:
-            "There is no update version URL for \(self.audioUnitConfig.manufacturer) \(self.audioUnitConfig.name)"
-        ))
-    }
+  func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateError> {
     do {
       guard
-        let latestVersion = try await Version.getAndParse(audioUnitConfig: self.audioUnitConfig)
+        let latestVersion = try Version.parse(
+          responseBody: responseBody, audioUnitConfig: self.audioUnitConfig)
       else {
         return .failure(
           .configurationNotFoundInHttpResult(
@@ -165,7 +190,7 @@ struct UpdateConfigs {
               audioUnitConfig: audioUnitConfig
             ))
         } else if verbosity == .verbose {
-            noConfiguration.append(component)
+          noConfiguration.append(component)
         }
       }
     }

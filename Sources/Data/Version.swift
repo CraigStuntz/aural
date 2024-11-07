@@ -41,47 +41,29 @@ struct Version {
   }
 
   /// Asynchronously gets the latest version resource and parses the laterst version numver from that resource
-  static func getAndParse(audioUnitConfig: AudioUnitConfig) async throws -> String? {
-    guard let versionUrl = audioUnitConfig.versionUrl,
-      let url = URL(string: versionUrl)
-    else {
-      fatalError(
-        "audioUnitConfig.versionUrl \(audioUnitConfig.versionUrl as Optional) must be non-nil and a valid URL before calling this function. Check it!"
-      )
-    }
-    guard let body = try await httpGet(url: url) else {
-      Console.error("Fetching \(url) failed.")
-      return nil
-    }
+  static func parse(responseBody: String, audioUnitConfig: AudioUnitConfig) throws -> String? {
     if let jmesPath = audioUnitConfig.versionJMESPath {
-      guard let value: String = try parseWithJMESPath(body, jmesPath) else {
-        Console.error("Parsing document \(url) with JMESPath failed.")
+      guard let value: String = try parseWithJMESPath(responseBody, jmesPath) else {
+        Console.error(
+          "Parsing response for Audio Unit \(audioUnitConfig.name) with JMESPath failed.")
         return nil
       }
       return value
     }
     if let jmesPath = audioUnitConfig.versionJMESPathInt {
-      guard let value: Int = try parseWithJMESPath(body, jmesPath) else {
-        Console.error("Parsing document \(url) with JMESPath failed.")
+      guard let value: Int = try parseWithJMESPath(responseBody, jmesPath) else {
+        Console.error(
+          "Parsing response for Audio Unit \(audioUnitConfig.name) with JMESPath failed.")
         return nil
       }
       return fromInt(value)
     }
     if let regex = audioUnitConfig.versionRegex {
-      return try parseWithRegex(body, regex)
+      return try parseWithRegex(responseBody, regex)
     }
-    Console.error("No means of parsing \(url) is configured")
+    Console.error(
+      "No means of parsing response for Audio Unit \(audioUnitConfig.name) is configured")
     return nil
-  }
-
-  static func httpGet(url: URL) async throws -> String? {
-    let request = HTTPRequest(method: .get, url: url)
-    let (data, response) = try await URLSession.shared.data(for: request)
-    guard response.status == .ok else {
-      Console.warning("Failed to download \(url), status \(response.status)")
-      return nil
-    }
-    return String(decoding: data, as: UTF8.self)
   }
 
   /// Resources represent version numvers differently. This function attempts to

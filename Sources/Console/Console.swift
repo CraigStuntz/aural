@@ -4,7 +4,7 @@ enum Verbosity {
   case quiet, standard, verbose
 }
 
-var verbosity = Verbosity.standard
+nonisolated(unsafe) var verbosity = Verbosity.standard
 
 struct StderrOutputStream: TextOutputStream {
   mutating func write(_ string: String) {

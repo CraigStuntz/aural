@@ -28,7 +28,7 @@ class AuvalMustPass: Rule {
     // But if it did we would display it to the user
     let error = Pipe()
     process.standardError = error
-    var processError = ""
+    nonisolated(unsafe) var processError = ""
     process.terminationHandler = { process in
       let errorData = error.fileHandleForReading.readDataToEndOfFile()
       processError = String(data: errorData, encoding: .utf8) ?? ""

@@ -2,16 +2,18 @@ import AVFoundation
 import ArgumentParser
 
 struct ValidateAudioUnits {
-  static let allRules: [Rule] = [
+  let allRules: [Rule] = [
     AuvalMustPass(),
     ComponentRequiredProperties(),
     FactoryPresetsMustExist(),
     PresetStateMustWork(),
   ]
 
-  static let allRuleNames: [String] = allRules.map { $0.ruleName }
+  func allRuleNames() -> [String] {
+    return allRules.map { $0.ruleName }
+  }
 
-  static func rules(_ rule: String?) -> [Rule] {
+  func rules(_ rule: String?) -> [Rule] {
     guard let name = rule else {
       return allRules
     }
@@ -20,7 +22,7 @@ struct ValidateAudioUnits {
     }
   }
 
-  static func run(options: Options, rule: String?) async throws {
+  func run(options: Options, rule: String?) async throws {
     let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     let rules = rules(rule)
@@ -46,7 +48,7 @@ struct ValidateAudioUnits {
     }
   }
 
-  private static func runValidationFor(
+  private func runValidationFor(
     _ component: AVAudioUnitComponent,
     _ config: AudioUnitConfig?,
     _ rules: [Rule]

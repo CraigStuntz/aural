@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "type": "swift-lldb",
+            "type": "lldb",
             "request": "launch",
             "sourceLanguages": [
                 "swift"
@@ -30,7 +30,7 @@
             "preLaunchTask": "swift: Build All"
         },
         {
-            "type": "swift-lldb",
+            "type": "lldb",
             "request": "launch",
             "sourceLanguages": [
                 "swift"

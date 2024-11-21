@@ -138,8 +138,20 @@ struct UpdateAudioUnits {
   }
 }
 
-struct UpdateConfig {
-  let component: AVAudioUnitComponent
+struct UpdateComponent: Sendable {
+  let name: String
+  let manufacturerName: String
+  let versionString: String
+
+  init(avAudioUnitComponent: AVAudioUnitComponent) {
+    self.name = avAudioUnitComponent.name
+    self.manufacturerName = avAudioUnitComponent.manufacturerName
+    self.versionString = avAudioUnitComponent.versionString
+  }
+}
+
+struct UpdateConfig: Sendable {
+  let component: UpdateComponent
   let audioUnitConfig: AudioUnitConfig
 
   func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateError> {
@@ -156,7 +168,9 @@ struct UpdateConfig {
         latestVersion: latestVersion, existingVersion: self.component.versionString)
       return .success(
         UpdateSuccess(
-          component: component, updateConfig: self, latestVersion: latestVersion,
+          component: component,
+          updateConfig: self,
+          latestVersion: latestVersion,
           compatible: compatible))
     } catch {
       return .failure(
@@ -186,7 +200,7 @@ struct UpdateConfigs {
         {
           toUpdate.append(
             UpdateConfig(
-              component: component,
+              component: UpdateComponent(avAudioUnitComponent: component),
               audioUnitConfig: audioUnitConfig
             ))
         } else if verbosity == .verbose {
@@ -217,8 +231,8 @@ enum UpdateError: Error, CustomStringConvertible {
   }
 }
 
-struct UpdateSuccess {
-  let component: AVAudioUnitComponent
+struct UpdateSuccess: Sendable {
+  let component: UpdateComponent
   let updateConfig: UpdateConfig
   let latestVersion: String?
   let compatible: Bool

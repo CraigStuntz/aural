@@ -1,9 +1,9 @@
 import AVFoundation
-import ArgumentParser
+@preconcurrency import ArgumentParser
 
 @main
 struct Aural: AsyncParsableCommand {
-  static var configuration = CommandConfiguration(
+  static let configuration = CommandConfiguration(
     abstract: "A utility for managing Audio Units",
     version: "0.0.1",
     subcommands: [Export.self, List.self, Update.self, Validate.self],
@@ -47,7 +47,7 @@ struct Options: ParsableArguments {
 
 extension Aural {
   struct Export: ParsableCommand {
-    static var configuration =
+    static let configuration =
       CommandConfiguration(
         abstract: "Exports the installed Audio Units and their presets. (unimplemented, for now)",
         subcommands: [Logic.self],
@@ -58,7 +58,7 @@ extension Aural {
   }
 
   struct List: ParsableCommand {
-    static var configuration =
+    static let configuration =
       CommandConfiguration(abstract: "Outputs installed Audio Units")
 
     @OptionGroup var options: Options
@@ -69,7 +69,7 @@ extension Aural {
   }
 
   struct Update: AsyncParsableCommand {
-    static var configuration = CommandConfiguration(
+    static let configuration = CommandConfiguration(
       commandName: "update",
       abstract: "Queries for available updates for installed Audio Units")
 
@@ -88,28 +88,34 @@ extension Aural {
   }
 
   struct Validate: AsyncParsableCommand {
-    static var configuration =
+    static let configuration =
       CommandConfiguration(
         abstract: "Validates (checks for common errors) the installed Audio Units"
       )
+
+    static func allRuleNames() -> [String] {
+      let validate = ValidateAudioUnits()
+      return validate.allRuleNames()
+    }
 
     @OptionGroup var options: Options
 
     @Option(
       help: "Run only one validation, e.g. --rule AuvalMustPass",
-      completion: .list(ValidateAudioUnits.allRuleNames)
+      completion: .list(allRuleNames())
     )
     var rule: String?
 
     mutating func run() async throws {
-      try await ValidateAudioUnits.run(options: options.assignVerbosity(), rule: rule)
+      let validate = ValidateAudioUnits()
+      try await validate.run(options: options.assignVerbosity(), rule: rule)
     }
   }
 }
 
 extension Aural.Export {
   struct Logic: AsyncParsableCommand {
-    static var configuration = CommandConfiguration(
+    static let configuration = CommandConfiguration(
       abstract:
         "Exports Audio Unit and preset names to Logic Pro libraries. (unimplemented, for now)"
     )

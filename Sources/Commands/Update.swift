@@ -5,99 +5,14 @@ struct UpdateAudioUnits {
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     let audioUnitConfigs = AudioUnitConfigs()
     let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
-    if !updateConfigs.noConfiguration.isEmpty {
-      if verbosity != .quiet {
-        let headers =
-          verbosity == .verbose
-          ? ["No update configurations found for:", "manufacturer", "subtype", "type"]
-          : ["No update configurations found for:"]
-        Table(
-          headers: headers,
-          data: updateConfigs.noConfiguration.map { component in describe(component) }
-        )
-        .printToConsole()
-        Console.standard()
-      }
-    }
+    printNoConfiguration(updateConfigs.noConfiguration)
     if writeConfigFile {
       audioUnitConfigs.writeConfig(components, "AudioUnits.plist")
     }
     if updateConfigs.toUpdate.isEmpty {
       Console.standard("No Audio Units configured for update.")
     } else {
-      Console.standard("Requesting current versions from manufacturer's sites...", terminator: "")
-      var current: [[String]] = []
-      var failures: [[String]] = []
-      var outOfDate: [[String]] = []
-      await withTaskGroup(of: [Result<UpdateSuccess, UpdateError>].self) { group in
-        let byUrl = Dictionary(
-          grouping: updateConfigs.toUpdate,
-          by: { updateConfig in updateConfig.audioUnitConfig.versionUrl })
-        for updateUrl in byUrl.keys {
-          group.addTask {
-            await fetchResponseAndCheckVersions(url: updateUrl, updateConfigs: byUrl[updateUrl])
-          }
-        }
-        for await results in group {
-          Console.standard(".", terminator: "")
-          for result in results {
-            switch result {
-            case .success(let updateSuccess):
-              let latestVersion = updateSuccess.latestVersion ?? "<unknown>"
-              let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
-              if updateSuccess.compatible {
-                current.append([
-                  updateSuccess.component.manufacturerName,
-                  updateSuccess.component.name,
-                  latestVersion,
-                  updateSuccess.updateConfig.component.versionString,
-                ])
-              } else {
-                outOfDate.append([
-                  updateSuccess.component.manufacturerName,
-                  updateSuccess.component.name,
-                  latestVersion,
-                  updateSuccess.updateConfig.component.versionString,
-                  audioUnitConfig.update ?? "",
-                ])
-              }
-            case .failure(let updateError):
-              failures.append([
-                updateError.description
-              ])
-            }
-          }
-        }
-      }
-
-      Console.standard()  // Terminate "Requesting current versions..." line
-      Console.standard()  // insert blank line
-      if !current.isEmpty && verbosity != .quiet {
-        Console.standard("Up to date Audio Units:")
-        Table(
-          headers: ["manufacturer", "name", "latest version", "local version"],
-          data: current
-        ).printToConsole()
-      }
-      if !(current.isEmpty && outOfDate.isEmpty) {
-        Console.standard()
-      }
-      if !outOfDate.isEmpty {
-        Console.standard("Audio Units which need to be updated:")
-        Table(
-          headers: [
-            "manufacturer", "name", "latest version", "local version", "update instructions",
-          ],
-          data: outOfDate
-        ).printToConsole()
-      }
-      if !outOfDate.isEmpty && !failures.isEmpty {
-        Console.force()
-      }
-      if !failures.isEmpty {
-        Console.error("Errors encountered during update:")
-        Table(headers: [], data: failures).printToConsole()
-      }
+      await downloadAndPrint(updateConfigs)
     }
   }
 
@@ -136,22 +51,101 @@ struct UpdateAudioUnits {
       return []
     }
   }
-}
 
-struct UpdateComponent: Sendable {
-  let name: String
-  let manufacturerName: String
-  let versionString: String
+  private static func downloadAndPrint(_ updateConfigs: UpdateConfigs) async {
+    Console.standard("Requesting current versions from manufacturer's sites...", terminator: "")
+    var current: [[String]] = []
+    var failures: [[String]] = []
+    var outOfDate: [[String]] = []
+    await withTaskGroup(of: [Result<UpdateSuccess, UpdateError>].self) { group in
+      let byUrl = Dictionary(
+        grouping: updateConfigs.toUpdate,
+        by: { updateConfig in updateConfig.audioUnitConfig.versionUrl })
+      for updateUrl in byUrl.keys {
+        group.addTask {
+          await fetchResponseAndCheckVersions(url: updateUrl, updateConfigs: byUrl[updateUrl])
+        }
+      }
+      for await results in group {
+        Console.standard(".", terminator: "")
+        for result in results {
+          switch result {
+          case .success(let updateSuccess):
+            let latestVersion = updateSuccess.latestVersion ?? "<unknown>"
+            let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
+            if updateSuccess.compatible {
+              current.append([
+                updateSuccess.metadata.manufacturerName,
+                updateSuccess.metadata.name,
+                latestVersion,
+                updateSuccess.updateConfig.metadata.versionString,
+              ])
+            } else {
+              outOfDate.append([
+                updateSuccess.metadata.manufacturerName,
+                updateSuccess.metadata.name,
+                latestVersion,
+                updateSuccess.updateConfig.metadata.versionString,
+                audioUnitConfig.update ?? "",
+              ])
+            }
+          case .failure(let updateError):
+            failures.append([
+              updateError.description
+            ])
+          }
+        }
+      }
+    }
 
-  init(avAudioUnitComponent: AVAudioUnitComponent) {
-    self.name = avAudioUnitComponent.name
-    self.manufacturerName = avAudioUnitComponent.manufacturerName
-    self.versionString = avAudioUnitComponent.versionString
+    Console.standard()  // Terminate "Requesting current versions..." line
+    Console.standard()  // insert blank line
+    if !current.isEmpty && verbosity != .quiet {
+      Console.standard("Up to date Audio Units:")
+      Table(
+        headers: ["manufacturer", "name", "latest version", "local version"],
+        data: current
+      ).printToConsole()
+    }
+    if !(current.isEmpty && outOfDate.isEmpty) {
+      Console.standard()
+    }
+    if !outOfDate.isEmpty {
+      Console.standard("Audio Units which need to be updated:")
+      Table(
+        headers: [
+          "manufacturer", "name", "latest version", "local version", "update instructions",
+        ],
+        data: outOfDate
+      ).printToConsole()
+    }
+    if !outOfDate.isEmpty && !failures.isEmpty {
+      Console.force()
+    }
+    if !failures.isEmpty {
+      Console.error("Errors encountered during update:")
+      Table(headers: [], data: failures).printToConsole()
+    }
+  }
+
+  private static func printNoConfiguration(_ noConfiguration: [AVAudioUnitComponent]) {
+    if !noConfiguration.isEmpty && verbosity != .quiet {
+      let headers =
+        verbosity == .verbose
+        ? ["No update configurations found for:", "manufacturer", "subtype", "type"]
+        : ["No update configurations found for:"]
+      Table(
+        headers: headers,
+        data: noConfiguration.map { component in describe(component) }
+      )
+      .printToConsole()
+      Console.standard()
+    }
   }
 }
 
 struct UpdateConfig: Sendable {
-  let component: UpdateComponent
+  let metadata: ComponentMetadata
   let audioUnitConfig: AudioUnitConfig
 
   func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateError> {
@@ -162,13 +156,13 @@ struct UpdateConfig: Sendable {
       else {
         return .failure(
           .configurationNotFoundInHttpResult(
-            description: "Current version of \(self.component.name) not found"))
+            description: "Current version of \(self.metadata.name) not found"))
       }
       let compatible = Version.compatible(
-        latestVersion: latestVersion, existingVersion: self.component.versionString)
+        latestVersion: latestVersion, existingVersion: self.metadata.versionString)
       return .success(
         UpdateSuccess(
-          component: component,
+          metadata: metadata,
           updateConfig: self,
           latestVersion: latestVersion,
           compatible: compatible))
@@ -176,7 +170,7 @@ struct UpdateConfig: Sendable {
       return .failure(
         .genericUpdateError(
           description:
-            "Caught error \(error) while checking the current version of \(self.component.name)"
+            "Caught error \(error) while checking the current version of \(self.metadata.name)"
         ))
     }
   }
@@ -200,7 +194,7 @@ struct UpdateConfigs {
         {
           toUpdate.append(
             UpdateConfig(
-              component: UpdateComponent(avAudioUnitComponent: component),
+              metadata: ComponentMetadata(avAudioUnitComponent: component),
               audioUnitConfig: audioUnitConfig
             ))
         } else if verbosity == .verbose {
@@ -232,7 +226,7 @@ enum UpdateError: Error, CustomStringConvertible {
 }
 
 struct UpdateSuccess: Sendable {
-  let component: UpdateComponent
+  let metadata: ComponentMetadata
   let updateConfig: UpdateConfig
   let latestVersion: String?
   let compatible: Bool

@@ -4,6 +4,9 @@ enum Verbosity {
   case quiet, standard, verbose
 }
 
+// This is modified at most once in `assignVerbosity` at program startup and
+// never modified again, so it's concurrency safe in practice although the
+// compiler can't verify this fact.
 nonisolated(unsafe) var verbosity = Verbosity.standard
 
 struct StderrOutputStream: TextOutputStream {

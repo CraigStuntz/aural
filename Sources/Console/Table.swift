@@ -10,6 +10,19 @@ struct Table {
     self.maxesByColumn = Table.maxes(headers, data)
   }
 
+  /// Create a table using type information.
+  /// - Parameters:
+  ///   - reflecting: A sample object to be used for generation of header names
+  ///   - data: A list of data objects, which will be displayed using `Mirror`
+  init<T>(reflecting: T, data: [T]) {
+    let mirror = Mirror(reflecting: reflecting)
+    self.headers = mirror.children.map { child in child.label ?? "" }
+    self.data = data.map { datum in
+      Mirror(reflecting: datum).children.map { val in String(describing: val.value) }
+    }
+    self.maxesByColumn = Table.maxes(self.headers, self.data)
+  }
+
   /// finds the maximum data/header width of each column
   static func maxes(_ headers: [String], _ data: [[String]]) -> [Int] {
     if headers.isEmpty && data.isEmpty {

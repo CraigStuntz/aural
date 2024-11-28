@@ -17,6 +17,22 @@ struct TableTests {
     #expect(table.maxesByColumn[1] == 6, "maxesByColumn[1] should equal 6")
   }
 
+  struct TableTestStruct {
+    let name: String
+    let value: Int
+  }
+
+  @Test func initializeWithReflection() async throws {
+    let table = Table(
+      reflecting: TableTestStruct(name: "", value: 0),
+      data: [
+        TableTestStruct(name: "Foo", value: 1),
+        TableTestStruct(name: "Bar", value: 2),
+      ])
+    #expect(table.data == [["Foo", "1"], ["Bar", "2"]])
+    #expect(table.headers == ["name", "value"])
+  }
+
   @Test func initWithoutHeaders() {
     let table = Table(headers: [], data: self.data)
 

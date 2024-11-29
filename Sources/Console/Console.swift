@@ -9,9 +9,32 @@ enum Verbosity {
 // compiler can't verify this fact.
 nonisolated(unsafe) var verbosity = Verbosity.standard
 
-struct StderrOutputStream: TextOutputStream {
-  mutating func write(_ string: String) {
-    fputs(string, stderr)
+protocol Handle {
+  var handle: FileHandle { get }
+  var pointer: UnsafeMutablePointer<FILE> { get }
+}
+
+struct StderrOutputStream: Handle, TextOutputStream {
+  let handle = FileHandle.standardError
+  let pointer = stderr
+
+  func write(_ string: String) {
+    guard let data = string.data(using: .utf8) else {
+      fatalError()  // encoding failure: handle as you wish
+    }
+    handle.write(data)
+  }
+}
+
+struct StdoutOutputStream: Handle, TextOutputStream {
+  let handle = FileHandle.standardOutput
+  let pointer = stdout
+
+  func write(_ string: String) {
+    guard let data = string.data(using: .utf8) else {
+      fatalError()  // encoding failure: handle as you wish
+    }
+    handle.write(data)
   }
 }
 
@@ -21,8 +44,8 @@ struct Console {
     && (ProcessInfo.processInfo.environment["TERM"] ?? "").lowercased() != "dumb"
 
   private static func eprint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-    var standardError = StderrOutputStream()
-    print(items, separator: separator, terminator: terminator, to: &standardError)
+    var standardErr = StderrOutputStream()
+    print(items, separator: separator, terminator: terminator, to: &standardErr)
     if terminator == "" {
       // otherwise Swift won't flush the handle -- screen won't be updated
       // until newline
@@ -30,14 +53,17 @@ struct Console {
     }
   }
 
-  private static func intenalPrint(
-    _ items: Any..., separator: String = " ", terminator: String = "\n"
-  ) {
-    print(items, separator: separator, terminator: terminator)
+  private static func intenalPrint<Target>(
+    _ items: Any...,
+    separator: String = " ",
+    terminator: String = "\n",
+    to output: inout Target
+  ) where Target: Handle, Target: TextOutputStream {
+    print(items, separator: separator, terminator: terminator, to: &output)
     if terminator == "" {
       // otherwise Swift won't flush the handle -- screen won't be updated
       // until newline
-      fflush(stdout)
+      fflush(output.pointer)
     }
   }
 
@@ -55,20 +81,23 @@ struct Console {
   /// `verbosity` setting (e.g., when running `aural list`). This is for those
   /// times.
   static func force(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-    intenalPrint(items, separator: separator, terminator: terminator)
+    var standardOut = StdoutOutputStream()
+    intenalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
   }
 
   /// Sends a message to `stdout` if the `verbosity` is not `.quiet`
   static func standard(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     if verbosity != .quiet {
-      intenalPrint(items, separator: separator, terminator: terminator)
+      var standardOut = StdoutOutputStream()
+      intenalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
     }
   }
 
   /// Sends a message to `stdout` if the `verbosity` is `.verbose`
   static func verbose(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     if verbosity == .verbose {
-      intenalPrint(items, separator: separator, terminator: terminator)
+      var standardOut = StdoutOutputStream()
+      intenalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
     }
   }
 }

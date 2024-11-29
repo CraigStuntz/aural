@@ -16,19 +16,69 @@ struct UpdateAudioUnits {
     }
   }
 
-  static func describe(_ component: AVAudioUnitComponent) -> [String] {
-    var result = ["\(component.manufacturerName) \(component.name) (\(component.versionString))"]
-    if verbosity == .verbose {
-      result.append(contentsOf: [
-        component.audioComponentDescription.componentManufacturer.toString(),
-        component.audioComponentDescription.componentSubType.toString(),
-        component.audioComponentDescription.componentType.toString(),
-      ])
+  private static func downloadAndPrint(_ updateConfigs: UpdateConfigs) async {
+    Console.standard("Requesting current versions from manufacturer's sites...", terminator: "")
+    var current: [UpdateUpToDate] = []
+    var failures: [[String]] = []
+    var outOfDate: [UpdateNeedsUpdate] = []
+    await withTaskGroup(of: [Result<UpdateSuccess, UpdateError>].self) { group in
+      let byUrl = Dictionary(
+        grouping: updateConfigs.toUpdate,
+        by: { updateConfig in updateConfig.audioUnitConfig.versionUrl })
+      for updateUrl in byUrl.keys {
+        group.addTask {
+          await fetchResponseAndCheckVersions(url: updateUrl, updateConfigs: byUrl[updateUrl])
+        }
+      }
+      for await results in group {
+        Console.standard(".", terminator: "")
+        for result in results {
+          switch result {
+          case .success(let updateSuccess):
+            let latestVersion = updateSuccess.latestVersion ?? "<unknown>"
+            let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
+            if updateSuccess.compatible {
+              current.append(
+                UpdateUpToDate(updateSuccess: updateSuccess, latestVersion: latestVersion))
+            } else {
+              outOfDate.append(
+                UpdateNeedsUpdate(
+                  updateSuccess: updateSuccess, latestVersion: latestVersion,
+                  updateInstructions: audioUnitConfig.update))
+            }
+          case .failure(let updateError):
+            failures.append([
+              updateError.description
+            ])
+          }
+        }
+      }
     }
-    return result
+
+    Console.standard()  // Terminate "Requesting current versions..." line
+    Console.standard()  // insert blank line
+    if !current.isEmpty && verbosity != .quiet {
+      Console.standard("Up to date Audio Units:")
+      Table(reflecting: UpdateUpToDate(), data: current).printToConsole()
+    }
+    if !(current.isEmpty && outOfDate.isEmpty) {
+      Console.standard()
+    }
+    if !outOfDate.isEmpty {
+      Console.standard("Audio Units which need to be updated:")
+      Table(reflecting: UpdateNeedsUpdate(), data: outOfDate).printToConsole()
+    }
+    if !outOfDate.isEmpty && !failures.isEmpty {
+      Console.force()
+    }
+    if !failures.isEmpty {
+      Console.error("Errors encountered during update:")
+      Table(headers: [], data: failures).printToConsole()
+    }
   }
 
-  static func fetchResponseAndCheckVersions(url: String?, updateConfigs: [UpdateConfig]?) async
+  private static func fetchResponseAndCheckVersions(url: String?, updateConfigs: [UpdateConfig]?)
+    async
     -> [Result<UpdateSuccess, UpdateError>]
   {
     guard let urlString = url else {
@@ -52,91 +102,11 @@ struct UpdateAudioUnits {
     }
   }
 
-  private static func downloadAndPrint(_ updateConfigs: UpdateConfigs) async {
-    Console.standard("Requesting current versions from manufacturer's sites...", terminator: "")
-    var current: [[String]] = []
-    var failures: [[String]] = []
-    var outOfDate: [[String]] = []
-    await withTaskGroup(of: [Result<UpdateSuccess, UpdateError>].self) { group in
-      let byUrl = Dictionary(
-        grouping: updateConfigs.toUpdate,
-        by: { updateConfig in updateConfig.audioUnitConfig.versionUrl })
-      for updateUrl in byUrl.keys {
-        group.addTask {
-          await fetchResponseAndCheckVersions(url: updateUrl, updateConfigs: byUrl[updateUrl])
-        }
-      }
-      for await results in group {
-        Console.standard(".", terminator: "")
-        for result in results {
-          switch result {
-          case .success(let updateSuccess):
-            let latestVersion = updateSuccess.latestVersion ?? "<unknown>"
-            let audioUnitConfig = updateSuccess.updateConfig.audioUnitConfig
-            if updateSuccess.compatible {
-              current.append([
-                updateSuccess.metadata.manufacturerName,
-                updateSuccess.metadata.name,
-                latestVersion,
-                updateSuccess.updateConfig.metadata.versionString,
-              ])
-            } else {
-              outOfDate.append([
-                updateSuccess.metadata.manufacturerName,
-                updateSuccess.metadata.name,
-                latestVersion,
-                updateSuccess.updateConfig.metadata.versionString,
-                audioUnitConfig.update ?? "",
-              ])
-            }
-          case .failure(let updateError):
-            failures.append([
-              updateError.description
-            ])
-          }
-        }
-      }
-    }
-
-    Console.standard()  // Terminate "Requesting current versions..." line
-    Console.standard()  // insert blank line
-    if !current.isEmpty && verbosity != .quiet {
-      Console.standard("Up to date Audio Units:")
-      Table(
-        headers: ["manufacturer", "name", "latest version", "local version"],
-        data: current
-      ).printToConsole()
-    }
-    if !(current.isEmpty && outOfDate.isEmpty) {
-      Console.standard()
-    }
-    if !outOfDate.isEmpty {
-      Console.standard("Audio Units which need to be updated:")
-      Table(
-        headers: [
-          "manufacturer", "name", "latest version", "local version", "update instructions",
-        ],
-        data: outOfDate
-      ).printToConsole()
-    }
-    if !outOfDate.isEmpty && !failures.isEmpty {
-      Console.force()
-    }
-    if !failures.isEmpty {
-      Console.error("Errors encountered during update:")
-      Table(headers: [], data: failures).printToConsole()
-    }
-  }
-
   private static func printNoConfiguration(_ noConfiguration: [AVAudioUnitComponent]) {
     if !noConfiguration.isEmpty && verbosity != .quiet {
-      let headers =
-        verbosity == .verbose
-        ? ["No update configurations found for:", "manufacturer", "subtype", "type"]
-        : ["No update configurations found for:"]
       Table(
-        headers: headers,
-        data: noConfiguration.map { component in describe(component) }
+        reflecting: UpdateNoConfiguration(),
+        data: noConfiguration.map { UpdateNoConfiguration(avAudioUnitComponent: $0) }
       )
       .printToConsole()
       Console.standard()
@@ -197,7 +167,7 @@ struct UpdateConfigs {
               metadata: ComponentMetadata(avAudioUnitComponent: component),
               audioUnitConfig: audioUnitConfig
             ))
-        } else if verbosity == .verbose {
+        } else {
           noConfiguration.append(component)
         }
       }
@@ -230,4 +200,115 @@ struct UpdateSuccess: Sendable {
   let updateConfig: UpdateConfig
   let latestVersion: String?
   let compatible: Bool
+}
+
+// Result types for display in a Table
+
+struct UpdateNoConfiguration: CustomReflectable {
+  let componentDescription: String
+  let fourLetterCodes: String
+
+  init() {
+    componentDescription = ""
+    fourLetterCodes = ""
+  }
+
+  init(avAudioUnitComponent: AVAudioUnitComponent) {
+    componentDescription =
+      "\(avAudioUnitComponent.manufacturerName) \(avAudioUnitComponent.name) (\(avAudioUnitComponent.versionString))"
+    fourLetterCodes = ComponentMetadata.audioComponentDescriptionToFourLetterCodes(
+      avAudioUnitComponent.audioComponentDescription)
+  }
+
+  var customMirror: Mirror {
+    var children: [Mirror.Child] = [
+      ("No update configurations found for:", componentDescription)
+    ]
+    if verbosity == .verbose {
+      children.append(("type subt mnfr", fourLetterCodes))
+    }
+    return Mirror(self, children: children)
+  }
+}
+
+struct UpdateNeedsUpdate: CustomReflectable {
+  let manufacturer: String
+  let name: String
+  let latestVersion: String
+  let localVersion: String
+  let updateInstructions: String
+  let fourLetterCodes: String
+
+  init() {
+    manufacturer = ""
+    name = ""
+    latestVersion = ""
+    localVersion = ""
+    updateInstructions = ""
+    fourLetterCodes = ""
+  }
+
+  init(updateSuccess: UpdateSuccess, latestVersion: String, updateInstructions: String?) {
+    manufacturer = updateSuccess.metadata.manufacturerName
+    name = updateSuccess.metadata.name
+    self.latestVersion = latestVersion
+    localVersion = updateSuccess.updateConfig.metadata.versionString
+    self.updateInstructions = updateInstructions ?? ""
+    fourLetterCodes = ComponentMetadata.audioComponentDescriptionToFourLetterCodes(
+      updateSuccess.metadata.audioComponentDescription
+    )
+  }
+
+  var customMirror: Mirror {
+    var children: [Mirror.Child] = [
+      ("manufacturer", manufacturer),
+      ("name", name),
+      ("latest version", latestVersion),
+      ("local version", localVersion),
+      ("update instructions", updateInstructions),
+    ]
+    if verbosity == .verbose {
+      children.append(("type subt mnfr", fourLetterCodes))
+    }
+    return Mirror(self, children: children)
+  }
+}
+
+struct UpdateUpToDate: CustomReflectable {
+  let manufacturer: String
+  let name: String
+  let latestVersion: String
+  let localVersion: String
+  let fourLetterCodes: String
+
+  init() {
+    manufacturer = ""
+    name = ""
+    latestVersion = ""
+    localVersion = ""
+    fourLetterCodes = ""
+  }
+
+  init(updateSuccess: UpdateSuccess, latestVersion: String) {
+    manufacturer = updateSuccess.metadata.manufacturerName
+    name = updateSuccess.metadata.name
+    self.latestVersion = latestVersion
+    localVersion = updateSuccess.updateConfig.metadata.versionString
+    fourLetterCodes = ComponentMetadata.audioComponentDescriptionToFourLetterCodes(
+      updateSuccess.metadata.audioComponentDescription
+    )
+  }
+
+  var customMirror: Mirror {
+    var children: [Mirror.Child] = [
+      ("manufacturer", manufacturer),
+      ("name", name),
+      ("latest version", latestVersion),
+      ("local version", localVersion),
+    ]
+    if verbosity == .verbose {
+      children.append(("type subt mnfr", fourLetterCodes))
+    }
+    return Mirror(self, children: children)
+  }
 }

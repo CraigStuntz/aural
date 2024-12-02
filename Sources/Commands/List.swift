@@ -4,6 +4,6 @@ struct ListAudioUnits {
     let data = components.map { ComponentMetadata(avAudioUnitComponent: $0) }
     Table(
       reflecting: ComponentMetadata(), data: data
-    ).printToConsole()
+    ).printToConsole(level: .force)
   }
 }

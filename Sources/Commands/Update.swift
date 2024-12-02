@@ -59,17 +59,17 @@ struct UpdateAudioUnits {
     Console.standard()  // insert blank line
     if !current.isEmpty && verbosity != .quiet {
       Console.standard("Up to date Audio Units:")
-      Table(reflecting: UpdateUpToDate(), data: current).printToConsole()
+      Table(reflecting: UpdateUpToDate(), data: current).printToConsole(level: .standard)
     }
     if !(current.isEmpty && outOfDate.isEmpty) {
       Console.standard()
     }
     if !outOfDate.isEmpty {
       Console.standard("Audio Units which need to be updated:")
-      Table(reflecting: UpdateNeedsUpdate(), data: outOfDate).printToConsole()
+      Table(reflecting: UpdateNeedsUpdate(), data: outOfDate).printToConsole(level: .standard)
     }
     if !outOfDate.isEmpty && !failures.isEmpty {
-      Console.force()
+      Console.standard()
     }
     if !failures.isEmpty {
       Console.error("Errors encountered during update:")

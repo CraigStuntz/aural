@@ -1,5 +1,12 @@
 import Foundation
 
+/// These are different log levels which can be compared with the `--verbosity`
+/// level to determine if we should output to the screen
+enum Level {
+  case force, standard, verbose
+}
+
+/// This represents possible values for the `--verbosity` flag
 enum Verbosity {
   case quiet, standard, verbose
 }
@@ -9,15 +16,12 @@ enum Verbosity {
 // compiler can't verify this fact.
 nonisolated(unsafe) var verbosity = Verbosity.standard
 
-protocol Handle {
+protocol Handle: TextOutputStream {
   var handle: FileHandle { get }
   var pointer: UnsafeMutablePointer<FILE> { get }
 }
 
-struct StderrOutputStream: Handle, TextOutputStream {
-  let handle = FileHandle.standardError
-  let pointer = stderr
-
+extension Handle {
   func write(_ string: String) {
     guard let data = string.data(using: .utf8) else {
       fatalError()  // encoding failure: handle as you wish
@@ -26,16 +30,14 @@ struct StderrOutputStream: Handle, TextOutputStream {
   }
 }
 
-struct StdoutOutputStream: Handle, TextOutputStream {
+struct StderrOutputStream: Handle {
+  let handle = FileHandle.standardError
+  let pointer = stderr
+}
+
+struct StdoutOutputStream: Handle {
   let handle = FileHandle.standardOutput
   let pointer = stdout
-
-  func write(_ string: String) {
-    guard let data = string.data(using: .utf8) else {
-      fatalError()  // encoding failure: handle as you wish
-    }
-    handle.write(data)
-  }
 }
 
 struct Console {
@@ -53,7 +55,7 @@ struct Console {
     }
   }
 
-  private static func intenalPrint<Target>(
+  private static func internalPrint<Target>(
     _ items: Any...,
     separator: String = " ",
     terminator: String = "\n",
@@ -77,27 +79,36 @@ struct Console {
     eprint(items, separator: separator, terminator: terminator)
   }
 
-  /// Sometimes we want to send a non-error message to stdout no matter what the
-  /// `verbosity` setting (e.g., when running `aural list`). This is for those
-  /// times.
-  static func force(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-    var standardOut = StdoutOutputStream()
-    intenalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
-  }
-
   /// Sends a message to `stdout` if the `verbosity` is not `.quiet`
   static func standard(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-    if verbosity != .quiet {
+    if shouldPrintFor(level: .standard) {
       var standardOut = StdoutOutputStream()
-      intenalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
+      internalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
     }
   }
 
   /// Sends a message to `stdout` if the `verbosity` is `.verbose`
   static func verbose(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-    if verbosity == .verbose {
+    if shouldPrintFor(level: .verbose) {
       var standardOut = StdoutOutputStream()
-      intenalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
+      internalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
+    }
+  }
+
+  static func write(
+    _ items: Any..., separator: String = " ", terminator: String = "\n", level: Level = .standard
+  ) {
+    if shouldPrintFor(level: level) {
+      var standardOut = StdoutOutputStream()
+      internalPrint(items, separator: separator, terminator: terminator, to: &standardOut)
+    }
+  }
+
+  private static func shouldPrintFor(level: Level) -> Bool {
+    return switch level {
+    case .force: true
+    case .verbose: verbosity == .verbose
+    default: verbosity != .quiet
     }
   }
 }

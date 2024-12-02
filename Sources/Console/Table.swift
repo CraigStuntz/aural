@@ -68,10 +68,10 @@ struct Table {
     return result
   }
 
-  func printToConsole() {
+  func printToConsole(level: Level = .standard) {
     let padded = self.toPadded()
     for line in padded {
-      Console.force(line.joined(separator: "\t"))
+      Console.write(line.joined(separator: "\t"), level: level)
     }
   }
 }

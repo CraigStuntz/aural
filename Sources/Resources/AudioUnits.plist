@@ -1200,9 +1200,43 @@
 		<key>manufacturer</key>
 		<string>Chry</string>
 		<key>name</key>
+		<string>Atom</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/atomika-synthesizer/version-history</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>Atom</string>
+		<key>typeName</key>
+		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/atomika-synthesizer/version-history</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
 		<string>CADr</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/dreamsynth/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1211,6 +1245,12 @@
 		<string>CADr</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/dreamsynth/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1219,6 +1259,12 @@
 		<string>CAMG</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/surrealistic-mg-1-plus/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1227,6 +1273,12 @@
 		<string>CAMG</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/surrealistic-mg-1-plus/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1235,6 +1287,12 @@
 		<string>CAQM</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/quadra/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1243,6 +1301,12 @@
 		<string>CAQM</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/quadra/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1251,6 +1315,12 @@
 		<string>CAQu</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/quadra/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1259,6 +1329,12 @@
 		<string>CAQu</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/quadra/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1267,6 +1343,12 @@
 		<string>CCP4</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/mercury-4/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1275,6 +1357,12 @@
 		<string>CCP4</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/mercury-4/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1283,6 +1371,12 @@
 		<string>LowD</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/lowdown/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1291,6 +1385,68 @@
 		<string>LowD</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/lowdown/version-history</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>MeMo</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/memorymode/version-history</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>MeMo</string>
+		<key>typeName</key>
+		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/memorymode/version-history</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>Mer6</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/mercury-6/version-history</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Chry</string>
+		<key>name</key>
+		<string>Mer6</string>
+		<key>typeName</key>
+		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/mercury-6/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1299,6 +1455,8 @@
 		<string>SEMo</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
 		<key>versionRegex</key>
 		<string>&lt;strong&gt;(\d\.\d\.\d)&lt;/strong&gt;</string>
 		<key>versionUrl</key>
@@ -1311,6 +1469,12 @@
 		<string>SEMo</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)&lt;/strong&gt;</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/synthesizer-expander-module/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1319,6 +1483,12 @@
 		<string>StDt</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)&lt;/strong&gt;</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/stardust-201/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1327,6 +1497,12 @@
 		<string>StDt</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)&lt;/strong&gt;</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/stardust-201/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1545,6 +1721,48 @@
 		<string>Download update from https://u-he.com/products/diva/</string>
 		<key>versionRegex</key>
 		<string>Diva_(\d*)_(\d*)_Mac</string>
+		<key>versionUrl</key>
+		<string>https://uhe-dl.b-cdn.net/releases/</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>UHfX</string>
+		<key>name</key>
+		<string>uR_1</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>Download update from https://u-he.com/products/repro/</string>
+		<key>versionRegex</key>
+		<string>Repro_(\d*)_(\d*)_Mac</string>
+		<key>versionUrl</key>
+		<string>https://uhe-dl.b-cdn.net/releases/</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>UHfX</string>
+		<key>name</key>
+		<string>uR_1</string>
+		<key>typeName</key>
+		<string>auvw</string>
+		<key>update</key>
+		<string>Download update from https://u-he.com/products/repro/</string>
+		<key>versionRegex</key>
+		<string>Repro_(\d*)_(\d*)_Mac</string>
+		<key>versionUrl</key>
+		<string>https://uhe-dl.b-cdn.net/releases/</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>UHfX</string>
+		<key>name</key>
+		<string>uR_5</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>Download update from https://u-he.com/products/repro/</string>
+		<key>versionRegex</key>
+		<string>Repro_(\d*)_(\d*)_Mac</string>
 		<key>versionUrl</key>
 		<string>https://uhe-dl.b-cdn.net/releases/</string>
 	</dict>

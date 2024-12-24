@@ -12,14 +12,16 @@ struct UpdateAudioUnits {
     if updateConfigs.toUpdate.isEmpty {
       Console.standard("No Audio Units configured for update.")
     } else {
-      await downloadAndPrint(updateConfigs)
+      Console.standard("Requesting current versions from manufacturer's sites...", terminator: "")
+      let updateResult = await download(updateConfigs)
+      Console.standard()  // Terminate "Requesting current versions..." line
+      print(updateResult)
     }
   }
 
-  private static func downloadAndPrint(_ updateConfigs: UpdateConfigs) async {
-    Console.standard("Requesting current versions from manufacturer's sites...", terminator: "")
+  private static func download(_ updateConfigs: UpdateConfigs) async -> UpdateResult {
     var current: [UpdateUpToDate] = []
-    var failures: [[String]] = []
+    var failures: [String] = []
     var outOfDate: [UpdateNeedsUpdate] = []
     await withTaskGroup(of: [Result<UpdateSuccess, UpdateError>].self) { group in
       let byUrl = Dictionary(
@@ -47,34 +49,12 @@ struct UpdateAudioUnits {
                   updateInstructions: audioUnitConfig.update))
             }
           case .failure(let updateError):
-            failures.append([
-              updateError.description
-            ])
+            failures.append(updateError.description)
           }
         }
       }
     }
-
-    Console.standard()  // Terminate "Requesting current versions..." line
-    Console.standard()  // insert blank line
-    if !current.isEmpty && verbosity != .quiet {
-      Console.standard("Up to date Audio Units:")
-      Table(reflecting: UpdateUpToDate(), data: current).printToConsole(level: .standard)
-    }
-    if !(current.isEmpty && outOfDate.isEmpty) {
-      Console.standard()
-    }
-    if !outOfDate.isEmpty {
-      Console.standard("Audio Units which need to be updated:")
-      Table(reflecting: UpdateNeedsUpdate(), data: outOfDate).printToConsole(level: .standard)
-    }
-    if !outOfDate.isEmpty && !failures.isEmpty {
-      Console.standard()
-    }
-    if !failures.isEmpty {
-      Console.error("Errors encountered during update:")
-      Table(headers: [], data: failures).printToConsole()
-    }
+    return UpdateResult(current: current, failures: failures, outOfDate: outOfDate)
   }
 
   private static func fetchResponseAndCheckVersions(url: String?, updateConfigs: [UpdateConfig]?)
@@ -88,8 +68,7 @@ struct UpdateAudioUnits {
       fatalError("[UpdateConfig] array was not passed in.")
     }
     guard let versionUrl = URL(string: urlString) else {
-      Console.error("\(urlString) is not a valid URL.")
-      return []
+      return [.failure(.invalidUrl(description: urlString))]
     }
     do {
       let body = try await Http.get(url: versionUrl)
@@ -97,8 +76,30 @@ struct UpdateAudioUnits {
         updateConfig.checkCompatibility(responseBody: body)
       }
     } catch {
-      Console.error("Fetching \(urlString) failed because of \(error).")
-      return []
+      return [.failure(.genericUpdateError(description: "Fetching \(urlString) failed because of \(error)."))]
+    }
+  }
+
+  private static func print(_ updateResult: UpdateResult) {
+    Console.standard()  // insert blank line
+    if !updateResult.current.isEmpty && verbosity != .quiet {
+      Console.standard("Up to date Audio Units:")
+      Table(reflecting: UpdateUpToDate(), data: updateResult.current).printToConsole(level: .standard)
+    }
+    if !(updateResult.current.isEmpty && updateResult.outOfDate.isEmpty) {
+      Console.standard()
+    }
+    if !updateResult.outOfDate.isEmpty {
+      Console.standard("Audio Units which need to be updated:")
+      Table(reflecting: UpdateNeedsUpdate(), data: updateResult.outOfDate).printToConsole(level: .standard)
+    }
+    if !updateResult.outOfDate.isEmpty && !updateResult.failures.isEmpty {
+      Console.standard()
+    }
+    if !updateResult.failures.isEmpty {
+      Console.error("Errors encountered during update:")
+      let data = updateResult.failures.map { description in [description]}
+      Table(headers: [], data: data).printToConsole()
     }
   }
 
@@ -118,7 +119,7 @@ struct UpdateConfig: Sendable {
   let metadata: ComponentMetadata
   let audioUnitConfig: AudioUnitConfig
 
-  func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateError> {
+func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateError> {
     do {
       guard
         let latestVersion = try Version.parse(
@@ -179,6 +180,7 @@ struct UpdateConfigs {
 
 enum UpdateError: Error, CustomStringConvertible {
   case configurationNotFoundInHttpResult(description: String)
+  case invalidUrl(description: String)
   case noConfiguration(description: String)
   case noRegexMatch(regex: String)
   case webRequestFailed(description: String)
@@ -187,12 +189,19 @@ enum UpdateError: Error, CustomStringConvertible {
   public var description: String {
     switch self {
     case .configurationNotFoundInHttpResult(let description): return description
+    case .invalidUrl(let description): return "Invalid URL \(description)"
     case .noConfiguration(let description): return description
     case .noRegexMatch(let regex): return "No match for regex \(regex)"
     case .webRequestFailed(let description): return description
     case .genericUpdateError(let description): return description
     }
   }
+}
+
+struct UpdateResult {
+  let current: [UpdateUpToDate]
+  let failures: [String]
+  let outOfDate: [UpdateNeedsUpdate]
 }
 
 struct UpdateSuccess: Sendable {

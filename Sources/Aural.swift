@@ -76,6 +76,12 @@ extension Aural {
     @OptionGroup var options: Options
 
     @Flag(
+      name: [.customLong("integration-test")],
+      help: "Integration test all URLs in configuration file"
+    )
+    var integrationTest: Bool = false
+
+    @Flag(
       name: [.customLong("write-config-file")],
       help: "Write configuration to plist file"
     )
@@ -83,7 +89,9 @@ extension Aural {
 
     mutating func run() async {
       await UpdateAudioUnits.run(
-        options: options.assignVerbosity(), writeConfigFile: writeConfigFile)
+        options: options.assignVerbosity(),
+        integrationTest: integrationTest,
+        writeConfigFile: writeConfigFile)
     }
   }
 

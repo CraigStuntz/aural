@@ -33,6 +33,20 @@ struct ComponentMetadata: CustomReflectable, Sendable {
     versionString = ""
   }
 
+  init(audioUnitConfig: AudioUnitConfig) {
+    self.name = audioUnitConfig.name
+    self.manufacturerName = audioUnitConfig.manufacturer
+    self.typeName = audioUnitConfig.typeName
+    self.audioComponentDescription = AudioComponentDescription(
+      componentType: audioUnitConfig.typeName.toFourCharCode(),
+      componentSubType: audioUnitConfig.name.toFourCharCode(),
+      componentManufacturer: audioUnitConfig.manufacturer.toFourCharCode(),
+      componentFlags: 0,
+      componentFlagsMask: 0
+    )
+    self.versionString = "<not installed>"
+  }
+
   init(avAudioUnitComponent: AVAudioUnitComponent) {
     self.name = avAudioUnitComponent.name
     self.manufacturerName = avAudioUnitComponent.manufacturerName

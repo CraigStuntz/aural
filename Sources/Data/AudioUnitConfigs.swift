@@ -64,7 +64,7 @@ struct AudioUnitConfigs {
   }
 
   func toConfig(_ component: AVAudioUnitComponent) -> AudioUnitConfig {
-    if let config = self[component] {
+    if let config = self[ComponentMetadata(avAudioUnitComponent: component)] {
       return config
     }
     return AudioUnitConfig.fromComponent(component: component)
@@ -131,6 +131,16 @@ struct AudioUnitConfigs {
         manufacturer: component.audioComponentDescription.componentManufacturer.toString(),
         name: component.audioComponentDescription.componentSubType.toString(),
         typeName: component.audioComponentDescription.componentType.toString()
+      )
+    ]
+  }
+
+  subscript(metadata: ComponentMetadata) -> AudioUnitConfig? {
+    return self.dictionary[
+      AudioUnitConfig.toDictionaryKey(
+        manufacturer: metadata.manufacturerName,
+        name: metadata.name,
+        typeName: metadata.typeName
       )]
   }
 }

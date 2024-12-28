@@ -1,10 +1,13 @@
 import AVFoundation
 
 struct UpdateAudioUnits {
-  static func run(options: Options, writeConfigFile: Bool) async {
+  static func run(options: Options, integrationTest: Bool, writeConfigFile: Bool) async {
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     let audioUnitConfigs = AudioUnitConfigs()
-    let updateConfigs = UpdateConfigs(audioUnitConfigs: audioUnitConfigs, components: components)
+    let updateConfigs = UpdateConfigs(
+      audioUnitConfigs: audioUnitConfigs,
+      components: components,
+      integrationTest: integrationTest)
     printNoConfiguration(updateConfigs.noConfiguration)
     if writeConfigFile {
       audioUnitConfigs.writeConfig(components, "AudioUnits.plist")
@@ -76,7 +79,10 @@ struct UpdateAudioUnits {
         updateConfig.checkCompatibility(responseBody: body)
       }
     } catch {
-      return [.failure(.genericUpdateError(description: "Fetching \(urlString) failed because of \(error)."))]
+      return [
+        .failure(
+          .genericUpdateError(description: "Fetching \(urlString) failed because of \(error)."))
+      ]
     }
   }
 
@@ -84,30 +90,32 @@ struct UpdateAudioUnits {
     Console.standard()  // insert blank line
     if !updateResult.current.isEmpty && verbosity != .quiet {
       Console.standard("Up to date Audio Units:")
-      Table(reflecting: UpdateUpToDate(), data: updateResult.current).printToConsole(level: .standard)
+      Table(reflecting: UpdateUpToDate(), data: updateResult.current).printToConsole(
+        level: .standard)
     }
     if !(updateResult.current.isEmpty && updateResult.outOfDate.isEmpty) {
       Console.standard()
     }
     if !updateResult.outOfDate.isEmpty {
       Console.standard("Audio Units which need to be updated:")
-      Table(reflecting: UpdateNeedsUpdate(), data: updateResult.outOfDate).printToConsole(level: .standard)
+      Table(reflecting: UpdateNeedsUpdate(), data: updateResult.outOfDate).printToConsole(
+        level: .standard)
     }
     if !updateResult.outOfDate.isEmpty && !updateResult.failures.isEmpty {
       Console.standard()
     }
     if !updateResult.failures.isEmpty {
       Console.error("Errors encountered during update:")
-      let data = updateResult.failures.map { description in [description]}
+      let data = updateResult.failures.map { description in [description] }
       Table(headers: [], data: data).printToConsole()
     }
   }
 
-  private static func printNoConfiguration(_ noConfiguration: [AVAudioUnitComponent]) {
+  private static func printNoConfiguration(_ noConfiguration: [ComponentMetadata]) {
     if !noConfiguration.isEmpty && verbosity != .quiet {
       Table(
         reflecting: UpdateNoConfiguration(),
-        data: noConfiguration.map { UpdateNoConfiguration(avAudioUnitComponent: $0) }
+        data: noConfiguration.map { UpdateNoConfiguration(metadata: $0) }
       )
       .printToConsole()
       Console.standard()
@@ -119,7 +127,7 @@ struct UpdateConfig: Sendable {
   let metadata: ComponentMetadata
   let audioUnitConfig: AudioUnitConfig
 
-func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateError> {
+  func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateError> {
     do {
       guard
         let latestVersion = try Version.parse(
@@ -148,15 +156,23 @@ func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateErr
 }
 
 struct UpdateConfigs {
-  let noConfiguration: [AVAudioUnitComponent]
+  let noConfiguration: [ComponentMetadata]
   let toUpdate: [UpdateConfig]
 
-  init(audioUnitConfigs: AudioUnitConfigs, components: [AVAudioUnitComponent]) {
-    var noConfiguration: [AVAudioUnitComponent] = []
+  init(
+    audioUnitConfigs: AudioUnitConfigs,
+    components: [AVAudioUnitComponent],
+    integrationTest: Bool
+  ) {
+    var noConfiguration: [ComponentMetadata] = []
     var toUpdate: [UpdateConfig] = []
-    for component in components {
-      guard let audioUnitConfig = audioUnitConfigs[component] else {
-        noConfiguration.append(component)
+    let metadata =
+      integrationTest
+      ? audioUnitConfigs.configs.map { config in ComponentMetadata(audioUnitConfig: config) }
+      : components.map { component in ComponentMetadata(avAudioUnitComponent: component) }
+    for metadatum in metadata {
+      guard let audioUnitConfig = audioUnitConfigs[metadatum] else {
+        noConfiguration.append(metadatum)
         continue
       }
       if audioUnitConfig.system != true {
@@ -165,11 +181,11 @@ struct UpdateConfigs {
         {
           toUpdate.append(
             UpdateConfig(
-              metadata: ComponentMetadata(avAudioUnitComponent: component),
+              metadata: metadatum,
               audioUnitConfig: audioUnitConfig
             ))
         } else {
-          noConfiguration.append(component)
+          noConfiguration.append(metadatum)
         }
       }
     }
@@ -222,11 +238,11 @@ struct UpdateNoConfiguration: CustomReflectable {
     fourLetterCodes = ""
   }
 
-  init(avAudioUnitComponent: AVAudioUnitComponent) {
+  init(metadata: ComponentMetadata) {
     componentDescription =
-      "\(avAudioUnitComponent.manufacturerName) \(avAudioUnitComponent.name) (\(avAudioUnitComponent.versionString))"
+      "\(metadata.manufacturerName) \(metadata.name) (\(metadata.versionString))"
     fourLetterCodes = ComponentMetadata.audioComponentDescriptionToFourLetterCodes(
-      avAudioUnitComponent.audioComponentDescription)
+      metadata.audioComponentDescription)
   }
 
   var customMirror: Mirror {

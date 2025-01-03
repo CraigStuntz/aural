@@ -11,7 +11,7 @@
             "program": "${workspaceFolder:aural}/.build/debug/aural",
             "args": [
                 "update",
-                "--write-config-file"
+                "-v"
             ],
             "preLaunchTask": "swift: Build Debug aural"
         },

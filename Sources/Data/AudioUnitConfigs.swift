@@ -138,9 +138,9 @@ struct AudioUnitConfigs {
   subscript(metadata: ComponentMetadata) -> AudioUnitConfig? {
     return self.dictionary[
       AudioUnitConfig.toDictionaryKey(
-        manufacturer: metadata.manufacturerName,
-        name: metadata.name,
-        typeName: metadata.typeName
+        manufacturer: metadata.audioComponentDescription.componentManufacturer.toString(),
+        name: metadata.audioComponentDescription.componentSubType.toString(),
+        typeName: metadata.audioComponentDescription.componentType.toString()
       )]
   }
 }

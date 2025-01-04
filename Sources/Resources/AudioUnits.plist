@@ -2439,6 +2439,12 @@
 		<string>Sm2f</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>Start the host application and open the plugin</string>
+		<key>versionRegex</key>
+		<string>SynthMaster 2 VST\/VSTi\/AU\/AAX  for MacOS[\s\S]*(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2447,6 +2453,12 @@
 		<string>Sm2i</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>Start the host application and open the plugin</string>
+		<key>versionRegex</key>
+		<string>SynthMaster 2 VST\/VSTi\/AU\/AAX  for MacOS[\s\S]*(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2455,6 +2467,12 @@
 		<string>Smpi</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>Start the host application and open the plugin</string>
+		<key>versionRegex</key>
+		<string>SynthMaster 2 Player Free VSTi\/AU\/AAX  for MacOSX[\s\S]*(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

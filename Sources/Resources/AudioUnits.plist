@@ -829,6 +829,12 @@
 		<string>MIN3</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?name == 'Mini V3'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=mini-v&amp;types</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1117,6 +1123,12 @@
 		<string>WUR2</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?name == 'Wurli V2'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=wurli-v&amp;types</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

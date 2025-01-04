@@ -90,7 +90,10 @@ struct UpdateAudioUnits {
     Console.standard()  // insert blank line
     if !updateResult.current.isEmpty && verbosity != .quiet {
       Console.standard("Up to date Audio Units:")
-      Table(reflecting: UpdateUpToDate(), data: updateResult.current).printToConsole(
+      Table(
+        reflecting: UpdateUpToDate(),
+        data: updateResult.current.sorted(by: audioUnitMetadataIsLessThan)
+      ).printToConsole(
         level: .standard)
     }
     if !(updateResult.current.isEmpty && updateResult.outOfDate.isEmpty) {
@@ -98,7 +101,10 @@ struct UpdateAudioUnits {
     }
     if !updateResult.outOfDate.isEmpty {
       Console.standard("Audio Units which need to be updated:")
-      Table(reflecting: UpdateNeedsUpdate(), data: updateResult.outOfDate).printToConsole(
+      Table(
+        reflecting: UpdateNeedsUpdate(),
+        data: updateResult.outOfDate.sorted(by: audioUnitMetadataIsLessThan)
+      ).printToConsole(
         level: .standard)
     }
     if !updateResult.outOfDate.isEmpty && !updateResult.failures.isEmpty {
@@ -256,9 +262,10 @@ struct UpdateNoConfiguration: CustomReflectable {
   }
 }
 
-struct UpdateNeedsUpdate: CustomReflectable {
+struct UpdateNeedsUpdate: AudioUnitMetadata, CustomReflectable {
   let manufacturer: String
   let name: String
+  let type: String
   let latestVersion: String
   let localVersion: String
   let updateInstructions: String
@@ -267,6 +274,7 @@ struct UpdateNeedsUpdate: CustomReflectable {
   init() {
     manufacturer = ""
     name = ""
+    type = ""
     latestVersion = ""
     localVersion = ""
     updateInstructions = ""
@@ -276,6 +284,7 @@ struct UpdateNeedsUpdate: CustomReflectable {
   init(updateSuccess: UpdateSuccess, latestVersion: String, updateInstructions: String?) {
     manufacturer = updateSuccess.metadata.manufacturerName
     name = updateSuccess.metadata.name
+    type = updateSuccess.metadata.typeName
     self.latestVersion = latestVersion
     localVersion = updateSuccess.updateConfig.metadata.versionString
     self.updateInstructions = updateInstructions ?? ""
@@ -299,9 +308,10 @@ struct UpdateNeedsUpdate: CustomReflectable {
   }
 }
 
-struct UpdateUpToDate: CustomReflectable {
+struct UpdateUpToDate: AudioUnitMetadata, CustomReflectable {
   let manufacturer: String
   let name: String
+  let type: String
   let latestVersion: String
   let localVersion: String
   let fourLetterCodes: String
@@ -309,6 +319,7 @@ struct UpdateUpToDate: CustomReflectable {
   init() {
     manufacturer = ""
     name = ""
+    type = ""
     latestVersion = ""
     localVersion = ""
     fourLetterCodes = ""
@@ -317,6 +328,7 @@ struct UpdateUpToDate: CustomReflectable {
   init(updateSuccess: UpdateSuccess, latestVersion: String) {
     manufacturer = updateSuccess.metadata.manufacturerName
     name = updateSuccess.metadata.name
+    type = updateSuccess.metadata.typeName
     self.latestVersion = latestVersion
     localVersion = updateSuccess.updateConfig.metadata.versionString
     fourLetterCodes = ComponentMetadata.audioComponentDescriptionToFourLetterCodes(

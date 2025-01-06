@@ -1159,6 +1159,12 @@
 		<string>Knif</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>Knif Audio Knifonium - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/knif_audio_knifonium.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1167,6 +1173,12 @@
 		<string>bxOS</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>Brainworx bx_oberhausen - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_oberhausen.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1175,6 +1187,12 @@
 		<string>bxmb</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>Brainworx bx_masterdesk Classic - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_masterdesk_classic.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1183,6 +1201,12 @@
 		<string>bxrp</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>Brainworx bx_rockrack V3 Player - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_rockrack_v3_player.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1191,6 +1215,12 @@
 		<string>bxs2</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>bx_cleansweep V2 - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_cleansweep_v2.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1199,6 +1229,12 @@
 		<string>bxsf</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>Brainworx bx_subfilter - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_subfilter.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1207,6 +1243,12 @@
 		<string>bxsl</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>Brainworx bx_solo - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_solo.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1523,6 +1565,12 @@
 		<string>nvft</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>elysia niveau filter - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/elysia_niveau_filter.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1705,6 +1753,12 @@
 		<string>DMSP</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>Schoeps Double MS - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/schoeps_double_ms.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1713,6 +1767,12 @@
 		<string>SPFE</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>SPL Free Ranger - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/spl_free_ranger.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

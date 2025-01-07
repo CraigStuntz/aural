@@ -516,7 +516,7 @@
 		<key>update</key>
 		<string>open '/Applications/Native Access.app'</string>
 		<key>versionRegex</key>
-		<string>(1\.\d+\.\d+).*20\d\d\-\d+-\d+</string>
+		<string>(1\.\d+\.\d+)..?.?.?20\d\d\-\d+-\d+</string>
 		<key>versionUrl</key>
 		<string>https://community.native-instruments.com/discussion/7093/official-update-status-massive-current-version-1-7-0</string>
 	</dict>

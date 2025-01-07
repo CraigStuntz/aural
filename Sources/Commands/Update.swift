@@ -75,6 +75,9 @@ struct UpdateAudioUnits {
     }
     do {
       let body = try await Http.get(url: versionUrl)
+      guard body != "" else {
+        return [.failure(.webRequestFailed(description: "Failed to fetch \(versionUrl)"))]
+      }
       return configs.map { updateConfig in
         updateConfig.checkCompatibility(responseBody: body)
       }

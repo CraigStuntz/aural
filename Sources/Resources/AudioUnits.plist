@@ -485,6 +485,12 @@
 		<string>NiK7</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(7\.\d+\.\d+).*\(20\d\d\-\d+-\d+\)</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/39/official-update-status-kontakt-current-version-7-7-3</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -493,6 +499,12 @@
 		<string>NiKK</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(3\.\d+\.\d+).*20\d\d\-\d+-\d+</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/55/official-update-status-komplete-kontrol-current-version-3-3-4</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -501,6 +513,12 @@
 		<string>NiMa</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(1\.\d+\.\d+).*20\d\d\-\d+-\d+</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/7093/official-update-status-massive-current-version-1-7-0</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -509,6 +527,12 @@
 		<string>NiR6</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(6\.\d+\.\d+).*20\d\d\-\d+-\d+</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/56/official-update-status-reaktor-current-version-6-5-0</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -517,6 +541,12 @@
 		<string>NiR6</string>
 		<key>typeName</key>
 		<string>aumi</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(6\.\d+\.\d+).*20\d\d\-\d+-\d+</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/56/official-update-status-reaktor-current-version-6-5-0</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -525,6 +555,12 @@
 		<string>NiR6</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(6\.\d+\.\d+).*20\d\d\-\d+-\d+</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/56/official-update-status-reaktor-current-version-6-5-0</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

@@ -2577,6 +2577,12 @@
 		<string>FqEh</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>Download from https://valhalladsp.com/demos-downloads/</string>
+		<key>versionRegex</key>
+		<string>ValhallaFreqEchoOSX_(\d+_\d+_\d+)\.dmg</string>
+		<key>versionUrl</key>
+		<string>https://valhalladsp.com/demos-downloads/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2585,6 +2591,12 @@
 		<string>FqEh</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>Download from https://valhalladsp.com/demos-downloads/</string>
+		<key>versionRegex</key>
+		<string>ValhallaFreqEchoOSX_(\d+_\d+_\d+)\.dmg</string>
+		<key>versionUrl</key>
+		<string>https://valhalladsp.com/demos-downloads/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2593,6 +2605,12 @@
 		<string>SpMd</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>Download from https://valhalladsp.com/demos-downloads/</string>
+		<key>versionRegex</key>
+		<string>ValhallaSpaceModulatorOSX_(\d+_\d+_\d+)\.dmg</string>
+		<key>versionUrl</key>
+		<string>https://valhalladsp.com/demos-downloads/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2601,6 +2619,12 @@
 		<string>SpMd</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>Download from https://valhalladsp.com/demos-downloads/</string>
+		<key>versionRegex</key>
+		<string>ValhallaSpaceModulatorOSX_(\d+_\d+_\d+)\.dmg</string>
+		<key>versionUrl</key>
+		<string>https://valhalladsp.com/demos-downloads/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2609,6 +2633,12 @@
 		<string>sMas</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>Download from https://valhalladsp.com/demos-downloads/</string>
+		<key>versionRegex</key>
+		<string>ValhallaSupermassiveOSX_(\d+_\d+_\d+)v?\d?\.dmg</string>
+		<key>versionUrl</key>
+		<string>https://valhalladsp.com/demos-downloads/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2617,6 +2647,12 @@
 		<string>sMas</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>Download from https://valhalladsp.com/demos-downloads/</string>
+		<key>versionRegex</key>
+		<string>ValhallaSupermassiveOSX_(\d+_\d+_\d+)v?\d?\.dmg</string>
+		<key>versionUrl</key>
+		<string>https://valhalladsp.com/demos-downloads/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

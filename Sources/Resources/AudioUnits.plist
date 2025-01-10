@@ -1881,6 +1881,12 @@
 		<string>ODIN</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>Download update from https://thewavewarden.com/pages/odin-2</string>
+		<key>versionRegex</key>
+		<string>Odin(\d+\.\d+\.\d+)MacInstaller\.pkg</string>
+		<key>versionUrl</key>
+		<string>https://thewavewarden.com/pages/odin-2</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

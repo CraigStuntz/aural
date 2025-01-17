@@ -1,28 +1,36 @@
 import AVFoundation
 
 struct UpdateAudioUnits {
-  static func run(options: Options, integrationTest: Bool, writeConfigFile: Bool) async {
+  static func run(
+    options: Options,
+    integrationTest: Bool,
+    updateWriter: UpdateWriter,
+    writeConfigFile: Bool
+  ) async {
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     let audioUnitConfigs = AudioUnitConfigs()
     let updateConfigs = UpdateConfigs(
       audioUnitConfigs: audioUnitConfigs,
       components: components,
       integrationTest: integrationTest)
-    printNoConfiguration(updateConfigs.noConfiguration)
+    updateWriter.printNoConfiguration(updateConfigs.noConfiguration)
     if writeConfigFile {
       audioUnitConfigs.writeConfig(components, "AudioUnits.plist")
     }
     if updateConfigs.toUpdate.isEmpty {
-      Console.standard("No Audio Units configured for update.")
+      updateWriter.standard("No Audio Units configured for update.")
     } else {
-      Console.standard("Requesting current versions from manufacturer's sites...", terminator: "")
-      let updateResult = await download(updateConfigs)
-      Console.standard()  // Terminate "Requesting current versions..." line
-      print(updateResult)
+      updateWriter.standard(
+        "Requesting current versions from manufacturer's sites...", terminator: "")
+      let updateResult = await download(updateConfigs, updateWriter)
+      updateWriter.standard()  // Terminate "Requesting current versions..." line
+      updateWriter.print(updateResult)
     }
   }
 
-  private static func download(_ updateConfigs: UpdateConfigs) async -> UpdateResult {
+  private static func download(_ updateConfigs: UpdateConfigs, _ updateWriter: UpdateWriter) async
+    -> UpdateResult
+  {
     var current: [UpdateUpToDate] = []
     var failures: [String] = []
     var outOfDate: [UpdateNeedsUpdate] = []
@@ -36,7 +44,7 @@ struct UpdateAudioUnits {
         }
       }
       for await results in group {
-        Console.standard(".", terminator: "")
+        updateWriter.standard(".", terminator: "")
         for result in results {
           switch result {
           case .success(let updateSuccess):
@@ -74,60 +82,19 @@ struct UpdateAudioUnits {
       return [.failure(.invalidUrl(description: urlString))]
     }
     do {
-      let body = try await Http.get(url: versionUrl)
-      guard body != "" else {
-        return [.failure(.webRequestFailed(description: "Failed to fetch \(versionUrl)"))]
-      }
-      return configs.map { updateConfig in
-        updateConfig.checkCompatibility(responseBody: body)
+      let httpResult = try await Http.get(url: versionUrl)
+      return switch httpResult {
+      case .success(let body):
+        configs.map { updateConfig in
+          updateConfig.checkCompatibility(responseBody: body)
+        }
+      case .failure(let error): [.failure(.webRequestFailed(description: error.description))]
       }
     } catch {
       return [
         .failure(
           .genericUpdateError(description: "Fetching \(urlString) failed because of \(error)."))
       ]
-    }
-  }
-
-  private static func print(_ updateResult: UpdateResult) {
-    Console.standard()  // insert blank line
-    if !updateResult.current.isEmpty && verbosity != .quiet {
-      Console.standard("Up to date Audio Units:")
-      Table(
-        reflecting: UpdateUpToDate(),
-        data: updateResult.current.sorted(by: audioUnitMetadataIsLessThan)
-      ).printToConsole(
-        level: .standard)
-    }
-    if !(updateResult.current.isEmpty && updateResult.outOfDate.isEmpty) {
-      Console.standard()
-    }
-    if !updateResult.outOfDate.isEmpty {
-      Console.standard("Audio Units which need to be updated:")
-      Table(
-        reflecting: UpdateNeedsUpdate(),
-        data: updateResult.outOfDate.sorted(by: audioUnitMetadataIsLessThan)
-      ).printToConsole(
-        level: .standard)
-    }
-    if !updateResult.outOfDate.isEmpty && !updateResult.failures.isEmpty {
-      Console.standard()
-    }
-    if !updateResult.failures.isEmpty {
-      Console.error("Errors encountered during update:")
-      let data = updateResult.failures.map { description in [description] }
-      Table(headers: [], data: data).printToConsole()
-    }
-  }
-
-  private static func printNoConfiguration(_ noConfiguration: [ComponentMetadata]) {
-    if !noConfiguration.isEmpty && verbosity != .quiet {
-      Table(
-        reflecting: UpdateNoConfiguration(),
-        data: noConfiguration.map { UpdateNoConfiguration(metadata: $0) }
-      )
-      .printToConsole()
-      Console.standard()
     }
   }
 }
@@ -234,121 +201,4 @@ struct UpdateSuccess: Sendable {
   let updateConfig: UpdateConfig
   let latestVersion: String?
   let compatible: Bool
-}
-
-// Result types for display in a Table
-
-struct UpdateNoConfiguration: CustomReflectable {
-  let componentDescription: String
-  let fourLetterCodes: String
-
-  init() {
-    componentDescription = ""
-    fourLetterCodes = ""
-  }
-
-  init(metadata: ComponentMetadata) {
-    componentDescription =
-      "\(metadata.manufacturerName) \(metadata.name) (\(metadata.versionString))"
-    fourLetterCodes = ComponentMetadata.audioComponentDescriptionToFourLetterCodes(
-      metadata.audioComponentDescription)
-  }
-
-  var customMirror: Mirror {
-    var children: [Mirror.Child] = [
-      ("No update configurations found for:", componentDescription)
-    ]
-    if verbosity == .verbose {
-      children.append(("type subt mnfr", fourLetterCodes))
-    }
-    return Mirror(self, children: children)
-  }
-}
-
-struct UpdateNeedsUpdate: AudioUnitMetadata, CustomReflectable {
-  let manufacturer: String
-  let name: String
-  let type: String
-  let latestVersion: String
-  let localVersion: String
-  let updateInstructions: String
-  let fourLetterCodes: String
-
-  init() {
-    manufacturer = ""
-    name = ""
-    type = ""
-    latestVersion = ""
-    localVersion = ""
-    updateInstructions = ""
-    fourLetterCodes = ""
-  }
-
-  init(updateSuccess: UpdateSuccess, latestVersion: String, updateInstructions: String?) {
-    manufacturer = updateSuccess.metadata.manufacturerName
-    name = updateSuccess.metadata.name
-    type = updateSuccess.metadata.typeName
-    self.latestVersion = latestVersion
-    localVersion = updateSuccess.updateConfig.metadata.versionString
-    self.updateInstructions = updateInstructions ?? ""
-    fourLetterCodes = ComponentMetadata.audioComponentDescriptionToFourLetterCodes(
-      updateSuccess.metadata.audioComponentDescription
-    )
-  }
-
-  var customMirror: Mirror {
-    var children: [Mirror.Child] = [
-      ("manufacturer", manufacturer),
-      ("name", name),
-      ("latest version", latestVersion),
-      ("local version", localVersion),
-      ("update instructions", updateInstructions),
-    ]
-    if verbosity == .verbose {
-      children.append(("type subt mnfr", fourLetterCodes))
-    }
-    return Mirror(self, children: children)
-  }
-}
-
-struct UpdateUpToDate: AudioUnitMetadata, CustomReflectable {
-  let manufacturer: String
-  let name: String
-  let type: String
-  let latestVersion: String
-  let localVersion: String
-  let fourLetterCodes: String
-
-  init() {
-    manufacturer = ""
-    name = ""
-    type = ""
-    latestVersion = ""
-    localVersion = ""
-    fourLetterCodes = ""
-  }
-
-  init(updateSuccess: UpdateSuccess, latestVersion: String) {
-    manufacturer = updateSuccess.metadata.manufacturerName
-    name = updateSuccess.metadata.name
-    type = updateSuccess.metadata.typeName
-    self.latestVersion = latestVersion
-    localVersion = updateSuccess.updateConfig.metadata.versionString
-    fourLetterCodes = ComponentMetadata.audioComponentDescriptionToFourLetterCodes(
-      updateSuccess.metadata.audioComponentDescription
-    )
-  }
-
-  var customMirror: Mirror {
-    var children: [Mirror.Child] = [
-      ("manufacturer", manufacturer),
-      ("name", name),
-      ("latest version", latestVersion),
-      ("local version", localVersion),
-    ]
-    if verbosity == .verbose {
-      children.append(("type subt mnfr", fourLetterCodes))
-    }
-    return Mirror(self, children: children)
-  }
 }

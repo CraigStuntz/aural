@@ -91,6 +91,7 @@ extension Aural {
       await UpdateAudioUnits.run(
         options: options.assignVerbosity(),
         integrationTest: integrationTest,
+        updateWriter: UpdateWriter(),
         writeConfigFile: writeConfigFile)
     }
   }

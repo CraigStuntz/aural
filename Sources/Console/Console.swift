@@ -60,7 +60,7 @@ struct Console {
     separator: String = " ",
     terminator: String = "\n",
     to output: inout Target
-  ) where Target: Handle, Target: TextOutputStream {
+  ) where Target: Handle {
     print(items, separator: separator, terminator: terminator, to: &output)
     if terminator == "" {
       // otherwise Swift won't flush the handle -- screen won't be updated

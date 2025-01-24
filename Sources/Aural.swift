@@ -50,6 +50,7 @@ extension Aural {
     static let configuration =
       CommandConfiguration(
         abstract: "Exports the installed Audio Units and their presets. (unimplemented, for now)",
+        shouldDisplay: false,
         subcommands: [Logic.self],
         defaultSubcommand: Logic.self
       )

@@ -23,7 +23,7 @@ struct Version {
       latestVersionParts.count > 0
         && existingVersionParts.count > 0
         && (latestVersionParts.count == existingVersionParts.count
-          || latestVersionParts.count >= 3 && existingVersionParts.count >= 3)
+          || latestVersionParts.count >= 2 && existingVersionParts.count >= 2)
     else {
       return false
     }

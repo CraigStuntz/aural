@@ -6,10 +6,11 @@ struct VersionsTests {
   @Test func compatible() {
     #expect(!Version.compatible(latestVersion: "", existingVersion: "1"))
     #expect(!Version.compatible(latestVersion: "1", existingVersion: ""))
-    #expect(!Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0"))
+    #expect(!Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0.0"))
     #expect(!Version.compatible(latestVersion: "10", existingVersion: "1"))
 
     #expect(Version.compatible(latestVersion: "1.0", existingVersion: "1.0"))
+    #expect(Version.compatible(latestVersion: "1.0", existingVersion: "1.0.0"))
     #expect(Version.compatible(latestVersion: "1.0.1.1234", existingVersion: "1.0.1"))
     #expect(Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0.1.1234"))
   }

@@ -1618,6 +1618,20 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>GFor</string>
+		<key>name</key>
+		<string>GFbs</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open 'https://www.gforcesoftware.com/my-instruments/'</string>
+		<key>versionRegex</key>
+		<string>BassStation\-(\d+\.\d+(\.\d+)?)\-Installer\-macOS\.dmg</string>
+		<key>versionUrl</key>
+		<string>https://www.gforcesoftware.com/products/bass-station/</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>Manu</string>
 		<key>name</key>
 		<string>C25p</string>
@@ -1781,20 +1795,6 @@
 		<string>"Software Updates".SoftwareProducts[?Name == 'mariana'].CurrentVersion | [0]</string>
 		<key>versionUrl</key>
 		<string>https://software.moogmusic.com/update</string>
-	</dict>
-	<dict>
-		<key>manufacturer</key>
-		<string>SHOE</string>
-		<key>name</key>
-		<string>DMSP</string>
-		<key>typeName</key>
-		<string>aufx</string>
-		<key>update</key>
-		<string>open '/Applications/PA-InstallationManager.app'</string>
-		<key>versionRegex</key>
-		<string>Schoeps Double MS - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
-		<key>versionUrl</key>
-		<string>https://www.plugin-alliance.com/en/products/schoeps_double_ms.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

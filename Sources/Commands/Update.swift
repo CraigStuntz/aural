@@ -105,28 +105,24 @@ struct UpdateConfig: Sendable {
 
   func checkCompatibility(responseBody: String) -> Result<UpdateSuccess, UpdateError> {
     do {
-      guard
-        let latestVersion = try Version.parse(
-          responseBody: responseBody, audioUnitConfig: self.audioUnitConfig)
-      else {
+      let latestVersionResult = Version.parse(
+        responseBody: responseBody, audioUnitConfig: self.audioUnitConfig)
+      switch latestVersionResult {
+      case .failure(let error):
         return .failure(
           .configurationNotFoundInHttpResult(
-            description: "Current version of \(self.metadata.name) not found"))
+            description: "Current version of \(self.metadata.name) not found due to error \(error)")
+        )
+      case .success(let latestVersion):
+        let compatible = Version.compatible(
+          latestVersion: latestVersion, existingVersion: self.metadata.versionString)
+        return .success(
+          UpdateSuccess(
+            metadata: metadata,
+            updateConfig: self,
+            latestVersion: latestVersion,
+            compatible: compatible))
       }
-      let compatible = Version.compatible(
-        latestVersion: latestVersion, existingVersion: self.metadata.versionString)
-      return .success(
-        UpdateSuccess(
-          metadata: metadata,
-          updateConfig: self,
-          latestVersion: latestVersion,
-          compatible: compatible))
-    } catch {
-      return .failure(
-        .genericUpdateError(
-          description:
-            "Caught error \(error) while checking the current version of \(self.metadata.name)"
-        ))
     }
   }
 }
@@ -170,22 +166,35 @@ struct UpdateConfigs {
   }
 }
 
-enum UpdateError: Error, CustomStringConvertible {
+enum UpdateError: Error, CustomStringConvertible, Equatable {
   case configurationNotFoundInHttpResult(description: String)
   case invalidUrl(description: String)
+  case jmesPathGenericError(description: String)
+  case jmesPathNoMatch(name: String)
+  case jmesPathParsingFailed(name: String)
+  case noCapture(regex: String)
   case noConfiguration(description: String)
   case noRegexMatch(regex: String)
+  case regexCompileError(regex: String)
   case webRequestFailed(description: String)
   case genericUpdateError(description: String)
 
   public var description: String {
-    switch self {
-    case .configurationNotFoundInHttpResult(let description): return description
-    case .invalidUrl(let description): return "Invalid URL \(description)"
-    case .noConfiguration(let description): return description
-    case .noRegexMatch(let regex): return "No match for regex \(regex)"
-    case .webRequestFailed(let description): return description
-    case .genericUpdateError(let description): return description
+    return switch self {
+    case .configurationNotFoundInHttpResult(let description): description
+    case .jmesPathGenericError(let description):
+      "Error in JMESPath version parsing: \(description)"
+    case .jmesPathNoMatch(let name):
+      "No match for version JMESPath in Audio Unit \(name)."
+    case .jmesPathParsingFailed(let name):
+      "Parsing response for Audio Unit \(name) with JMESPath failed."
+    case .invalidUrl(let description): "Invalid URL \(description)"
+    case .noCapture(let regex): "No capture on document body given regex \(regex)"
+    case .noConfiguration(let description): description
+    case .noRegexMatch(let regex): "No match for regex \(regex)"
+    case .regexCompileError(let regex): "Error compiling regex \(regex)"
+    case .webRequestFailed(let description): description
+    case .genericUpdateError(let description): description
     }
   }
 }

@@ -41,29 +41,27 @@ struct Version {
   }
 
   /// Asynchronously gets the latest version resource and parses the laterst version numver from that resource
-  static func parse(responseBody: String, audioUnitConfig: AudioUnitConfig) throws -> String? {
+  static func parse(responseBody: String, audioUnitConfig: AudioUnitConfig)
+    -> Result<String, UpdateError>
+  {
     if let jmesPath = audioUnitConfig.versionJMESPath {
-      guard let value: String = try parseWithJMESPath(responseBody, jmesPath) else {
-        Console.error(
-          "Parsing response for Audio Unit \(audioUnitConfig.name) with JMESPath failed.")
-        return nil
-      }
-      return value
+      return parseWithJMESPathToResult(responseBody, jmesPath)
     }
     if let jmesPath = audioUnitConfig.versionJMESPathInt {
-      guard let value: Int = try parseWithJMESPath(responseBody, jmesPath) else {
-        Console.error(
-          "Parsing response for Audio Unit \(audioUnitConfig.name) with JMESPath failed.")
-        return nil
+      let result: Result<Int, UpdateError> = parseWithJMESPathToResult(responseBody, jmesPath)
+      switch result {
+      case .success(let value): return .success(fromInt(value))
+      case .failure(let error): return .failure(error)
       }
-      return fromInt(value)
     }
     if let regex = audioUnitConfig.versionRegex {
-      return try parseWithRegex(responseBody, regex)
+      return parseWithRegex(responseBody, regex)
     }
-    Console.error(
-      "No means of parsing response for Audio Unit \(audioUnitConfig.name) is configured")
-    return nil
+    return .failure(
+      .noConfiguration(
+        description:
+          "No means of parsing response for Audio Unit \(audioUnitConfig.name) is configured")
+    )
   }
 
   /// Resources represent version numvers differently. This function attempts to
@@ -87,6 +85,20 @@ struct Version {
     return zipped.prefix(chars.count + dots.count - 1).joined()
   }
 
+  static func parseWithJMESPathToResult<Value>(
+    _ body: String,
+    _ versionMatchJmesPath: String
+  ) -> Result<Value, UpdateError> {
+    do {
+      guard let result: Value = try parseWithJMESPath(body, versionMatchJmesPath) else {
+        return .failure(.jmesPathNoMatch(name: versionMatchJmesPath))
+      }
+      return .success(result)
+    } catch {
+      return .failure(.jmesPathGenericError(description: error.localizedDescription))
+    }
+  }
+
   static func parseWithJMESPath<Value>(
     _ body: String, _ versionMatchJmesPath: String
   ) throws -> Value? {
@@ -94,15 +106,20 @@ struct Version {
     return try expression.search(json: body, as: Value.self)
   }
 
-  static func parseWithRegex(_ body: String, _ versionMatchRegex: String) throws -> String? {
-    let regex = try Regex(versionMatchRegex)
-    if let match = body.firstMatch(of: regex) {
-      if let captured = match.output[1].substring {
-        return cleanUp(versionAsRead: String(captured))
-      } else {
-        Console.error("No capture on document body given regex \(versionMatchRegex)")
+  static func parseWithRegex(_ body: String, _ versionMatchRegex: String)
+    -> Result<String, UpdateError>
+  {
+    do {
+      let regex = try Regex(versionMatchRegex)
+      if let match = body.firstMatch(of: regex) {
+        guard let captured = match.output[1].substring else {
+          return .failure(.noCapture(regex: versionMatchRegex))
+        }
+        return .success(cleanUp(versionAsRead: String(captured)))
       }
+      return .failure(.noRegexMatch(regex: versionMatchRegex))
+    } catch {
+      return .failure(.regexCompileError(regex: versionMatchRegex))
     }
-    throw UpdateError.noRegexMatch(regex: versionMatchRegex)
   }
 }

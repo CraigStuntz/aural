@@ -49,8 +49,8 @@ struct VersionsTests {
     let versionMatchRegex = """
       Filter_MS\\-20__(\\d*_\\d*_\\d*_\\d*)\\.pkg">Filter MS\\-20
       """
-    let actual = try Version.parseWithRegex(body, versionMatchRegex)
-    #expect("1.0.2.3" == actual)
+    let actual = Version.parseWithRegex(body, versionMatchRegex)
+    #expect(.success("1.0.2.3") == actual)
   }
 
   @Test func parseWithRegexInvalidBodyShouldThrow() throws {
@@ -61,7 +61,10 @@ struct VersionsTests {
       Filter_MS\\-20__(\\d*_\\d*_\\d*_\\d*)\\.pkg">Filter MS\\-20
       """
 
-    #expect(throws: UpdateError.self) { try Version.parseWithRegex(body, versionMatchRegex) }
+    let shouldFail = Version.parseWithRegex(body, versionMatchRegex)
+    #expect(
+      .failure(.noRegexMatch(regex: "Filter_MS\\-20__(\\d*_\\d*_\\d*_\\d*)\\.pkg\">Filter MS\\-20"))
+        == shouldFail)
   }
 
   @Test func interleaveDots() {

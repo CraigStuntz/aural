@@ -482,6 +482,92 @@
 		<key>manufacturer</key>
 		<string>-NI-</string>
 		<key>name</key>
+		<string>Ni$=</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$@</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$C</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$D</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$H</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(1\.\d+\.\d+)\s*\-\s*20\d\d\-\d+-\d+</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/54/official-update-status-massive-x-current-version-1-5-0</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$I</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$J</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$K</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$R</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>Ni$R</string>
+		<key>typeName</key>
+		<string>aumf</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
 		<string>NiK7</string>
 		<key>typeName</key>
 		<string>aumu</string>
@@ -491,6 +577,20 @@
 		<string>(7\.\d+\.\d+).*\(20\d\d\-\d+-\d+\)</string>
 		<key>versionUrl</key>
 		<string>https://community.native-instruments.com/discussion/39/official-update-status-kontakt-current-version-7-7-3</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>-NI-</string>
+		<key>name</key>
+		<string>NiK8</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(8\.\d+\.\d+)\s*\-\s*20\d\d\-\d+-\d+</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/39/official-update-status-kontakt-current-version-8-3-0</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1798,6 +1898,14 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>SHOE</string>
+		<key>name</key>
+		<string>DMSP</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>SPL1</string>
 		<key>name</key>
 		<string>SPFE</string>
@@ -1809,6 +1917,14 @@
 		<string>SPL Free Ranger - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
 		<key>versionUrl</key>
 		<string>https://www.plugin-alliance.com/en/products/spl_free_ranger.html</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>SoGh</string>
+		<key>name</key>
+		<string>Txtr</string>
+		<key>typeName</key>
+		<string>aufx</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2517,6 +2633,22 @@
 		<true/>
 		<key>typeName</key>
 		<string>ausp</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>iZtp</string>
+		<key>name</key>
+		<string>ZAEL</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>iZtp</string>
+		<key>name</key>
+		<string>ZAEL</string>
+		<key>typeName</key>
+		<string>auvw</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

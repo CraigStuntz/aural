@@ -51,11 +51,20 @@ You need to have the command-line tools installed. You don't necessarily need XC
 $ xcode-select --install
 ```
 
-To build using the `Makefile` you will also need to have 
-[`swift-format`](https://github.com/apple/swift-format) installed:
+Install additional tools: 
+
+* To build using the `Makefile` you will also need to have 
+    [`swift-format`](https://github.com/apple/swift-format) installed:
+* Add the [swiftly version manager](https://github.com/swiftlang/swiftly) for Swift
+
+(Homebrew currently 
+[says that](https://github.com/orgs/Homebrew/discussions/6167) `swiftly` 
+requires XCode. This is false. If they don't fix the issue before you install, 
+you can use the [`curl`-based installation from swift.org](https://www.swift.org/install/macos/).)
 
 ```bash
-$ brew install swift-format
+$ brew install swift-format swiftly
+$ swiftly install 6.1
 ```
 
 To build:
@@ -78,7 +87,7 @@ $ make test
 
 If you get an error about 
 `unable to lookup item ‘PlatformPath’ from command line tools installation`
-and you have XCode, then do:
+_and you have XCode,_ then do:
 
 ```bash
 $ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer

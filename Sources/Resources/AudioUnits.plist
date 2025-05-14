@@ -6,6 +6,20 @@
 		<key>manufacturer</key>
 		<string> kHs</string>
 		<key>name</key>
+		<string>kclp</string>
+		<key>typeName</key>
+		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string> kHs</string>
+		<key>name</key>
 		<string>kphp</string>
 		<key>typeName</key>
 		<string>aumu</string>
@@ -738,6 +752,20 @@
 		<key>manufacturer</key>
 		<string>Artu</string>
 		<key>name</key>
+		<string>AUMA</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=augmented-mallets&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
 		<string>AVcs</string>
 		<key>typeName</key>
 		<string>aumu</string>
@@ -761,6 +789,20 @@
 		<string>[?type == 'soft'].version | [0]</string>
 		<key>versionUrl</key>
 		<string>https://www.arturia.com/api/resources?slugs=augmented-woodwinds&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>AYtz</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=augmented-yangtze&amp;types</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -934,6 +976,20 @@
 		<key>manufacturer</key>
 		<string>Artu</string>
 		<key>name</key>
+		<string>JUP8</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=jup-8000-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
 		<string>Jun1</string>
 		<key>typeName</key>
 		<string>aumu</string>
@@ -957,6 +1013,20 @@
 		<string>[?type == 'soft'].version | [0]</string>
 		<key>versionUrl</key>
 		<string>https://www.arturia.com/api/resources?slugs=korg-ms-20-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>MBRT</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=minibrute-v&amp;types</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1049,12 +1119,6 @@
 		<string>OBS2</string>
 		<key>typeName</key>
 		<string>aumu</string>
-		<key>update</key>
-		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
-		<key>versionJMESPath</key>
-		<string>[?type == 'soft'].version | [0]</string>
-		<key>versionUrl</key>
-		<string>https://www.arturia.com/api/resources?slugs=sem-v&amp;types</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1116,6 +1180,20 @@
 		<key>manufacturer</key>
 		<string>Artu</string>
 		<key>name</key>
+		<string>PrLF</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=pure-lofi&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
 		<string>RFRT</string>
 		<key>typeName</key>
 		<string>aumf</string>
@@ -1125,6 +1203,20 @@
 		<string>[?type == 'soft'].version | [0]</string>
 		<key>versionUrl</key>
 		<string>https://www.arturia.com/api/resources?slugs=efx-refract&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>SEM3</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=sem-v&amp;types</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1153,6 +1245,20 @@
 		<string>[?type == 'soft'].version | [0]</string>
 		<key>versionUrl</key>
 		<string>https://www.arturia.com/api/resources?slugs=sq80-v&amp;types</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>Artu</string>
+		<key>name</key>
+		<string>STHX</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
+		<key>versionJMESPath</key>
+		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionUrl</key>
+		<string>https://www.arturia.com/api/resources?slugs=synthx-v&amp;types</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1917,6 +2023,14 @@
 		<string>SPL Free Ranger - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
 		<key>versionUrl</key>
 		<string>https://www.plugin-alliance.com/en/products/spl_free_ranger.html</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>SToy</string>
+		<key>name</key>
+		<string>SpBl</string>
+		<key>typeName</key>
+		<string>aumf</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

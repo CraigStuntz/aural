@@ -2031,6 +2031,12 @@
 		<string>SpBl</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>Download from https://storage.googleapis.com/soundtoys-download/download.html?product=spaceblender</string>
+		<key>versionJMESPath</key>
+		<string>SpaceBlender5_Mac.version</string>
+		<key>versionUrl</key>
+		<string>https://storage.googleapis.com/soundtoys-download/download.json</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

@@ -2056,6 +2056,14 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>UADx</string>
+		<key>name</key>
+		<string>UI06</string>
+		<key>typeName</key>
+		<string>aumu</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>UHfX</string>
 		<key>name</key>
 		<string>DiVa</string>

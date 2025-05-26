@@ -100,7 +100,8 @@ extension Aural {
   struct Validate: AsyncParsableCommand {
     static let configuration =
       CommandConfiguration(
-        abstract: "Validates (checks for common errors) the installed Audio Units"
+        abstract: "Validates (checks for common errors) the installed Audio Units",
+        usage: "Example: aural validate --filter 'manufacturer:Apple' --filter 'name:AUMIDISynth'"
       )
 
     static func allRuleNames() -> [String] {

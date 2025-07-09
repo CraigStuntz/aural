@@ -2090,7 +2090,7 @@
 		<key>typeName</key>
 		<string>aumu</string>
 		<key>update</key>
-		<string>Download update from https://u-he.com/products/diva/</string>
+		<string>open 'https://u-he.com/products/diva/'</string>
 		<key>versionRegex</key>
 		<string>Diva_(\d*)_(\d*)_Mac</string>
 		<key>versionUrl</key>
@@ -2104,7 +2104,7 @@
 		<key>typeName</key>
 		<string>aumu</string>
 		<key>update</key>
-		<string>Download update from https://u-he.com/products/repro/</string>
+		<string>open 'https://u-he.com/products/repro/'</string>
 		<key>versionRegex</key>
 		<string>Repro_(\d*)_(\d*)_Mac</string>
 		<key>versionUrl</key>
@@ -2118,7 +2118,7 @@
 		<key>typeName</key>
 		<string>auvw</string>
 		<key>update</key>
-		<string>Download update from https://u-he.com/products/repro/</string>
+		<string>open 'https://u-he.com/products/repro/'</string>
 		<key>versionRegex</key>
 		<string>Repro_(\d*)_(\d*)_Mac</string>
 		<key>versionUrl</key>
@@ -2132,7 +2132,7 @@
 		<key>typeName</key>
 		<string>aumu</string>
 		<key>update</key>
-		<string>Download update from https://u-he.com/products/repro/</string>
+		<string>open 'https://u-he.com/products/repro/'</string>
 		<key>versionRegex</key>
 		<string>Repro_(\d*)_(\d*)_Mac</string>
 		<key>versionUrl</key>
@@ -2146,7 +2146,7 @@
 		<key>typeName</key>
 		<string>aumu</string>
 		<key>update</key>
-		<string>Download update from https://thewavewarden.com/pages/odin-2</string>
+		<string>open 'https://thewavewarden.com/pages/odin-2'</string>
 		<key>versionRegex</key>
 		<string>Odin(\d+\.\d+\.\d+)MacInstaller\.pkg</string>
 		<key>versionUrl</key>

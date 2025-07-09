@@ -30,6 +30,21 @@ SUBCOMMANDS:
   See 'aural help <subcommand>' for detailed help.
 ```
 
+## macOS Issues
+
+macOS has a registry system for Audio Units which keeps track of the currently 
+installed version of a given Audio Unit. Usually. Occasionally it loses track
+of newer versions you have installed and returns the older version instead.
+Thus, `aural` will detect that the "older" version is installed even after you
+have updated a plugin. If this happens, try running:
+
+```bash
+$ killall -9 AudioComponentRegistrar
+```
+
+This will "restart" the service and all Audio Units should now teturn the 
+correct version.
+
 ## Update Configuration
 
 Aural needs to know where to look for the latest version of any Audio Units you

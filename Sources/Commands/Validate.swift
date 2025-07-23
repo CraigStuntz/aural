@@ -3,6 +3,7 @@ import ArgumentParser
 
 struct ValidateAudioUnits {
   let allRules: [Rule] = [
+    ArchitectureMustMatch(),
     AuvalMustPass(),
     ComponentRequiredProperties(),
     CurrentVersionShouldBeAccessible(),
@@ -32,18 +33,17 @@ struct ValidateAudioUnits {
       throw ExitCode.failure
     }
     let ruleDescription = rule == nil ? "using all rules" : "rule = \(rule ?? "")"
-    Console.standard("Validating \(components.count) components, \(ruleDescription)...")
+    Console.standard(
+      "Validating \(components.count) components, \(ruleDescription)... ", terminator: "")
     for component in components {
       let ruleErrors = await runValidationFor(component, configs[component], rules)
       if ruleErrors.isEmpty {
-        Console.standard(" (no errors)")
-      } else {
-        Console.standard()
+        Console.verbose(" (no errors)")
       }
       for ruleError in ruleErrors {
         switch ruleError {
-        case .warning(let description): Console.warning("  \(description)")
-        case .error(let description): Console.error("  \(description)")
+        case .warning(let description): Console.warning("    \(description)")
+        case .error(let description): Console.error("    \(description)")
         }
       }
     }
@@ -56,21 +56,22 @@ struct ValidateAudioUnits {
   ) async -> [RuleError] {
     var ruleErrors: [RuleError] = []
     Console.standard(
-      "\(component.manufacturerName) \(component.name) (\(component.typeName)):", terminator: "")
+      "\(component.manufacturerName) \(component.name) (\(component.typeName)): ", terminator: "")
     // otherwise Swift won't flush the handle -- screen won't be updated
     // until newline
     fflush(stdout)
     var auAudioUnit: AUAudioUnit? = nil
     do {
       if Rule.shouldLoadAudioUnit(component: component) {
-        Console.standard("Loading...")
-        Console.standard(component.audioComponentDescription)
+        Console.verbose("Loading... ", terminator: "")
+        Console.verbose("\(component.audioComponentDescription) ", terminator: "")
         auAudioUnit = try await AUAudioUnit.instantiate(
           with: component.audioComponentDescription)
-        Console.standard("Loaded.")
+        Console.verbose("loaded. ", terminator: "")
       }
+      Console.standard("")
       for rule in rules {
-        Console.standard(rule.ruleName)
+        Console.standard("  \(rule.ruleName)")
         ruleErrors.append(
           contentsOf: rule.run(
             component: component, audioUnit: auAudioUnit, config: config))

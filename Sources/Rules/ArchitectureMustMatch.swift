@@ -29,7 +29,10 @@ class ArchitectureMustMatch: Rule {
       errors.append("Invalid component configuration")
       return errors
     }
-    guard let architectures = configDict["AvailableArchitectures"] as? [String] else {
+    guard
+      let architectures = configDict[kAudioUnitConfigurationInfo_AvailableArchitectures]
+        as? [String]
+    else {
       errors.append("Cannot retrieve component supported architectures")
       errors.append("Available keys: \(Array(configDict.keys))")
       return errors

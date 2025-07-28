@@ -1,4 +1,22 @@
-struct UpdateWriter {
+protocol UpdateWriter {
+  func print(_ updateResult: UpdateResult)
+  func printNoConfiguration(_ noConfiguration: [ComponentMetadata])
+  func standard(_ items: Any..., separator: String, terminator: String)
+}
+
+extension UpdateWriter {
+  func standard() {
+    standard([], separator: " ", terminator: "\n")
+  }
+  func standard(_ items: Any...) {
+    standard(items, separator: " ", terminator: "\n")
+  }
+  func standard(_ items: Any..., terminator: String) {
+    standard(items, separator: " ", terminator: terminator)
+  }
+}
+
+struct ConsoleUpdateWriter: UpdateWriter {
   func print(_ updateResult: UpdateResult) {
     Console.standard()  // insert blank line
     if !updateResult.current.isEmpty && verbosity != .quiet {

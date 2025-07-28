@@ -92,7 +92,7 @@ extension Aural {
       await UpdateAudioUnits.run(
         options: options.assignVerbosity(),
         integrationTest: integrationTest,
-        updateWriter: UpdateWriter(),
+        updateWriter: ConsoleUpdateWriter(),
         writeConfigFile: writeConfigFile)
     }
   }
@@ -119,7 +119,11 @@ extension Aural {
 
     mutating func run() async throws {
       let validate = ValidateAudioUnits()
-      try await validate.run(options: options.assignVerbosity(), rule: rule)
+      try await validate.run(
+        options: options.assignVerbosity(),
+        rule: rule,
+        validateWriter: ConsoleValidateWriter()
+      )
     }
   }
 }

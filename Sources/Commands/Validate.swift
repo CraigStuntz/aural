@@ -24,26 +24,30 @@ struct ValidateAudioUnits {
     }
   }
 
-  func run(options: Options, rule: String?) async throws {
+  func run(
+    options: Options,
+    rule: String?,
+    validateWriter: ValidateWriter
+  ) async throws {
     let configs = AudioUnitConfigs()
     let components = AudioUnitComponents.components(maybeFilter: options.filter)
     let rules = rules(rule)
     guard rules.count > 0 else {
-      Console.error("Unknown rule '\(rule ?? "")'")
+      validateWriter.error("Unknown rule '\(rule ?? "")'")
       throw ExitCode.failure
     }
     let ruleDescription = rule == nil ? "using all rules" : "rule = \(rule ?? "")"
-    Console.standard(
+    validateWriter.standard(
       "Validating \(components.count) components, \(ruleDescription)... ", terminator: "")
     for component in components {
-      let ruleErrors = await runValidationFor(component, configs[component], rules)
+      let ruleErrors = await runValidationFor(component, configs[component], rules, validateWriter)
       if ruleErrors.isEmpty {
-        Console.verbose(" (no errors)")
+        validateWriter.verbose(" (no errors)")
       }
       for ruleError in ruleErrors {
         switch ruleError {
-        case .warning(let description): Console.warning("    \(description)")
-        case .error(let description): Console.error("    \(description)")
+        case .warning(let description): validateWriter.warning("    \(description)")
+        case .error(let description): validateWriter.error("    \(description)")
         }
       }
     }
@@ -52,10 +56,11 @@ struct ValidateAudioUnits {
   private func runValidationFor(
     _ component: AVAudioUnitComponent,
     _ config: AudioUnitConfig?,
-    _ rules: [Rule]
+    _ rules: [Rule],
+    _ validateWriter: ValidateWriter
   ) async -> [RuleError] {
     var ruleErrors: [RuleError] = []
-    Console.standard(
+    validateWriter.standard(
       "\(component.manufacturerName) \(component.name) (\(component.typeName)): ", terminator: "")
     // otherwise Swift won't flush the handle -- screen won't be updated
     // until newline
@@ -63,15 +68,15 @@ struct ValidateAudioUnits {
     var auAudioUnit: AUAudioUnit? = nil
     do {
       if Rule.shouldLoadAudioUnit(component: component) {
-        Console.verbose("Loading... ", terminator: "")
-        Console.verbose("\(component.audioComponentDescription) ", terminator: "")
+        validateWriter.verbose("Loading... ", terminator: "")
+        validateWriter.verbose("\(component.audioComponentDescription) ", terminator: "")
         auAudioUnit = try await AUAudioUnit.instantiate(
           with: component.audioComponentDescription)
-        Console.verbose("loaded. ", terminator: "")
+        validateWriter.verbose("loaded. ", terminator: "")
       }
-      Console.standard("")
+      validateWriter.standard("")
       for rule in rules {
-        Console.standard("  \(rule.ruleName)")
+        validateWriter.standard("  \(rule.ruleName)")
         ruleErrors.append(
           contentsOf: rule.run(
             component: component, audioUnit: auAudioUnit, config: config))

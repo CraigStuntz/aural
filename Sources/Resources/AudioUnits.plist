@@ -1879,10 +1879,10 @@
 		<string>aufx</string>
 		<key>update</key>
 		<string>open '/Applications/Klevgrand Helper.app'</string>
-		<key>versionRegex</key>
-		<string>Degrader v(\d+\.\d+(\.\d+)</string>
+		<key>versionJMESPath</key>
+		<string>[?!legacy &amp;&amp; platform=='macOS'].version | [0]</string>
 		<key>versionUrl</key>
-		<string>https://klevgrand.com/products/degrader</string>
+		<string>https://klevgrand.com/api/downloads/byName/degrader</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2204,7 +2204,7 @@
 		<key>update</key>
 		<string>open 'hthttps://xferrecords.com/freeware'</string>
 		<key>versionRegex</key>
-		<string>Install_Xfer_OTT_.*v(\d+\.\d+) freeware</string>
+		<string>v(\d+\.\d+) freeware</string>
 		<key>versionUrl</key>
 		<string>https://xferrecords.com/freeware</string>
 	</dict>

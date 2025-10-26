@@ -48,6 +48,20 @@
 		<key>manufacturer</key>
 		<string> kHs</string>
 		<key>name</key>
+		<string>kscc</string>
+		<key>typeName</key>
+		<string>aufx</string>
+		<key>update</key>
+		<string>open /Library/Application\ Support/Kilohearts/Kilohearts\ Installer.app</string>
+		<key>versionJMESPathInt</key>
+		<string>releases[0].version</string>
+		<key>versionUrl</key>
+		<string>https://kilohearts.com/files/releases/index.json</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string> kHs</string>
+		<key>name</key>
 		<string>kscf</string>
 		<key>typeName</key>
 		<string>aufx</string>
@@ -1858,6 +1872,20 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>Klev</string>
+		<key>name</key>
+		<string>Mxih</string>
+		<key>typeName</key>
+		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/Klevgrand Helper.app'</string>
+		<key>versionRegex</key>
+		<string>Degrader v(\d+\.\d+(\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://klevgrand.com/products/degrader</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>Manu</string>
 		<key>name</key>
 		<string>C25p</string>
@@ -2151,6 +2179,34 @@
 		<string>Odin(\d+\.\d+\.\d+)MacInstaller\.pkg</string>
 		<key>versionUrl</key>
 		<string>https://thewavewarden.com/pages/odin-2</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>XFER</string>
+		<key>name</key>
+		<string>XfTT</string>
+		<key>typeName</key>
+		<string>aufx</string>
+		<key>update</key>
+		<string>open 'https://xferrecords.com/freeware'</string>
+		<key>versionRegex</key>
+		<string>v(\d+\.\d+) freeware</string>
+		<key>versionUrl</key>
+		<string>https://xferrecords.com/freeware</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>XFER</string>
+		<key>name</key>
+		<string>XfTT</string>
+		<key>typeName</key>
+		<string>auvw</string>
+		<key>update</key>
+		<string>open 'hthttps://xferrecords.com/freeware'</string>
+		<key>versionRegex</key>
+		<string>Install_Xfer_OTT_.*v(\d+\.\d+) freeware</string>
+		<key>versionUrl</key>
+		<string>https://xferrecords.com/freeware</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

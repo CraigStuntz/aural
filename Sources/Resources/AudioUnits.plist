@@ -1394,7 +1394,7 @@
 		<key>typeName</key>
 		<string>aumu</string>
 		<key>update</key>
-		<string>open 'https://babyaud.io/downloads'</string>
+		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
 		<key>versionJMESPath</key>
 		<string>[?type == 'soft'].version | [0]</string>
 		<key>versionUrl</key>
@@ -1410,7 +1410,7 @@
 		<key>update</key>
 		<string>open 'https://babyaud.io/downloads'</string>
 		<key>versionRegex</key>
-		<string>Mac Download - Comeback Kid \(v(\d+\.\d+(\.\d+)?)\)</string>
+		<string>Comeback Kid \(v(\d+\.\d+(\.\d+)?)\)</string>
 		<key>versionUrl</key>
 		<string>https://babyaud.io/downloads</string>
 	</dict>
@@ -1424,7 +1424,7 @@
 		<key>update</key>
 		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
 		<key>versionRegex</key>
-		<string>Mac Download - Humanoid \(v(\d+\.\d+(\.\d+)?)\)</string>
+		<string>Humanoid \(v(\d+\.\d+(\.\d+)?)\)</string>
 		<key>versionUrl</key>
 		<string>https://babyaud.io/downloads</string>
 	</dict>

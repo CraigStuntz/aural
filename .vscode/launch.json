@@ -8,12 +8,13 @@
             ],
             "cwd": "${workspaceFolder:aural}",
             "name": "Debug aural",
-            "program": "${workspaceFolder:aural}/.build/debug/aural",
             "args": [
                 "update",
                 "-v"
             ],
-            "preLaunchTask": "swift: Build Debug aural"
+            "preLaunchTask": "swift: Build Debug aural",
+            "target": "aural",
+            "configuration": "debug"
         },
         {
             "type": "lldb",
@@ -38,8 +39,9 @@
             "args": [],
             "cwd": "${workspaceFolder:aural}",
             "name": "Release aural",
-            "program": "${workspaceFolder:aural}/.build/release/aural",
-            "preLaunchTask": "swift: Build Release aural"
+            "preLaunchTask": "swift: Build Release aural",
+            "target": "aural",
+            "configuration": "release"
         }
     ]
 }

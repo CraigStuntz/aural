@@ -1872,6 +1872,20 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>GFor</string>
+		<key>name</key>
+		<string>Gob1</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open 'https://www.gforcesoftware.com/my-instruments/'</string>
+		<key>versionRegex</key>
+		<string>OB\-1\-(\d+\.\d+(\.\d+)?)\-Installer\-macOS\.dmg</string>
+		<key>versionUrl</key>
+		<string>https://www.gforcesoftware.com/products/ob-1/</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>Klev</string>
 		<key>name</key>
 		<string>Mxih</string>
@@ -2202,7 +2216,7 @@
 		<key>typeName</key>
 		<string>auvw</string>
 		<key>update</key>
-		<string>open 'hthttps://xferrecords.com/freeware'</string>
+		<string>open 'https://xferrecords.com/freeware'</string>
 		<key>versionRegex</key>
 		<string>v(\d+\.\d+) freeware</string>
 		<key>versionUrl</key>

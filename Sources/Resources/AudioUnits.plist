@@ -1402,6 +1402,14 @@
 	</dict>
 	<dict>
 		<key>manufacturer</key>
+		<string>B4b1</string>
+		<key>name</key>
+		<string>FXSt</string>
+		<key>typeName</key>
+		<string>aufx</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
 		<string>B4by</string>
 		<key>name</key>
 		<string>Cmb4</string>
@@ -1425,6 +1433,20 @@
 		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
 		<key>versionRegex</key>
 		<string>Humanoid \(v(\d+\.\d+(\.\d+)?)\)</string>
+		<key>versionUrl</key>
+		<string>https://babyaud.io/downloads</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>BA01</string>
+		<key>name</key>
+		<string>ba01</string>
+		<key>typeName</key>
+		<string>aumu</string>
+		<key>update</key>
+		<string>open 'https://babyaud.io/downloads'</string>
+		<key>versionRegex</key>
+		<string>BA-1  \(v(\d+\.\d+(\.\d+)?)\)</string>
 		<key>versionUrl</key>
 		<string>https://babyaud.io/downloads</string>
 	</dict>
@@ -2290,6 +2312,16 @@
 		<key>manufacturer</key>
 		<string>appl</string>
 		<key>name</key>
+		<string>amix</string>
+		<key>system</key>
+		<true/>
+		<key>typeName</key>
+		<string>aufc</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>appl</string>
+		<key>name</key>
 		<string>atap</string>
 		<key>system</key>
 		<true/>
@@ -2865,6 +2897,24 @@
 		<true/>
 		<key>typeName</key>
 		<string>ausp</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>appl</string>
+		<key>name</key>
+		<string>wrda</string>
+		<key>system</key>
+		<true/>
+		<key>typeName</key>
+		<string>ausp</string>
+	</dict>
+	<dict>
+		<key>manufacturer</key>
+		<string>iZtp</string>
+		<key>name</key>
+		<string>INS0</string>
+		<key>typeName</key>
+		<string>aufx</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

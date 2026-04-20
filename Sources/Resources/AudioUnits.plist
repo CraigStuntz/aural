@@ -1418,7 +1418,7 @@
 		<key>update</key>
 		<string>open 'https://babyaud.io/downloads'</string>
 		<key>versionRegex</key>
-		<string>Comeback Kid \(v(\d+\.\d+(\.\d+)?)\)</string>
+		<string>&gt;Comeback Kid&lt;\/div&gt;&lt;div&gt;v(\d+\.\d+(\.\d+)?)&lt;</string>
 		<key>versionUrl</key>
 		<string>https://babyaud.io/downloads</string>
 	</dict>
@@ -1432,7 +1432,7 @@
 		<key>update</key>
 		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
 		<key>versionRegex</key>
-		<string>Humanoid \(v(\d+\.\d+(\.\d+)?)\)</string>
+		<string>&gt;Humanoid&lt;\/div&gt;&lt;div&gt;v(\d+\.\d+(\.\d+)?)&lt;</string>
 		<key>versionUrl</key>
 		<string>https://babyaud.io/downloads</string>
 	</dict>
@@ -1446,7 +1446,7 @@
 		<key>update</key>
 		<string>open 'https://babyaud.io/downloads'</string>
 		<key>versionRegex</key>
-		<string>BA-1  \(v(\d+\.\d+(\.\d+)?)\)</string>
+		<string>BA-1 .*v(\d+\.\d+(\.\d+)?)</string>
 		<key>versionUrl</key>
 		<string>https://babyaud.io/downloads</string>
 	</dict>

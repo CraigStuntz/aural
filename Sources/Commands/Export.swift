@@ -1,5 +1,6 @@
 import AVFoundation
 import Foundation
+import LogicFiles
 
 let defaultExportPath = "Audio Music Apps/Patches/Instrument/_Instruments"
 

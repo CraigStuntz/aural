@@ -1,4 +1,5 @@
 {
+  "originHash" : "1e3ab89df7fff6bea49aa1612194795a73565968488a0746b52766dd946e94ea",
   "pins" : [
     {
       "identity" : "jmespath.swift",
@@ -7,6 +8,15 @@
       "state" : {
         "revision" : "4513d319c4aaa6c3b2ac18e1e6566a803515ad91",
         "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "logicfiles",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CraigStuntz/LogicFiles.git",
+      "state" : {
+        "revision" : "02e81bdfd025a47d5b392fc0218eb4a80727f7bb",
+        "version" : "0.2.0"
       }
     },
     {
@@ -28,5 +38,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

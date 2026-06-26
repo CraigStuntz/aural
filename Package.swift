@@ -16,7 +16,8 @@ let package = Package(
     // other dependencies
     .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.0"),
     .package(url: "https://github.com/apple/swift-http-types.git", from: "1.0.2"),
-    .package(url: "https://github.com/adam-fowler/jmespath.swift", from: "1.0.2")
+    .package(url: "https://github.com/adam-fowler/jmespath.swift", from: "1.0.2"),
+    .package(url: "https://github.com/CraigStuntz/LogicFiles", from: "0.2.0"),
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -28,7 +29,8 @@ let package = Package(
         .product(name: "ArgumentParser", package: "swift-argument-parser"),
         .product(name: "HTTPTypes", package: "swift-http-types"),
         .product(name: "HTTPTypesFoundation", package: "swift-http-types"),
-        .product(name: "JMESPath", package: "jmespath.swift")
+        .product(name: "JMESPath", package: "jmespath.swift"),
+        .product(name: "LogicFiles", package: "LogicFiles")
       ],
       resources: [.process("Resources/AudioUnits.plist")]
     ),

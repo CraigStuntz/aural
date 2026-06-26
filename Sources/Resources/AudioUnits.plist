@@ -1065,10 +1065,10 @@
 		<string>aumu</string>
 		<key>update</key>
 		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
-		<key>versionJMESPath</key>
-		<string>[?type == 'soft'].version | [0]</string>
+		<key>versionRegex</key>
+		<string>Mini_V4__(\d+_\d+_\d+)_\d+\.pkg</string>
 		<key>versionUrl</key>
-		<string>https://www.arturia.com/api/resources?slugs=mini-v&amp;types</string>
+		<string>https://www.arturia.com/support/downloads-manuals/product/mini-v</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

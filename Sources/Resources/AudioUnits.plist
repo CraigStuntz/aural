@@ -3093,7 +3093,7 @@
 		<key>update</key>
 		<string>open '/Applications/XLN Online Installer.app'</string>
 		<key>versionRegex</key>
-		<string>&lt;td&gt;(\d+\.\d+\.\d+)&lt;/td&gt;</string>
+		<string>&lt;td.*&gt;(\d+\.\d+\.\d+)&lt;/td&gt;</string>
 		<key>versionUrl</key>
 		<string>https://www.xlnaudio.com/release_notes?filter=addictive_keys</string>
 	</dict>

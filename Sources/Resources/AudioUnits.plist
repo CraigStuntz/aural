@@ -537,6 +537,12 @@
 		<string>Ni$D</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Native Access.app'</string>
+		<key>versionRegex</key>
+		<string>(8\.\d+\.\d+)\s*\(20\d\d\-\d+-\d+\)</string>
+		<key>versionUrl</key>
+		<string>https://community.native-instruments.com/discussion/39/official-update-status-kontakt-current-version-8-3-0</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -624,7 +630,7 @@
 		<key>update</key>
 		<string>open '/Applications/Native Access.app'</string>
 		<key>versionRegex</key>
-		<string>(8\.\d+\.\d+)\s*\-\s*20\d\d\-\d+-\d+</string>
+		<string>(8\.\d+\.\d+)\s*\(20\d\d\-\d+-\d+\)</string>
 		<key>versionUrl</key>
 		<string>https://community.native-instruments.com/discussion/39/official-update-status-kontakt-current-version-8-3-0</string>
 	</dict>
@@ -705,6 +711,12 @@
 		<string>SLMT</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open 'https://apogeedigital.com/product/soft-limit/'</string>
+		<key>versionRegex</key>
+		<string>Apogee Soft Limit[\s\S]+?Version Number: (\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://knowledge.apogeedigital.com/apogee-product-software-firmware-versions-list-current-products</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1471,6 +1483,12 @@
 		<string>LBc3</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>254E - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/lindell_254e.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1493,6 +1511,12 @@
 		<string>bxb2</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>bx_bluechorus2 - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_bluechorus2.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1501,6 +1525,12 @@
 		<string>bxb3</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>bx_boom V3 - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_boom_v3.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1509,6 +1539,12 @@
 		<string>bxcN</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>bx_cleansweep V2 - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_cleansweep_v2.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1517,6 +1553,12 @@
 		<string>bxf3</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>bx_refinement V3 - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_refinement_v3.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1525,6 +1567,12 @@
 		<string>bxma</string>
 		<key>typeName</key>
 		<string>aumf</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>bx_masterdesk - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_masterdesk.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1547,6 +1595,12 @@
 		<string>bxmt</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>bx_meter - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_meter.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1611,6 +1665,12 @@
 		<string>bxtn</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open '/Applications/PA-InstallationManager.app'</string>
+		<key>versionRegex</key>
+		<string>bx_tuner - Changelog[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.plugin-alliance.com/en/products/bx_tuner.html</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1815,6 +1875,12 @@
 		<string>MMV2</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/memorymode-v2/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1823,6 +1889,12 @@
 		<string>MMV2</string>
 		<key>typeName</key>
 		<string>auvw</string>
+		<key>update</key>
+		<string>open '/Applications/Cherry Audio Sync.app'</string>
+		<key>versionRegex</key>
+		<string>&lt;strong&gt;(\d\.\d\.\d)</string>
+		<key>versionUrl</key>
+		<string>https://cherryaudio.com/products/memorymode-v2/version-history</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2023,6 +2095,12 @@
 		<string>cpbt</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2031,6 +2109,12 @@
 		<string>cpch</string>
 		<key>typeName</key>
 		<string>aumi</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2039,6 +2123,12 @@
 		<string>cpch</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2047,6 +2137,12 @@
 		<string>cpdp</string>
 		<key>typeName</key>
 		<string>aumi</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2055,6 +2151,12 @@
 		<string>cpdp</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2063,6 +2165,12 @@
 		<string>cpml</string>
 		<key>typeName</key>
 		<string>aumi</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2071,6 +2179,12 @@
 		<string>cpml</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2079,6 +2193,12 @@
 		<string>cppl</string>
 		<key>typeName</key>
 		<string>aumi</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2087,6 +2207,12 @@
 		<string>cppl</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>open 'https://mixedinkey.com/captain-plugins/'</string>
+		<key>versionRegex</key>
+		<string>&lt;h2&gt;(\d+\.\d+\.\d+\.\d+) \S Captain Plugins \(Mac\)</string>
+		<key>versionUrl</key>
+		<string>https://mixedinkey.com/release-notes/captain-plugins/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -2247,6 +2373,12 @@
 		<string>cHL1</string>
 		<key>typeName</key>
 		<string>aufx</string>
+		<key>update</key>
+		<string>open 'https://tal-software.com/products/tal-chorus-lx'</string>
+		<key>versionRegex</key>
+		<string>(\d\.\d\.\d+) / \d\d\.\d\d\.\d{4}</string>
+		<key>versionUrl</key>
+		<string>https://tal-software.com/products/tal-chorus-lx</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -3093,8 +3225,8 @@
 		<string>aumf</string>
 		<key>update</key>
 		<string>Start the host application and open the plugin</string>
-		<key>versionRegex</key>
-		<string>SynthMaster 2 VST\/VSTi\/AU\/AAX  for MacOS[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionFixed</key>
+		<string>2.9.18</string>
 		<key>versionUrl</key>
 		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>
@@ -3107,8 +3239,8 @@
 		<string>aumu</string>
 		<key>update</key>
 		<string>Start the host application and open the plugin</string>
-		<key>versionRegex</key>
-		<string>SynthMaster 2 VST\/VSTi\/AU\/AAX  for MacOS[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionFixed</key>
+		<string>2.9.18</string>
 		<key>versionUrl</key>
 		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>
@@ -3119,6 +3251,12 @@
 		<string>Sm3i</string>
 		<key>typeName</key>
 		<string>aumu</string>
+		<key>update</key>
+		<string>Start the host application and open the plugin</string>
+		<key>versionRegex</key>
+		<string>SynthMaster 3 for MacOS[\s\S]+?Version: &lt;/strong&gt;\s*(\d+\.\d+\.\d+)</string>
+		<key>versionUrl</key>
+		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -3129,8 +3267,8 @@
 		<string>aumu</string>
 		<key>update</key>
 		<string>Start the host application and open the plugin</string>
-		<key>versionRegex</key>
-		<string>SynthMaster 2 Player Free VSTi\/AU\/AAX  for MacOSX[\s\S]+?(\d+\.\d+\.\d+)</string>
+		<key>versionFixed</key>
+		<string>2.9.18</string>
 		<key>versionUrl</key>
 		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>

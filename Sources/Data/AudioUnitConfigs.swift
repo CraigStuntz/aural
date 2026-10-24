@@ -3,8 +3,8 @@ import Foundation
 
 struct AudioUnitConfig: Codable {
   private enum CodingKeys: String, CodingKey {
-    case manufacturer, name, system, typeName, update, versionJMESPath, versionJMESPathInt,
-      versionRegex, versionUrl
+    case manufacturer, name, system, typeName, update, versionFixed, versionJMESPath,
+      versionJMESPathInt, versionRegex, versionUrl
   }
 
   let manufacturer: String
@@ -12,6 +12,7 @@ struct AudioUnitConfig: Codable {
   let system: Bool?
   let typeName: String
   let update: String?
+  let versionFixed: String?
   let versionJMESPath: String?
   let versionJMESPathInt: String?
   let versionRegex: String?
@@ -26,6 +27,7 @@ struct AudioUnitConfig: Codable {
       system: system,
       typeName: component.audioComponentDescription.componentType.toString(),
       update: nil,
+      versionFixed: nil,
       versionJMESPath: nil,
       versionJMESPathInt: nil,
       versionRegex: nil,

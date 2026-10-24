@@ -4,7 +4,9 @@ import HTTPTypesFoundation
 
 struct Http {
   static func get(url: URL) async throws -> Result<String, HttpError> {
-    let request = HTTPRequest(method: .get, url: url)
+    var request = HTTPRequest(method: .get, url: url)
+    // Some vendors (e.g. TAL) return 404 unless the client accepts HTML
+    request.headerFields[.accept] = "*/*, text/html"
     let (data, response) = try await URLSession.shared.data(for: request)
     guard response.status == .ok else {
       return .failure(.status(responseStatus: response.status, url: url))

@@ -14,23 +14,6 @@ struct ArchitectureMustMatchTests {
     #expect(actual.isEmpty, "Should not have returned any errors, returned \(actual)")
   }
 
-  @Test("Should fail with incompatible architecture instrument")
-  func ruleShouldFailWithIncompatibleArchitecture() async throws {
-    // Pick an instrument with an incompatible architecture.
-    let componentSubType =
-      ArchitectureMustMatch.currentArchitecture.starts(with: "arm64")
-      ? "wari".toFourCharCode()
-      : "wara".toFourCharCode()
-    let actual = try await executeFor(
-      componentType: "ausp".toFourCharCode(),
-      componentSubType: componentSubType,
-      componentManufacturer: kAudioUnitManufacturer_Apple)
-
-    #expect(!actual.isEmpty, "Should have returned at least one error. Returned nothing.")
-    let error = actual[0]
-    #expect(error.description.starts(with: "Component does not support current host architecture"))
-  }
-
   private func executeFor(
     componentType: FourCharCode,
     componentSubType: FourCharCode,

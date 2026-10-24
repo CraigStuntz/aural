@@ -57,6 +57,9 @@ struct Version {
     if let regex = audioUnitConfig.versionRegex {
       return parseWithRegex(responseBody, regex)
     }
+    if let fixedVersion = audioUnitConfig.versionFixed {
+      return .success(fixedVersion)
+    }
     return .failure(
       .noConfiguration(
         description:

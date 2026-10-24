@@ -1052,7 +1052,7 @@
 		<key>update</key>
 		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
 		<key>versionRegex</key>
-		<string>Mini_V4__(\d+_\d+_\d+)_\d+\.pkg</string>
+		<string>Mini_V3__(\d+_\d+_\d+)_\d+\.pkg</string>
 		<key>versionUrl</key>
 		<string>https://www.arturia.com/support/downloads-manuals/product/mini-v</string>
 	</dict>
@@ -1382,7 +1382,7 @@
 		<key>update</key>
 		<string>open '/Applications/Arturia/Arturia Software Center.app'</string>
 		<key>versionRegex</key>
-		<string>Wurli_V3__(\d+_\d+_\d+)_\d+\.pkg</string>
+		<string>Wurli_V2__(\d+_\d+_\d+)_\d+\.pkg</string>
 		<key>versionUrl</key>
 		<string>https://www.arturia.com/support/downloads-manuals/product/wurli-v</string>
 	</dict>
@@ -1978,7 +1978,7 @@
 		<key>versionRegex</key>
 		<string>BassStation\-(\d+\.\d+(\.\d+)?)\-Installer\-macOS\.dmg</string>
 		<key>versionUrl</key>
-		<string>https://www.gforcesoftware.com/products/bass-station/</string>
+		<string>https://www.gforcesoftware.com/product/novation-bass-station/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>
@@ -1992,7 +1992,7 @@
 		<key>versionRegex</key>
 		<string>OB\-1\-(\d+\.\d+(\.\d+)?)\-Installer\-macOS\.dmg</string>
 		<key>versionUrl</key>
-		<string>https://www.gforcesoftware.com/products/ob-1/</string>
+		<string>https://www.gforcesoftware.com/product/oberheim-ob-1/</string>
 	</dict>
 	<dict>
 		<key>manufacturer</key>

@@ -39,4 +39,20 @@ struct AudioUnitConfigsTests {
     let actual = try configs.toPlist(components)
     #expect(actual.count > 0)
   }
+
+  @Test func testVersionOverrides() throws {
+    let configs = AudioUnitConfigs()
+    let ottConfigs = configs.configs.filter { $0.manufacturer == "XFER" && $0.name == "XfTT" }
+    let synthMaster2Configs = configs.configs.filter {
+      $0.manufacturer == "k331" && ($0.name == "Sm2f" || $0.name == "Sm2i")
+    }
+
+    #expect(ottConfigs.count == 2)
+    #expect(ottConfigs.allSatisfy { $0.versionOverrides == ["1.3.7": "1.37"] })
+    #expect(synthMaster2Configs.count == 2)
+    #expect(
+      synthMaster2Configs.allSatisfy {
+        $0.versionFixed == "2.9.18" && $0.versionOverrides == ["2.9.10": "2.9.18"]
+      })
+  }
 }

@@ -4,7 +4,7 @@ import Foundation
 struct AudioUnitConfig: Codable {
   private enum CodingKeys: String, CodingKey {
     case manufacturer, name, system, typeName, update, versionFixed, versionJMESPath,
-      versionJMESPathInt, versionRegex, versionUrl
+      versionJMESPathInt, versionOverrides, versionRegex, versionUrl
   }
 
   let manufacturer: String
@@ -15,6 +15,7 @@ struct AudioUnitConfig: Codable {
   let versionFixed: String?
   let versionJMESPath: String?
   let versionJMESPathInt: String?
+  let versionOverrides: [String: String]?
   let versionRegex: String?
   let versionUrl: String?
 
@@ -30,6 +31,7 @@ struct AudioUnitConfig: Codable {
       versionFixed: nil,
       versionJMESPath: nil,
       versionJMESPathInt: nil,
+      versionOverrides: nil,
       versionRegex: nil,
       versionUrl: nil
     )

@@ -15,6 +15,20 @@ struct VersionsTests {
     #expect(Version.compatible(latestVersion: "1.0.1", existingVersion: "1.0.1.1234"))
   }
 
+  @Test func compatibleWithVersionOverride() {
+    let versionOverrides = ["1.3.7": "1.37"]
+
+    #expect(
+      Version.compatible(
+        latestVersion: "1.37", existingVersion: "1.3.7", versionOverrides: versionOverrides))
+    #expect(
+      !Version.compatible(
+        latestVersion: "1.38", existingVersion: "1.3.7", versionOverrides: versionOverrides))
+    #expect(
+      !Version.compatible(
+        latestVersion: "1.37", existingVersion: "1.3.8", versionOverrides: versionOverrides))
+  }
+
   @Test func fromInt() {
     #expect("2.1.4" == Version.fromInt(131332))
     #expect("2.1.20" == Version.fromInt(131348))

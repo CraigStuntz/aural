@@ -115,7 +115,9 @@ struct UpdateConfig: Sendable {
         )
       case .success(let latestVersion):
         let compatible = Version.compatible(
-          latestVersion: latestVersion, existingVersion: self.metadata.versionString)
+          latestVersion: latestVersion,
+          existingVersion: self.metadata.versionString,
+          versionOverrides: self.audioUnitConfig.versionOverrides)
         return .success(
           UpdateSuccess(
             metadata: metadata,

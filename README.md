@@ -58,6 +58,11 @@ repository. I will guide you through the process. Or if you're especially
 adventurous, do `aural update --write-config-file`, edit the generated 
 `AudioUnits.plist`, and open a PR!
 
+For rare cases where an Audio Unit or its manufacturer's site reports an
+incorrect version, an entry may include an optional `versionOverrides`
+dictionary. Map the installed local version to the version reported by the
+site; `aural update` will treat that exact pair as up to date.
+
 ## Building
 
 You need to have the command-line tools installed. You don't necessarily need XCode:

@@ -12,7 +12,14 @@ struct Version {
   ///   * Has the sem minor version, or both minor versions are absent
   ///   * Has the same release version, or both release versions are absent
   ///   * Has the same build number, or one build number is absent
-  static func compatible(latestVersion: String, existingVersion: String) -> Bool {
+  static func compatible(
+    latestVersion: String,
+    existingVersion: String,
+    versionOverrides: [String: String]? = nil
+  ) -> Bool {
+    if versionOverrides?[existingVersion] == latestVersion {
+      return true
+    }
     let latestVersionParts =
       latestVersion.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
       .split(separator: ".")

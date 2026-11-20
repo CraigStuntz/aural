@@ -2565,6 +2565,11 @@
 		<string>aufx</string>
 		<key>update</key>
 		<string>open 'https://xferrecords.com/freeware'</string>
+		<key>versionOverrides</key>
+		<dict>
+			<key>1.3.7</key>
+			<string>1.37</string>
+		</dict>
 		<key>versionRegex</key>
 		<string>v(\d+\.\d+) freeware</string>
 		<key>versionUrl</key>
@@ -2579,6 +2584,11 @@
 		<string>auvw</string>
 		<key>update</key>
 		<string>open 'https://xferrecords.com/freeware'</string>
+		<key>versionOverrides</key>
+		<dict>
+			<key>1.3.7</key>
+			<string>1.37</string>
+		</dict>
 		<key>versionRegex</key>
 		<string>v(\d+\.\d+) freeware</string>
 		<key>versionUrl</key>
@@ -3291,8 +3301,13 @@
 		<string>aumf</string>
 		<key>update</key>
 		<string>Start the host application and open the plugin</string>
+		<key>versionOverrides</key>
+		<dict>
+			<key>2.9.10</key>
+			<string>2.9.18</string>
+		</dict>
 		<key>versionFixed</key>
-		<string>2.9.10</string>
+		<string>2.9.18</string>
 		<key>versionUrl</key>
 		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>
@@ -3305,8 +3320,13 @@
 		<string>aumu</string>
 		<key>update</key>
 		<string>Start the host application and open the plugin</string>
+		<key>versionOverrides</key>
+		<dict>
+			<key>2.9.10</key>
+			<string>2.9.18</string>
+		</dict>
 		<key>versionFixed</key>
-		<string>2.9.10</string>
+		<string>2.9.18</string>
 		<key>versionUrl</key>
 		<string>https://www.kv331audio.com/downloads.aspx</string>
 	</dict>
